@@ -10,15 +10,15 @@ type ProjectCardProps = {
 
 export function ProjectCard({ project }: Readonly<ProjectCardProps>) {
   return (
-    <Card className="group overflow-hidden rounded-none border-x-0 border-y border-border/80 bg-transparent shadow-none">
+    <Card className="js-card group overflow-hidden rounded-none border-x-0 border-y border-border/80 bg-transparent shadow-none">
       <Link href={`/projects/${project.slug}`} className="grid gap-4 py-5 md:grid-cols-12 md:items-end md:gap-6 md:py-7">
-        <div className="relative aspect-[16/10] w-full overflow-hidden md:col-span-7">
+        <div className="js-image-reveal js-parallax-media js-scroll-scale relative aspect-[16/10] w-full overflow-hidden md:col-span-7">
           <Image
             src={project.imageSrc}
             alt={`Projeto ${project.title}`}
             fill
             sizes="(max-width: 768px) 100vw, 60vw"
-            className="object-cover transition-transform duration-700 ease-out group-hover:scale-[1.03]"
+            className="js-parallax-image object-cover transition-all duration-900 ease-out group-hover:scale-[1.05] group-hover:brightness-105"
             placeholder="blur"
             blurDataURL="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0nMjQnIGhlaWdodD0nMTYnIHhtbG5zPSdodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2Zyc+PHJlY3Qgd2lkdGg9JzI0JyBoZWlnaHQ9JzE2JyBmaWxsPScjMTIxMjEyJy8+PC9zdmc+"
           />
@@ -39,9 +39,9 @@ export function ProjectCard({ project }: Readonly<ProjectCardProps>) {
             {project.summary}
           </p>
 
-          <div className="inline-flex items-center gap-2 text-[11px] uppercase tracking-[0.16em] text-foreground/80">
+          <div className="inline-flex items-center gap-2 text-[11px] uppercase tracking-[0.16em] text-foreground/80 transition-colors duration-300 group-hover:text-foreground">
             Open project
-            <ArrowUpRight className="size-4 shrink-0 transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
+            <ArrowUpRight className="size-4 shrink-0 transition-transform duration-500 ease-out group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
           </div>
         </div>
       </Link>

@@ -21,18 +21,29 @@ export function PageTransition({ children }: Readonly<PageTransitionProps>) {
       return;
     }
 
+    const prefersReducedMotion = window.matchMedia(
+      "(prefers-reduced-motion: reduce)",
+    ).matches;
+
+    if (prefersReducedMotion) {
+      gsap.set(root, { autoAlpha: 1, y: 0, filter: "blur(0px)" });
+      gsap.set(overlay, { autoAlpha: 0, scaleY: 0 });
+      return;
+    }
+
     const timeline = gsap.timeline({ defaults: { ease: "power3.out" } });
 
     timeline
+      .set(overlay, { transformOrigin: "bottom" })
       .fromTo(
         overlay,
         { scaleY: 1, autoAlpha: 1 },
-        { scaleY: 0, autoAlpha: 0, duration: 0.85 },
+        { scaleY: 0, autoAlpha: 0, duration: 0.85, ease: "power4.inOut" },
       )
       .fromTo(
         root,
-        { autoAlpha: 0, y: 24 },
-        { autoAlpha: 1, y: 0, duration: 0.75 },
+        { autoAlpha: 0, y: 18, filter: "blur(6px)" },
+        { autoAlpha: 1, y: 0, filter: "blur(0px)", duration: 0.75, ease: "power3.out" },
         "<0.15",
       );
 
@@ -47,6 +58,7 @@ export function PageTransition({ children }: Readonly<PageTransitionProps>) {
       gsap.set(root, {
         autoAlpha: 1,
         y: 0,
+        filter: "blur(0px)",
       });
     };
   }, [pathname]);

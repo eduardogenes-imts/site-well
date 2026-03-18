@@ -6,7 +6,7 @@ export default function WorksPage() {
   return (
     <div className="min-h-screen bg-background text-foreground">
       <SiteHeader />
-      <main>
+      <main className="pt-20 md:pt-24">
         <WorksSection />
       </main>
       <SiteFooter />

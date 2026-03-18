@@ -11,7 +11,48 @@
     "imageSrc": "/projects/project-01.svg",
     "summary": "Reposicionamento completo com nova linguagem visual e narrativa digital editorial.",
     "scope": ["Brand Strategy", "Art Direction", "Web Design"],
-    "client": "Aurora Development Group"
+    "client": "Aurora Development Group",
+    "chapters": [
+      {
+        "title": "Context",
+        "content": "Casa Aurora required a new identity for a premium residential launch in a highly competitive local market. The previous communication lacked clarity and emotional distinction across channels."
+      },
+      {
+        "title": "Design response",
+        "content": "We built a narrative-led direction anchored in warm material tones, calm rhythm and restrained typography. The system translated consistently from architecture collateral to digital launch assets."
+      },
+      {
+        "title": "Outcome",
+        "content": "The repositioning increased project perception and improved consistency across touchpoints, allowing the sales and marketing teams to present a unified premium offer."
+      }
+    ],
+    "metrics": [
+      {
+        "label": "Lead conversion",
+        "value": "+38%",
+        "description": "Increase in qualified enquiry conversion after launch."
+      },
+      {
+        "label": "Campaign engagement",
+        "value": "2.9x",
+        "description": "Improvement in average interaction time with digital content."
+      },
+      {
+        "label": "Delivery timeline",
+        "value": "11 wks",
+        "description": "From strategy alignment to full rollout of core assets."
+      }
+    ],
+    "gallery": [
+      { "src": "/projects/project-01.svg", "alt": "Casa Aurora cover composition" },
+      { "src": "/projects/project-05.svg", "alt": "Casa Aurora interior visual language" },
+      { "src": "/projects/project-06.svg", "alt": "Casa Aurora campaign layout study" }
+    ],
+    "testimonial": {
+      "quote": "The team translated our vision into a coherent spatial and brand narrative with exceptional precision.",
+      "author": "Amelia Grant",
+      "role": "Marketing Director, Aurora Development Group"
+    }
   },
   {
     "slug": "verde-studio",
@@ -25,7 +66,48 @@
     "imageSrc": "/projects/project-02.svg",
     "summary": "Experiência de compra com foco em ritmo visual, produto e storytelling de coleção.",
     "scope": ["E-commerce UX", "Content Direction", "Design System"],
-    "client": "Verde Studio"
+    "client": "Verde Studio",
+    "chapters": [
+      {
+        "title": "Challenge",
+        "content": "Verde Studio needed to evolve from a catalogue-first online store to a brand-driven retail experience with stronger product storytelling and navigation clarity."
+      },
+      {
+        "title": "System",
+        "content": "We designed a modular commerce framework with editorial chapters, product hierarchy rules and a refined interaction cadence to guide decision-making."
+      },
+      {
+        "title": "Impact",
+        "content": "The new system improved both discoverability and conversion while preserving a high-end visual tone aligned with the brand’s positioning."
+      }
+    ],
+    "metrics": [
+      {
+        "label": "Average order value",
+        "value": "+24%",
+        "description": "Growth observed in first quarter post-launch."
+      },
+      {
+        "label": "Session depth",
+        "value": "+41%",
+        "description": "Users explored more collection pages per visit."
+      },
+      {
+        "label": "Checkout completion",
+        "value": "+19%",
+        "description": "Reduced drop-off across the purchase flow."
+      }
+    ],
+    "gallery": [
+      { "src": "/projects/project-02.svg", "alt": "Verde Studio hero retail scene" },
+      { "src": "/projects/project-07.svg", "alt": "Verde Studio collection storytelling frame" },
+      { "src": "/projects/project-08.svg", "alt": "Verde Studio product detail experience" }
+    ],
+    "testimonial": {
+      "quote": "The new digital and retail language elevated both perception and sales performance in a very short cycle.",
+      "author": "Lucas Ferreira",
+      "role": "Founder, Verde Studio"
+    }
   },
   {
     "slug": "nero-atelier",
@@ -39,7 +121,48 @@
     "imageSrc": "/projects/project-03.svg",
     "summary": "Sistema visual modular para campanhas e desdobramentos em canais digitais.",
     "scope": ["Visual Identity", "Campaign Design", "Motion Guidance"],
-    "client": "Nero Atelier"
+    "client": "Nero Atelier",
+    "chapters": [
+      {
+        "title": "Brief",
+        "content": "Nero Atelier requested a flexible visual system to support seasonal campaigns, social-first storytelling and launch moments with limited production overhead."
+      },
+      {
+        "title": "Approach",
+        "content": "We created a component-based identity toolkit with scalable templates, motion principles and hierarchy rules to ensure consistency under rapid publishing cycles."
+      },
+      {
+        "title": "Progress",
+        "content": "The system is currently being implemented across campaign channels, with phased rollout designed to minimize disruption while increasing creative control."
+      }
+    ],
+    "metrics": [
+      {
+        "label": "Asset production speed",
+        "value": "-34%",
+        "description": "Reduction in average creation time per campaign asset."
+      },
+      {
+        "label": "Template adoption",
+        "value": "87%",
+        "description": "Share of content using the new modular framework."
+      },
+      {
+        "label": "Rollout stage",
+        "value": "Phase 2",
+        "description": "Active deployment across digital and social touchpoints."
+      }
+    ],
+    "gallery": [
+      { "src": "/projects/project-03.svg", "alt": "Nero Atelier campaign key visual" },
+      { "src": "/projects/project-05.svg", "alt": "Nero Atelier modular layout system" },
+      { "src": "/projects/project-08.svg", "alt": "Nero Atelier social storytelling frame" }
+    ],
+    "testimonial": {
+      "quote": "We gained a scalable creative system without losing character, even under fast campaign timelines.",
+      "author": "Sofia Rinaldi",
+      "role": "Creative Lead, Nero Atelier"
+    }
   },
   {
     "slug": "lumen-spaces",
@@ -53,6 +176,47 @@
     "imageSrc": "/projects/project-04.svg",
     "summary": "Direção de lançamento com foco em produto premium e microinterações minimalistas.",
     "scope": ["Launch Campaign", "Product Story", "Experience Design"],
-    "client": "Lumen Spaces"
+    "client": "Lumen Spaces",
+    "chapters": [
+      {
+        "title": "Opportunity",
+        "content": "Lumen Spaces needed a launch framework that could communicate product quality while simplifying technical benefits for a broader commercial audience."
+      },
+      {
+        "title": "Direction",
+        "content": "We developed a campaign and product narrative centred on tactile material cues, concise messaging and measured microinteraction patterns."
+      },
+      {
+        "title": "Result",
+        "content": "The launch established a clear premium positioning and improved engagement across sales channels, especially in early product comparisons."
+      }
+    ],
+    "metrics": [
+      {
+        "label": "Product page engagement",
+        "value": "+46%",
+        "description": "Increase in time spent on detailed product sections."
+      },
+      {
+        "label": "Qualified leads",
+        "value": "+31%",
+        "description": "Growth in enquiries matching target project profiles."
+      },
+      {
+        "label": "Launch timeline",
+        "value": "9 wks",
+        "description": "Complete campaign direction delivered inside launch window."
+      }
+    ],
+    "gallery": [
+      { "src": "/projects/project-04.svg", "alt": "Lumen Spaces product campaign cover" },
+      { "src": "/projects/project-06.svg", "alt": "Lumen Spaces tactile material study" },
+      { "src": "/projects/project-07.svg", "alt": "Lumen Spaces digital product narrative" }
+    ],
+    "testimonial": {
+      "quote": "The launch framework gave us clarity, confidence and stronger traction with our target audience.",
+      "author": "Mia Turner",
+      "role": "Product Director, Lumen Spaces"
+    }
   }
 ]
