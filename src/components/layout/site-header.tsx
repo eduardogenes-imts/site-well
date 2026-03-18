@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState, useCallback } from "react";
+import { createPortal } from "react-dom";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { Menu, X } from "lucide-react";
@@ -34,7 +35,7 @@ function LiveClock() {
 
   return (
     <span className="tabular-nums" suppressHydrationWarning>
-      {time || "--:-- --"}
+      {time || "--:--"}
     </span>
   );
 }
@@ -42,9 +43,14 @@ function LiveClock() {
 export function SiteHeader() {
   const pathname = usePathname();
   const [isOverHero, setIsOverHero] = useState(true);
+  const [mounted, setMounted] = useState(false);
   const isMobileMenuOpen = useUiStore((s) => s.isMobileMenuOpen);
   const toggleMobileMenu = useUiStore((s) => s.toggleMobileMenu);
   const setMobileMenuOpen = useUiStore((s) => s.setMobileMenuOpen);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
 
   useEffect(() => {
     setMobileMenuOpen(false);
@@ -69,12 +75,12 @@ export function SiteHeader() {
 
   const isTransparent = isOverHero && !isMobileMenuOpen;
 
-  return (
+  const headerContent = (
     <header
-      className={`fixed inset-x-0 top-0 z-50 transition-colors duration-500 ${
+      className={`fixed inset-x-0 top-0 z-[9999] transition-all duration-500 ${
         isTransparent
           ? "bg-transparent"
-          : "bg-white/95 backdrop-blur-md border-b border-border/30"
+          : "bg-white/40 backdrop-blur-2xl backdrop-saturate-200 border-b border-white/30"
       }`}
     >
       <div className="mx-auto flex h-16 max-w-[1800px] items-center justify-between px-6 md:h-20 md:px-10 lg:px-14">
@@ -85,11 +91,11 @@ export function SiteHeader() {
             isTransparent ? "text-white" : "text-foreground"
           }`}
         >
-          W.Viana
+          W.VIANA
         </Link>
 
-        {/* Nav center-left */}
-        <nav className="hidden items-center gap-8 md:flex">
+        {/* Nav */}
+        <nav className="hidden items-center gap-6 md:flex lg:gap-8">
           {navLinks.map((link) => (
             <Link
               key={link.href}
@@ -107,18 +113,17 @@ export function SiteHeader() {
           ))}
         </nav>
 
-        {/* Clock + Location */}
-        <div
-          className={`hidden items-center gap-6 text-[10px] uppercase tracking-[0.2em] transition-colors duration-500 lg:flex ${
-            isTransparent ? "text-white/70" : "text-muted-foreground"
-          }`}
-        >
-          <LiveClock />
-          <span>Brasil</span>
-        </div>
+        {/* Clock + Location + Contact */}
+        <div className="flex items-center gap-6">
+          <div
+            className={`hidden items-center gap-4 text-[10px] uppercase tracking-[0.2em] transition-colors duration-500 lg:flex ${
+              isTransparent ? "text-white/60" : "text-muted-foreground"
+            }`}
+          >
+            <LiveClock />
+            <span>Brasil</span>
+          </div>
 
-        {/* Contact + Mobile menu */}
-        <div className="flex items-center gap-4">
           <Link
             href="/contact"
             className={`hidden text-[11px] uppercase tracking-[0.18em] transition-colors duration-500 md:block ${
@@ -179,4 +184,8 @@ export function SiteHeader() {
       )}
     </header>
   );
+
+  if (!mounted) return null;
+
+  return createPortal(headerContent, document.body);
 }
