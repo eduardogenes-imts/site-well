@@ -4,20 +4,20 @@
 
 @layer base {
   :root {
-    --background: 0 0% 100%;
-    --foreground: 222.2 84% 4.9%;
-    --card: 0 0% 100%;
-    --card-foreground: 222.2 84% 4.9%;
-    --primary: 222.2 47.4% 11.2%;
+    --background: 40 33% 98%;
+    --foreground: 220 24% 12%;
+    --card: 40 33% 98%;
+    --card-foreground: 220 24% 12%;
+    --primary: 220 24% 12%;
     --primary-foreground: 210 40% 98%;
-    --secondary: 210 40% 96.1%;
-    --secondary-foreground: 222.2 47.4% 11.2%;
-    --muted: 210 40% 96.1%;
-    --muted-foreground: 215.4 16.3% 46.9%;
-    --border: 214.3 31.8% 91.4%;
-    --input: 214.3 31.8% 91.4%;
-    --ring: 222.2 84% 4.9%;
-    --radius: 0.75rem;
+    --secondary: 220 18% 94%;
+    --secondary-foreground: 220 24% 12%;
+    --muted: 220 20% 95%;
+    --muted-foreground: 220 10% 40%;
+    --border: 220 18% 85%;
+    --input: 220 18% 85%;
+    --ring: 220 24% 12%;
+    --radius: 0.25rem;
   }
 
   * {
@@ -31,6 +31,7 @@
 
   body {
     font-family: var(--font-geist-sans), Arial, Helvetica, sans-serif;
+    letter-spacing: -0.005em;
   }
 
   a {

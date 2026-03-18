@@ -3,36 +3,56 @@
     "slug": "casa-aurora",
     "title": "Casa Aurora",
     "category": "Brand + Website",
+    "typology": "Residential",
+    "status": "Completed",
+    "location": "Melbourne",
+    "country": "AU",
     "year": "2026",
     "imageSrc": "/projects/project-01.svg",
     "summary": "Reposicionamento completo com nova linguagem visual e narrativa digital editorial.",
-    "scope": ["Brand Strategy", "Art Direction", "Web Design"]
+    "scope": ["Brand Strategy", "Art Direction", "Web Design"],
+    "client": "Aurora Development Group"
   },
   {
     "slug": "verde-studio",
     "title": "Verde Studio",
     "category": "Direction + E-commerce",
+    "typology": "Retail",
+    "status": "Completed",
+    "location": "Sydney",
+    "country": "AU",
     "year": "2025",
     "imageSrc": "/projects/project-02.svg",
     "summary": "Experiência de compra com foco em ritmo visual, produto e storytelling de coleção.",
-    "scope": ["E-commerce UX", "Content Direction", "Design System"]
+    "scope": ["E-commerce UX", "Content Direction", "Design System"],
+    "client": "Verde Studio"
   },
   {
     "slug": "nero-atelier",
     "title": "Nero Atelier",
     "category": "Visual System",
+    "typology": "Hospitality",
+    "status": "In progress",
+    "location": "Brisbane",
+    "country": "AU",
     "year": "2025",
     "imageSrc": "/projects/project-03.svg",
     "summary": "Sistema visual modular para campanhas e desdobramentos em canais digitais.",
-    "scope": ["Visual Identity", "Campaign Design", "Motion Guidance"]
+    "scope": ["Visual Identity", "Campaign Design", "Motion Guidance"],
+    "client": "Nero Atelier"
   },
   {
     "slug": "lumen-spaces",
     "title": "Lumen Spaces",
     "category": "Campaign + Product",
+    "typology": "Workplace",
+    "status": "Completed",
+    "location": "Adelaide",
+    "country": "AU",
     "year": "2024",
     "imageSrc": "/projects/project-04.svg",
     "summary": "Direção de lançamento com foco em produto premium e microinterações minimalistas.",
-    "scope": ["Launch Campaign", "Product Story", "Experience Design"]
+    "scope": ["Launch Campaign", "Product Story", "Experience Design"],
+    "client": "Lumen Spaces"
   }
 ]

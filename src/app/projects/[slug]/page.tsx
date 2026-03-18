@@ -24,15 +24,18 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
     <main className="mx-auto w-full max-w-5xl space-y-10 px-6 py-12 md:space-y-14 md:py-16">
       <Link
         href="/"
-        className="inline-flex text-sm font-medium text-muted-foreground transition-colors hover:text-foreground"
+        className="inline-flex text-[11px] uppercase tracking-[0.16em] text-muted-foreground transition-colors hover:text-foreground"
       >
-        ← Voltar para projetos
+        Back to all works
       </Link>
 
       <header className="max-w-3xl space-y-4">
-        <p className="text-xs font-semibold uppercase tracking-[0.2em] text-muted-foreground">
-          {project.category}
-        </p>
+        <div className="flex flex-wrap items-center gap-x-4 gap-y-2 text-[11px] uppercase tracking-[0.16em] text-muted-foreground">
+          <span>{project.typology}</span>
+          <span>{project.status}</span>
+          <span>{project.location}</span>
+          <span>{project.year}</span>
+        </div>
         <h1 className="text-balance text-4xl font-semibold leading-tight md:text-5xl">
           {project.title}
         </h1>
@@ -52,17 +55,32 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
         </div>
       </Card>
 
-      <Card className="space-y-5 p-6 md:p-8" aria-label="Escopo do projeto">
-        <h2 className="text-xl font-semibold md:text-2xl">Escopo</h2>
-        <ul className="grid gap-3 text-muted-foreground md:grid-cols-2">
+      <Card className="space-y-6 p-6 md:p-8" aria-label="Escopo do projeto">
+        <div className="grid gap-6 border-b border-border/70 pb-6 md:grid-cols-3">
+          <div className="space-y-1">
+            <p className="text-[10px] uppercase tracking-[0.16em] text-muted-foreground">Client</p>
+            <p className="text-sm">{project.client}</p>
+          </div>
+          <div className="space-y-1">
+            <p className="text-[10px] uppercase tracking-[0.16em] text-muted-foreground">Type</p>
+            <p className="text-sm">{project.category}</p>
+          </div>
+          <div className="space-y-1">
+            <p className="text-[10px] uppercase tracking-[0.16em] text-muted-foreground">Country</p>
+            <p className="text-sm">{project.country}</p>
+          </div>
+        </div>
+
+        <h2 className="text-xl font-semibold md:text-2xl">Project scope</h2>
+        <ul className="grid gap-3 text-sm text-muted-foreground md:grid-cols-2">
           {project.scope.map((item) => (
             <li key={item} className="list-inside list-disc">
               {item}
             </li>
           ))}
         </ul>
-        <p className="text-sm uppercase tracking-[0.12em] text-muted-foreground">
-          Ano: {project.year}
+        <p className="text-[11px] uppercase tracking-[0.12em] text-muted-foreground">
+          Completion year: {project.year}
         </p>
       </Card>
     </main>
