@@ -56,7 +56,7 @@ export function HeroSection() {
       <div ref={imageRef} className="absolute inset-0 -top-[10%] -bottom-[10%]">
         <Image
           src="/images/hero-bg.jpg"
-          alt="Architecture hero"
+          alt="W.VIANA Arquitetura e Interiores"
           fill
           priority
           sizes="100vw"
@@ -70,16 +70,16 @@ export function HeroSection() {
         <div className="mx-auto flex w-full max-w-[1800px] items-end justify-between">
           {/* Bottom-left: scroll indicator */}
           <p className="text-[11px] uppercase tracking-[0.24em] text-white/70">
-            [ Scroll down ]
+            [ Descubra ]
           </p>
 
           {/* Bottom-right: tagline */}
           <p className="max-w-md text-right text-sm leading-relaxed text-white/90 md:text-base lg:text-lg">
-            Driven by context,
+            Criatividade e funcionalidade
             <br />
-            centered on culture,
+            para espaços que elevam
             <br />
-            crafting built environments.
+            experiências e expectativas.
           </p>
         </div>
       </div>

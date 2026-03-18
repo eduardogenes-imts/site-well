@@ -3,7 +3,7 @@
 import { useEffect, useRef, useState } from "react";
 import gsap from "@/lib/gsap";
 
-const INTRO_KEY = "site-well:intro-played";
+const INTRO_KEY = "wviana:intro-played";
 
 export function GlobalIntroLoader() {
   const [isVisible, setIsVisible] = useState(false);
@@ -96,9 +96,9 @@ export function GlobalIntroLoader() {
       aria-hidden="true"
     >
       <span ref={logoRef} className="intro-loader-logo">
-        Site Well
+        W.VIANA
       </span>
-      <p className="intro-loader-label">Loading</p>
+      <p className="intro-loader-label">Arquitetura | Interiores</p>
       <span ref={counterRef} className="intro-loader-progress">
         0%
       </span>

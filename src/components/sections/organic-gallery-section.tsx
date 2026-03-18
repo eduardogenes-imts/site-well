@@ -20,56 +20,65 @@ export function OrganicGallerySection() {
     const section = sectionRef.current;
     if (!section) return;
 
-    const ctx = gsap.context(() => {
-      // Each image: scale reveal + parallax at different speeds
-      const images = section.querySelectorAll<HTMLElement>(".og-item");
-      images.forEach((img) => {
-        const speed = parseFloat(img.dataset.speed || "0.5");
+    let ctx: gsap.Context | null = null;
 
-        // Scale in on enter
-        gsap.fromTo(
-          img,
-          { scale: 0, autoAlpha: 0 },
-          {
-            scale: 1,
-            autoAlpha: 1,
-            duration: 1,
-            ease: "power3.out",
-            scrollTrigger: { trigger: img, start: "top 92%", once: true },
-          },
-        );
+    const initAnimations = () => {
+      ctx = gsap.context(() => {
+        const images = section.querySelectorAll<HTMLElement>(".og-item");
+        images.forEach((img) => {
+          const speed = parseFloat(img.dataset.speed || "0.5");
 
-        // Parallax at varying speeds
-        gsap.to(img, {
-          yPercent: -30 * speed,
-          ease: "none",
-          scrollTrigger: {
-            trigger: section,
-            start: "top bottom",
-            end: "bottom top",
-            scrub: 1.2,
-          },
+          gsap.fromTo(
+            img,
+            { scale: 0, autoAlpha: 0 },
+            {
+              scale: 1,
+              autoAlpha: 1,
+              duration: 1,
+              ease: "power3.out",
+              scrollTrigger: { trigger: img, start: "top 92%", once: true },
+            },
+          );
+
+          gsap.to(img, {
+            yPercent: -30 * speed,
+            ease: "none",
+            scrollTrigger: {
+              trigger: section,
+              start: "top bottom",
+              end: "bottom top",
+              scrub: 1.2,
+            },
+          });
         });
-      });
 
-      // Center text reveal
-      const centerText = section.querySelector<HTMLElement>(".og-center-text");
-      if (centerText) {
-        gsap.fromTo(
-          centerText,
-          { autoAlpha: 0, scale: 0.9 },
-          {
-            autoAlpha: 1,
-            scale: 1,
-            duration: 1,
-            ease: "power3.out",
-            scrollTrigger: { trigger: centerText, start: "top 80%", once: true },
-          },
-        );
-      }
-    }, section);
+        const centerText = section.querySelector<HTMLElement>(".og-center-text");
+        if (centerText) {
+          gsap.fromTo(
+            centerText,
+            { autoAlpha: 0, scale: 0.9 },
+            {
+              autoAlpha: 1,
+              scale: 1,
+              duration: 1,
+              ease: "power3.out",
+              scrollTrigger: { trigger: centerText, start: "top 80%", once: true },
+            },
+          );
+        }
+      }, section);
+    };
 
-    return () => ctx.revert();
+    // Wait for Vision pin to be established before measuring positions
+    window.addEventListener("vision-pin-ready", initAnimations, { once: true });
+    // Fallback if Vision section doesn't exist or event was already fired
+    const fallback = setTimeout(initAnimations, 300);
+
+    return () => {
+      window.removeEventListener("vision-pin-ready", initAnimations);
+      clearTimeout(fallback);
+      ctx?.revert();
+    };
   }, []);
 
   return (
@@ -77,9 +86,9 @@ export function OrganicGallerySection() {
       ref={sectionRef}
       data-section="gallery"
       className="relative bg-white py-10"
-      style={{ minHeight: "120vh" }}
+      style={{ minHeight: "140vh" }}
     >
-      <div className="relative mx-auto max-w-[1800px]" style={{ height: "100vh" }}>
+      <div className="relative mx-auto max-w-[1800px]" style={{ height: "120vh" }}>
         {/* Organic positioned images */}
         {galleryItems.map((item, i) => (
           <div
@@ -102,7 +111,7 @@ export function OrganicGallerySection() {
         {/* Center text */}
         <div className="og-center-text absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 z-10 text-center">
           <p className="text-[clamp(3rem,8vw,9rem)] font-bold leading-none tracking-[-0.04em] text-foreground">
-            All Work
+            Portfólio
           </p>
           <p className="mt-2 text-[clamp(2rem,5vw,6rem)] font-light tracking-[-0.02em] text-foreground/60">
             ({galleryItems.length})

@@ -7,9 +7,9 @@ import { Menu, X } from "lucide-react";
 import { useUiStore } from "@/store/use-ui-store";
 
 const navLinks = [
-  { href: "/works", label: "Work" },
-  { href: "/process", label: "Process" },
-  { href: "/studio", label: "Studio" },
+  { href: "/works", label: "Projetos" },
+  { href: "/process", label: "Processo" },
+  { href: "/studio", label: "Estúdio" },
 ];
 
 function LiveClock() {
@@ -18,11 +18,11 @@ function LiveClock() {
   useEffect(() => {
     const update = () => {
       const now = new Date();
-      const formatted = now.toLocaleTimeString("en-AU", {
+      const formatted = now.toLocaleTimeString("pt-BR", {
         hour: "2-digit",
         minute: "2-digit",
-        hour12: true,
-        timeZone: "Australia/Melbourne",
+        hour12: false,
+        timeZone: "America/Sao_Paulo",
       });
       setTime(formatted.toUpperCase());
     };
@@ -85,7 +85,7 @@ export function SiteHeader() {
             isTransparent ? "text-white" : "text-foreground"
           }`}
         >
-          Site Well
+          W.Viana
         </Link>
 
         {/* Nav center-left */}
@@ -114,7 +114,7 @@ export function SiteHeader() {
           }`}
         >
           <LiveClock />
-          <span>Melbourne, AUS</span>
+          <span>Brasil</span>
         </div>
 
         {/* Contact + Mobile menu */}
@@ -127,7 +127,7 @@ export function SiteHeader() {
                 : "text-foreground hover:text-muted-foreground"
             }`}
           >
-            Contact
+            Contato
           </Link>
 
           <button
@@ -165,14 +165,14 @@ export function SiteHeader() {
                 className="text-3xl font-semibold tracking-[-0.01em] text-foreground/80 transition-opacity hover:opacity-60"
                 onClick={() => setMobileMenuOpen(false)}
               >
-                Contact
+                Contato
               </Link>
             </li>
           </ul>
 
           <div className="mt-10 border-t border-border/50 pt-6">
             <p className="text-[10px] uppercase tracking-[0.2em] text-muted-foreground">
-              <LiveClock /> &middot; Melbourne, AUS
+              <LiveClock /> &middot; Brasil
             </p>
           </div>
         </nav>

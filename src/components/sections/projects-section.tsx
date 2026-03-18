@@ -14,107 +14,115 @@ export function ProjectsSection() {
     const root = rootRef.current;
     if (!root || !data?.length) return;
 
-    const ctx = gsap.context(() => {
-      root.querySelectorAll<HTMLElement>(".pw-project").forEach((project) => {
-        const bracket1 = project.querySelector<HTMLElement>(".pw-bracket-l");
-        const bracket2 = project.querySelector<HTMLElement>(".pw-bracket-r");
-        const title = project.querySelector<HTMLElement>(".pw-title");
-        const image = project.querySelector<HTMLElement>(".pw-image");
-        const meta = project.querySelectorAll<HTMLElement>(".pw-meta");
+    let ctx: gsap.Context | null = null;
 
-        // Title + brackets grow in via scrub
-        if (title) {
-          gsap.fromTo(
-            title,
-            { scale: 0.7, autoAlpha: 0 },
-            {
-              scale: 1,
-              autoAlpha: 1,
-              ease: "none",
-              scrollTrigger: {
-                trigger: project,
-                start: "top 80%",
-                end: "top 30%",
-                scrub: 0.8,
+    const initAnimations = () => {
+      ctx = gsap.context(() => {
+        root.querySelectorAll<HTMLElement>(".pw-project").forEach((project) => {
+          const bracket1 = project.querySelector<HTMLElement>(".pw-bracket-l");
+          const bracket2 = project.querySelector<HTMLElement>(".pw-bracket-r");
+          const title = project.querySelector<HTMLElement>(".pw-title");
+          const image = project.querySelector<HTMLElement>(".pw-image");
+          const meta = project.querySelectorAll<HTMLElement>(".pw-meta");
+
+          if (title) {
+            gsap.fromTo(
+              title,
+              { scale: 0.7, autoAlpha: 0 },
+              {
+                scale: 1,
+                autoAlpha: 1,
+                ease: "none",
+                scrollTrigger: {
+                  trigger: project,
+                  start: "top 80%",
+                  end: "top 30%",
+                  scrub: 0.8,
+                },
               },
-            },
-          );
-        }
+            );
+          }
 
-        // Brackets expand outward
-        if (bracket1 && bracket2) {
-          gsap.fromTo(
-            bracket1,
-            { x: 40, autoAlpha: 0 },
-            {
-              x: 0,
-              autoAlpha: 1,
-              ease: "none",
-              scrollTrigger: {
-                trigger: project,
-                start: "top 80%",
-                end: "top 30%",
-                scrub: 0.8,
+          if (bracket1 && bracket2) {
+            gsap.fromTo(
+              bracket1,
+              { x: 40, autoAlpha: 0 },
+              {
+                x: 0,
+                autoAlpha: 1,
+                ease: "none",
+                scrollTrigger: {
+                  trigger: project,
+                  start: "top 80%",
+                  end: "top 30%",
+                  scrub: 0.8,
+                },
               },
-            },
-          );
-          gsap.fromTo(
-            bracket2,
-            { x: -40, autoAlpha: 0 },
-            {
-              x: 0,
-              autoAlpha: 1,
-              ease: "none",
-              scrollTrigger: {
-                trigger: project,
-                start: "top 80%",
-                end: "top 30%",
-                scrub: 0.8,
+            );
+            gsap.fromTo(
+              bracket2,
+              { x: -40, autoAlpha: 0 },
+              {
+                x: 0,
+                autoAlpha: 1,
+                ease: "none",
+                scrollTrigger: {
+                  trigger: project,
+                  start: "top 80%",
+                  end: "top 30%",
+                  scrub: 0.8,
+                },
               },
-            },
-          );
-        }
+            );
+          }
 
-        // Image reveal
-        if (image) {
-          gsap.fromTo(
-            image,
-            { clipPath: "inset(15% 5% 15% 5%)", autoAlpha: 0 },
-            {
-              clipPath: "inset(0% 0% 0% 0%)",
-              autoAlpha: 1,
-              duration: 1.2,
-              ease: "power3.out",
-              scrollTrigger: { trigger: image, start: "top 85%", once: true },
-            },
-          );
-        }
+          if (image) {
+            gsap.fromTo(
+              image,
+              { clipPath: "inset(15% 5% 15% 5%)", autoAlpha: 0 },
+              {
+                clipPath: "inset(0% 0% 0% 0%)",
+                autoAlpha: 1,
+                duration: 1.2,
+                ease: "power3.out",
+                scrollTrigger: { trigger: image, start: "top 85%", once: true },
+              },
+            );
+          }
 
-        // Metadata
-        if (meta.length) {
-          gsap.fromTo(
-            meta,
-            { autoAlpha: 0, y: 20 },
-            {
-              autoAlpha: 1,
-              y: 0,
-              duration: 0.7,
-              stagger: 0.1,
-              ease: "power3.out",
-              scrollTrigger: { trigger: project, start: "top 50%", once: true },
-            },
-          );
-        }
-      });
-    }, root);
+          if (meta.length) {
+            gsap.fromTo(
+              meta,
+              { autoAlpha: 0, y: 20 },
+              {
+                autoAlpha: 1,
+                y: 0,
+                duration: 0.7,
+                stagger: 0.1,
+                ease: "power3.out",
+                scrollTrigger: { trigger: project, start: "top 50%", once: true },
+              },
+            );
+          }
+        });
+      }, root);
+    };
 
-    return () => ctx.revert();
+    // Wait for Vision pin to be established before measuring positions
+    window.addEventListener("vision-pin-ready", initAnimations, { once: true });
+    const fallback = setTimeout(initAnimations, 300);
+
+    return () => {
+      window.removeEventListener("vision-pin-ready", initAnimations);
+      clearTimeout(fallback);
+      ctx?.revert();
+    };
   }, [data]);
 
   if (isLoading) {
     return (
       <section className="flex min-h-[50vh] items-center justify-center">
-        <p className="text-sm text-muted-foreground">Loading projects...</p>
+        <p className="text-sm text-muted-foreground">Carregando projetos...</p>
       </section>
     );
   }
@@ -122,7 +130,7 @@ export function ProjectsSection() {
   if (isError || !data) {
     return (
       <section className="flex min-h-[50vh] items-center justify-center">
-        <p className="text-sm text-red-600">Could not load projects.</p>
+        <p className="text-sm text-red-600">Não foi possível carregar os projetos.</p>
       </section>
     );
   }
@@ -132,11 +140,11 @@ export function ProjectsSection() {
       {/* Section header */}
       <div className="mx-auto flex max-w-[1800px] items-center justify-between px-6 py-8 md:px-10 lg:px-14">
         <p className="text-[11px] uppercase tracking-[0.2em] text-muted-foreground">
-          Selected Works
+          Projetos Selecionados
         </p>
         <p className="text-[11px] uppercase tracking-[0.2em] text-muted-foreground">02</p>
         <p className="text-[11px] uppercase tracking-[0.2em] text-muted-foreground">
-          17–26&apos;
+          18–26&apos;
         </p>
       </div>
 

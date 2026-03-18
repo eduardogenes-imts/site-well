@@ -68,7 +68,7 @@ export function StudioIntroSection() {
   }, []);
 
   const headlineText =
-    "Site Well is a Melbourne based Creative Direction studio, crafting built environments across Australia.";
+    "W.VIANA Arquitetura e Interiores. Sete anos de expertise em soluções personalizadas que elevam experiências.";
   const words = headlineText.split(" ");
   const chunkSize = Math.ceil(words.length / 3);
   const lines = [
@@ -90,7 +90,7 @@ export function StudioIntroSection() {
             <div className="si-image relative aspect-[3/4] w-full overflow-hidden">
               <Image
                 src="/images/studio-portrait.jpg"
-                alt="Studio interior"
+                alt="Wellington Viana — W.VIANA Arquitetura"
                 fill
                 sizes="(max-width: 768px) 100vw, 40vw"
                 className="object-cover"
@@ -100,11 +100,12 @@ export function StudioIntroSection() {
 
           <div className="flex flex-col justify-end md:col-span-7 lg:col-span-8">
             <p className="si-reveal text-[11px] font-semibold uppercase tracking-[0.24em] text-muted-foreground">
-              01 Studio
+              01 Estúdio
             </p>
             <p className="si-reveal mt-4 max-w-lg text-sm leading-relaxed text-muted-foreground md:text-base">
-              We work at the intersection of spatial design and brand expression,
-              shaping experiences that feel precise, warm and context-aware.
+              Fundada pelo arquiteto e urbanista Wellington Viana, a W.VIANA
+              entrega arquiteturas inovadoras e assertivas, unindo criatividade e
+              funcionalidade para criar espaços transformadores.
             </p>
           </div>
         </div>

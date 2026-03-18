@@ -1,23 +1,28 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Inter, DM_Sans } from "next/font/google";
 import { GlobalIntroLoader } from "@/components/providers/GlobalIntroLoader";
 import "./globals.css";
 import { QueryProvider } from "@/components/providers/query-provider";
 import { SmoothScrollProvider } from "@/components/providers/SmoothScrollProvider";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
+/* Body font — closest Google Fonts match to Aeonik */
+const inter = Inter({
+  variable: "--font-body",
   subsets: ["latin"],
+  weight: ["300", "400", "500", "700"],
 });
 
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
+/* Display/title font — closest Google Fonts match to Agrandir Grand */
+const dmSans = DM_Sans({
+  variable: "--font-display",
   subsets: ["latin"],
+  weight: ["400", "500", "700"],
 });
 
 export const metadata: Metadata = {
-  title: "Site Well — Portfólio Premium",
-  description: "Portfólio premium com grid editorial, motion suave e foco em performance.",
+  title: "W.VIANA — Arquitetura e Interiores",
+  description:
+    "Escritório de arquitetura e interiores fundado por Wellington Viana. Soluções personalizadas que elevam experiências e expectativas.",
 };
 
 export default function RootLayout({
@@ -29,7 +34,7 @@ export default function RootLayout({
     <html lang="pt-BR">
       <body
         suppressHydrationWarning
-        className={`${geistSans.variable} ${geistMono.variable} bg-background text-foreground antialiased`}
+        className={`${inter.variable} ${dmSans.variable} bg-background text-foreground antialiased`}
       >
         <GlobalIntroLoader />
         <QueryProvider>
