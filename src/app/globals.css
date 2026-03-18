@@ -37,6 +37,11 @@
   a {
     @apply text-inherit no-underline;
   }
+
+  /* Smooth scroll-linked (scrub) — ensures reverse on scroll up */
+  html {
+    scroll-behavior: auto;
+  }
 }
 
 @layer components {
@@ -127,6 +132,40 @@
 
   .js-line-reveal .js-split-line {
     will-change: transform;
+    transform: translateZ(0);
+  }
+
+  /* ── New: Studio intro animations ── */
+  .si-reveal,
+  .si-image {
+    will-change: transform, opacity;
+    transform: translateZ(0);
+  }
+
+  .si-headline-line {
+    will-change: transform, opacity;
+    transform: translateZ(0);
+  }
+
+  /* ── New: Vision panel reveals ── */
+  .vp-reveal {
+    will-change: transform, opacity;
+    transform: translateZ(0);
+  }
+
+  /* ── New: Organic gallery items ── */
+  .og-item {
+    will-change: transform, opacity;
+    transform: translateZ(0);
+  }
+
+  /* ── New: Projects showcase ── */
+  .pw-bracket-l,
+  .pw-bracket-r,
+  .pw-title,
+  .pw-image,
+  .pw-meta {
+    will-change: transform, opacity;
     transform: translateZ(0);
   }
 }

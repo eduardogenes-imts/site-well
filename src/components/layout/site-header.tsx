@@ -1,27 +1,50 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useState, useCallback } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { ArrowUpRight, Menu, X } from "lucide-react";
-import { Button } from "@/components/ui/button";
+import { Menu, X } from "lucide-react";
 import { useUiStore } from "@/store/use-ui-store";
 
-const links = [
-  { href: "/", label: "Home" },
+const navLinks = [
   { href: "/works", label: "Work" },
-  { href: "/studio", label: "Studio" },
   { href: "/process", label: "Process" },
-  { href: "/contact", label: "Contact" },
+  { href: "/studio", label: "Studio" },
 ];
+
+function LiveClock() {
+  const [time, setTime] = useState("");
+
+  useEffect(() => {
+    const update = () => {
+      const now = new Date();
+      const formatted = now.toLocaleTimeString("en-AU", {
+        hour: "2-digit",
+        minute: "2-digit",
+        hour12: true,
+        timeZone: "Australia/Melbourne",
+      });
+      setTime(formatted.toUpperCase());
+    };
+
+    update();
+    const id = setInterval(update, 1000);
+    return () => clearInterval(id);
+  }, []);
+
+  return (
+    <span className="tabular-nums" suppressHydrationWarning>
+      {time || "--:-- --"}
+    </span>
+  );
+}
 
 export function SiteHeader() {
   const pathname = usePathname();
-  const [isScrolled, setIsScrolled] = useState(false);
-  const [isHidden, setIsHidden] = useState(false);
-  const isMobileMenuOpen = useUiStore((state) => state.isMobileMenuOpen);
-  const toggleMobileMenu = useUiStore((state) => state.toggleMobileMenu);
-  const setMobileMenuOpen = useUiStore((state) => state.setMobileMenuOpen);
+  const [isOverHero, setIsOverHero] = useState(true);
+  const isMobileMenuOpen = useUiStore((s) => s.isMobileMenuOpen);
+  const toggleMobileMenu = useUiStore((s) => s.toggleMobileMenu);
+  const setMobileMenuOpen = useUiStore((s) => s.setMobileMenuOpen);
 
   useEffect(() => {
     setMobileMenuOpen(false);
@@ -29,66 +52,54 @@ export function SiteHeader() {
 
   useEffect(() => {
     document.body.style.overflow = isMobileMenuOpen ? "hidden" : "";
-
     return () => {
       document.body.style.overflow = "";
     };
   }, [isMobileMenuOpen]);
 
+  const handleScroll = useCallback(() => {
+    setIsOverHero(window.scrollY < window.innerHeight * 0.85);
+  }, []);
+
   useEffect(() => {
-    let lastY = window.scrollY;
+    handleScroll();
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, [handleScroll]);
 
-    const onScroll = () => {
-      const currentY = window.scrollY;
-
-      setIsScrolled(currentY > 24);
-
-      if (isMobileMenuOpen) {
-        setIsHidden(false);
-        return;
-      }
-
-      const scrollingDown = currentY > lastY;
-      setIsHidden(scrollingDown && currentY > 140);
-
-      lastY = currentY;
-    };
-
-    onScroll();
-    window.addEventListener("scroll", onScroll, { passive: true });
-
-    return () => {
-      window.removeEventListener("scroll", onScroll);
-    };
-  }, [isMobileMenuOpen]);
+  const isTransparent = isOverHero && !isMobileMenuOpen;
 
   return (
     <header
-      className={`fixed inset-x-0 top-0 z-50 transition-transform duration-700 ${
-        isHidden ? "-translate-y-full" : "translate-y-0"
+      className={`fixed inset-x-0 top-0 z-50 transition-colors duration-500 ${
+        isTransparent
+          ? "bg-transparent"
+          : "bg-white/95 backdrop-blur-md border-b border-border/30"
       }`}
     >
-      <div
-        className={`mx-auto mt-3 w-[min(1280px,calc(100%-2rem))] transition-all duration-700 md:mt-4 ${
-          isScrolled || isMobileMenuOpen
-            ? "border border-border/60 bg-background/92 backdrop-blur-xl"
-            : "border border-transparent bg-transparent"
-        }`}
-      >
-      <div className="container flex h-16 items-center justify-between md:h-20">
-        <Link href="/" className="text-[11px] font-semibold uppercase tracking-[0.28em] md:text-xs">
+      <div className="mx-auto flex h-16 max-w-[1800px] items-center justify-between px-6 md:h-20 md:px-10 lg:px-14">
+        {/* Logo */}
+        <Link
+          href="/"
+          className={`text-[11px] font-bold uppercase tracking-[0.3em] transition-colors duration-500 md:text-xs ${
+            isTransparent ? "text-white" : "text-foreground"
+          }`}
+        >
           Site Well
         </Link>
 
-        <nav className="hidden items-center gap-7 md:flex">
-          {links.map((link) => (
+        {/* Nav center-left */}
+        <nav className="hidden items-center gap-8 md:flex">
+          {navLinks.map((link) => (
             <Link
               key={link.href}
               href={link.href}
-              className={`text-[11px] uppercase tracking-[0.18em] transition-colors ${
-                pathname === link.href
-                  ? "text-foreground"
-                  : "text-muted-foreground hover:text-foreground"
+              className={`text-[11px] uppercase tracking-[0.18em] transition-colors duration-500 ${
+                isTransparent
+                  ? "text-white/80 hover:text-white"
+                  : pathname === link.href
+                    ? "text-foreground"
+                    : "text-muted-foreground hover:text-foreground"
               }`}
             >
               {link.label}
@@ -96,39 +107,51 @@ export function SiteHeader() {
           ))}
         </nav>
 
-        <div className="flex items-center gap-2">
-          <Button
-            variant="ghost"
-            size="sm"
-            onClick={toggleMobileMenu}
-            className="h-9 px-3"
-            aria-label="Abrir menu"
+        {/* Clock + Location */}
+        <div
+          className={`hidden items-center gap-6 text-[10px] uppercase tracking-[0.2em] transition-colors duration-500 lg:flex ${
+            isTransparent ? "text-white/70" : "text-muted-foreground"
+          }`}
+        >
+          <LiveClock />
+          <span>Melbourne, AUS</span>
+        </div>
+
+        {/* Contact + Mobile menu */}
+        <div className="flex items-center gap-4">
+          <Link
+            href="/contact"
+            className={`hidden text-[11px] uppercase tracking-[0.18em] transition-colors duration-500 md:block ${
+              isTransparent
+                ? "text-white/80 hover:text-white"
+                : "text-foreground hover:text-muted-foreground"
+            }`}
           >
-            {isMobileMenuOpen ? (
-              <>
-                <X className="size-4" />
-                <span className="text-[10px] uppercase tracking-[0.18em]">Close</span>
-              </>
-            ) : (
-              <>
-                <Menu className="size-4" />
-                <span className="text-[10px] uppercase tracking-[0.18em]">Menu</span>
-              </>
-            )}
-          </Button>
+            Contact
+          </Link>
+
+          <button
+            onClick={toggleMobileMenu}
+            className={`flex items-center gap-2 text-[10px] uppercase tracking-[0.18em] transition-colors duration-500 md:hidden ${
+              isTransparent ? "text-white" : "text-foreground"
+            }`}
+            aria-label={isMobileMenuOpen ? "Close menu" : "Open menu"}
+          >
+            {isMobileMenuOpen ? <X className="size-5" /> : <Menu className="size-5" />}
+          </button>
         </div>
       </div>
-      </div>
 
-      {isMobileMenuOpen ? (
-        <nav className="mx-auto mt-3 grid min-h-[calc(100dvh-6.5rem)] w-[min(1280px,calc(100%-2rem))] grid-rows-[1fr_auto] border border-border/60 bg-background/98 p-8 backdrop-blur-xl md:mt-4 md:p-12">
-          <ul className="flex flex-col justify-center gap-5 md:gap-6">
-            {links.map((link) => (
+      {/* Mobile menu */}
+      {isMobileMenuOpen && (
+        <nav className="absolute inset-x-0 top-full min-h-[calc(100dvh-4rem)] bg-white p-8">
+          <ul className="flex flex-col gap-6">
+            {navLinks.map((link) => (
               <li key={link.href}>
                 <Link
                   href={link.href}
-                  className={`text-2xl font-semibold tracking-[-0.01em] transition-opacity hover:opacity-60 md:text-4xl ${
-                    pathname === link.href ? "text-foreground" : "text-foreground/86"
+                  className={`text-3xl font-semibold tracking-[-0.01em] transition-opacity hover:opacity-60 ${
+                    pathname === link.href ? "text-foreground" : "text-foreground/80"
                   }`}
                   onClick={() => setMobileMenuOpen(false)}
                 >
@@ -136,23 +159,24 @@ export function SiteHeader() {
                 </Link>
               </li>
             ))}
+            <li>
+              <Link
+                href="/contact"
+                className="text-3xl font-semibold tracking-[-0.01em] text-foreground/80 transition-opacity hover:opacity-60"
+                onClick={() => setMobileMenuOpen(false)}
+              >
+                Contact
+              </Link>
+            </li>
           </ul>
 
-          <div className="grid gap-3 border-t border-border/70 pt-6 md:grid-cols-2">
-            <p className="text-[10px] uppercase tracking-[0.16em] text-muted-foreground">
-              contact@sitewell.dev
+          <div className="mt-10 border-t border-border/50 pt-6">
+            <p className="text-[10px] uppercase tracking-[0.2em] text-muted-foreground">
+              <LiveClock /> &middot; Melbourne, AUS
             </p>
-            <Link
-              href="/contact"
-              className="inline-flex items-center gap-2 text-[10px] uppercase tracking-[0.16em] text-foreground md:justify-self-end"
-              onClick={() => setMobileMenuOpen(false)}
-            >
-              Start a project
-              <ArrowUpRight className="size-4" />
-            </Link>
           </div>
         </nav>
-      ) : null}
+      )}
     </header>
   );
 }

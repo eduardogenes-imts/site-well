@@ -1,60 +1,87 @@
 "use client";
 
-import { useRef } from "react";
-import Link from "next/link";
-import { ArrowUpRight } from "lucide-react";
-import { buttonVariants } from "@/components/ui/button";
-import { SplitText } from "@/components/ui/split-text";
-import { useScrollDrivenReveal } from "@/hooks/use-scroll-driven-reveal";
-import { cn } from "@/lib/utils";
+import { useLayoutEffect, useRef } from "react";
+import Image from "next/image";
+import gsap from "@/lib/gsap";
 
 export function HeroSection() {
-  const rootRef = useRef<HTMLElement>(null);
+  const sectionRef = useRef<HTMLElement>(null);
+  const imageRef = useRef<HTMLDivElement>(null);
+  const contentRef = useRef<HTMLDivElement>(null);
 
-  useScrollDrivenReveal(rootRef);
+  useLayoutEffect(() => {
+    const section = sectionRef.current;
+    const image = imageRef.current;
+    const content = contentRef.current;
+    if (!section || !image || !content) return;
+
+    const ctx = gsap.context(() => {
+      // Parallax: image moves slower than scroll
+      gsap.to(image, {
+        yPercent: 25,
+        ease: "none",
+        scrollTrigger: {
+          trigger: section,
+          start: "top top",
+          end: "bottom top",
+          scrub: 1,
+        },
+      });
+
+      // Fade out + scale down hero content on scroll
+      gsap.to(content, {
+        autoAlpha: 0,
+        scale: 0.95,
+        y: -60,
+        ease: "none",
+        scrollTrigger: {
+          trigger: section,
+          start: "top top",
+          end: "bottom top",
+          scrub: 0.6,
+        },
+      });
+    }, section);
+
+    return () => ctx.revert();
+  }, []);
 
   return (
     <section
-      ref={rootRef}
-      className="js-section-fade container grid gap-10 py-20 md:grid-cols-12 md:gap-8 md:py-28 lg:py-32"
+      ref={sectionRef}
+      data-section="hero"
+      className="relative h-screen w-full overflow-hidden"
     >
-      <div className="md:col-span-8 space-y-5">
-        <p className="js-reveal text-[11px] font-semibold uppercase tracking-[0.24em] text-muted-foreground">
-          Site Well / Creative Direction Studio
-        </p>
-        <SplitText
-          as="h1"
-          className="js-scrub-title max-w-5xl text-balance text-[clamp(2rem,5.4vw,6rem)] font-semibold leading-[0.98] tracking-[-0.02em]"
-        >
-          {`We craft built environments\nwith editorial clarity and\ncontemporary restraint.`}
-        </SplitText>
-        <p className="js-blur-reveal max-w-xl text-base leading-relaxed text-muted-foreground md:text-lg">
-          Boutique studio focused on brand-sensitive architecture and spatial
-          storytelling across residential, hospitality and commercial contexts.
-        </p>
+      {/* Background image with parallax */}
+      <div ref={imageRef} className="absolute inset-0 -top-[10%] -bottom-[10%]">
+        <Image
+          src="/images/hero-bg.jpg"
+          alt="Architecture hero"
+          fill
+          priority
+          sizes="100vw"
+          className="object-cover"
+        />
+        <div className="absolute inset-0 bg-black/30" />
       </div>
 
-      <div className="md:col-span-4 md:pt-16 lg:pt-20 space-y-6">
-        <div className="js-blur-reveal space-y-2">
-          <p className="text-[10px] uppercase tracking-[0.2em] text-muted-foreground">
-            Selected projects
+      {/* Content overlay */}
+      <div ref={contentRef} className="relative flex h-full flex-col justify-end px-6 pb-12 md:px-10 md:pb-16 lg:px-14">
+        <div className="mx-auto flex w-full max-w-[1800px] items-end justify-between">
+          {/* Bottom-left: scroll indicator */}
+          <p className="text-[11px] uppercase tracking-[0.24em] text-white/70">
+            [ Scroll down ]
           </p>
-          <p className="text-sm leading-relaxed text-foreground/86">
-            Architecture, interiors and brand spaces delivered with detail-led
-            execution.
+
+          {/* Bottom-right: tagline */}
+          <p className="max-w-md text-right text-sm leading-relaxed text-white/90 md:text-base lg:text-lg">
+            Driven by context,
+            <br />
+            centered on culture,
+            <br />
+            crafting built environments.
           </p>
         </div>
-
-        <Link
-          href="/works"
-          className={cn(
-            buttonVariants({ size: "lg", variant: "outline" }),
-            "js-blur-reveal w-fit gap-2 border-border/70 bg-transparent hover:bg-muted/40",
-          )}
-        >
-          Explore work
-          <ArrowUpRight className="size-4" />
-        </Link>
       </div>
     </section>
   );
