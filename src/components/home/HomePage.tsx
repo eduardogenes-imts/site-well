@@ -80,14 +80,7 @@ export function HomePage() {
 
       <section className="projects js-grid" aria-label="Projetos em destaque">
         {projects.map((project) => (
-          <ProjectCard
-            key={project.slug}
-            slug={project.slug}
-            title={project.title}
-            category={project.category}
-            year={project.year}
-            imageSrc={project.imageSrc}
-          />
+          <ProjectCard key={project.slug} project={project} />
         ))}
       </section>
 
