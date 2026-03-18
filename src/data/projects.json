@@ -2,221 +2,221 @@
   {
     "slug": "casa-aurora",
     "title": "Casa Aurora",
-    "category": "Brand + Website",
-    "typology": "Residential",
-    "status": "Completed",
-    "location": "Melbourne",
-    "country": "AU",
+    "category": "Residencial",
+    "typology": "Residencial",
+    "status": "Concluído",
+    "location": "São Paulo",
+    "country": "BR",
     "year": "2026",
-    "imageSrc": "/projects/project-01.svg",
-    "summary": "Reposicionamento completo com nova linguagem visual e narrativa digital editorial.",
-    "scope": ["Brand Strategy", "Art Direction", "Web Design"],
-    "client": "Aurora Development Group",
+    "imageSrc": "/images/gallery-01.jpg",
+    "summary": "Residência contemporânea que integra arquitetura bioclimática e materialidade natural, criando espaços que dialogam com a paisagem e priorizam o conforto humano.",
+    "scope": ["Projeto Arquitetônico", "Design de Interiores", "Acompanhamento de Obra"],
+    "client": "Família Moreira",
     "chapters": [
       {
-        "title": "Context",
-        "content": "Casa Aurora required a new identity for a premium residential launch in a highly competitive local market. The previous communication lacked clarity and emotional distinction across channels."
+        "title": "Contexto",
+        "content": "A família buscava uma residência que refletisse sua conexão com a natureza sem abrir mão do conforto e sofisticação contemporâneos. O terreno em aclive com vista privilegiada para o vale oferecia desafios e oportunidades únicas."
       },
       {
-        "title": "Design response",
-        "content": "We built a narrative-led direction anchored in warm material tones, calm rhythm and restrained typography. The system translated consistently from architecture collateral to digital launch assets."
+        "title": "Resposta projetual",
+        "content": "Desenvolvemos uma volumetria escalonada que acompanha a topografia natural, utilizando concreto aparente, madeira cumaru e vidro de alto desempenho. Cada ambiente foi orientado para maximizar luz natural e ventilação cruzada."
       },
       {
-        "title": "Outcome",
-        "content": "The repositioning increased project perception and improved consistency across touchpoints, allowing the sales and marketing teams to present a unified premium offer."
+        "title": "Resultado",
+        "content": "A residência tornou-se referência na região pela integração entre arquitetura e paisagem, recebendo menção honrosa no prêmio IAB-SP 2026."
       }
     ],
     "metrics": [
       {
-        "label": "Lead conversion",
-        "value": "+38%",
-        "description": "Increase in qualified enquiry conversion after launch."
+        "label": "Área construída",
+        "value": "480m²",
+        "description": "Distribuídos em três pavimentos escalonados."
       },
       {
-        "label": "Campaign engagement",
-        "value": "2.9x",
-        "description": "Improvement in average interaction time with digital content."
+        "label": "Redução energética",
+        "value": "-42%",
+        "description": "Comparado a residências equivalentes na região."
       },
       {
-        "label": "Delivery timeline",
-        "value": "11 wks",
-        "description": "From strategy alignment to full rollout of core assets."
+        "label": "Prazo de execução",
+        "value": "18 meses",
+        "description": "Do projeto executivo à entrega das chaves."
       }
     ],
     "gallery": [
-      { "src": "/projects/project-01.svg", "alt": "Casa Aurora cover composition" },
-      { "src": "/projects/project-05.svg", "alt": "Casa Aurora interior visual language" },
-      { "src": "/projects/project-06.svg", "alt": "Casa Aurora campaign layout study" }
+      { "src": "/images/gallery-01.jpg", "alt": "Casa Aurora — fachada principal" },
+      { "src": "/images/gallery-02.jpg", "alt": "Casa Aurora — sala de estar integrada" },
+      { "src": "/images/gallery-03.jpg", "alt": "Casa Aurora — detalhe materialidade" }
     ],
     "testimonial": {
-      "quote": "The team translated our vision into a coherent spatial and brand narrative with exceptional precision.",
-      "author": "Amelia Grant",
-      "role": "Marketing Director, Aurora Development Group"
+      "quote": "O Wellington entendeu exatamente o que queríamos: uma casa que respirasse junto com a natureza. O resultado superou todas as expectativas.",
+      "author": "Ricardo Moreira",
+      "role": "Proprietário"
     }
   },
   {
     "slug": "verde-studio",
     "title": "Verde Studio",
-    "category": "Direction + E-commerce",
-    "typology": "Retail",
-    "status": "Completed",
-    "location": "Sydney",
-    "country": "AU",
+    "category": "Comercial",
+    "typology": "Comercial",
+    "status": "Concluído",
+    "location": "Brasília",
+    "country": "BR",
     "year": "2025",
-    "imageSrc": "/projects/project-02.svg",
-    "summary": "Experiência de compra com foco em ritmo visual, produto e storytelling de coleção.",
-    "scope": ["E-commerce UX", "Content Direction", "Design System"],
+    "imageSrc": "/images/gallery-02.jpg",
+    "summary": "Espaço comercial que une identidade de marca e experiência sensorial, transformando o ato de comprar em uma jornada espacial memorável.",
+    "scope": ["Design de Interiores", "Projeto Luminotécnico", "Mobiliário sob medida"],
     "client": "Verde Studio",
     "chapters": [
       {
-        "title": "Challenge",
-        "content": "Verde Studio needed to evolve from a catalogue-first online store to a brand-driven retail experience with stronger product storytelling and navigation clarity."
+        "title": "Desafio",
+        "content": "A marca precisava de um espaço físico que traduzisse seu posicionamento premium em uma experiência imersiva, em um ponto comercial com limitações estruturais significativas."
       },
       {
-        "title": "System",
-        "content": "We designed a modular commerce framework with editorial chapters, product hierarchy rules and a refined interaction cadence to guide decision-making."
+        "title": "Solução",
+        "content": "Criamos um percurso sensorial com zonas de descoberta, experimentação e contemplação. Materiais naturais — pedra, linho e madeira — constroem uma atmosfera de refinamento acessível."
       },
       {
-        "title": "Impact",
-        "content": "The new system improved both discoverability and conversion while preserving a high-end visual tone aligned with the brand’s positioning."
+        "title": "Impacto",
+        "content": "O espaço aumentou o tempo de permanência dos clientes em 60% e se tornou um destino de referência no segmento de lifestyle na cidade."
       }
     ],
     "metrics": [
       {
-        "label": "Average order value",
-        "value": "+24%",
-        "description": "Growth observed in first quarter post-launch."
+        "label": "Tempo de permanência",
+        "value": "+60%",
+        "description": "Aumento médio do tempo de visita dos clientes."
       },
       {
-        "label": "Session depth",
-        "value": "+41%",
-        "description": "Users explored more collection pages per visit."
+        "label": "Área projetada",
+        "value": "220m²",
+        "description": "Espaço comercial no Lago Sul, Brasília."
       },
       {
-        "label": "Checkout completion",
-        "value": "+19%",
-        "description": "Reduced drop-off across the purchase flow."
+        "label": "Prazo de obra",
+        "value": "4 meses",
+        "description": "Da aprovação do projeto à inauguração."
       }
     ],
     "gallery": [
-      { "src": "/projects/project-02.svg", "alt": "Verde Studio hero retail scene" },
-      { "src": "/projects/project-07.svg", "alt": "Verde Studio collection storytelling frame" },
-      { "src": "/projects/project-08.svg", "alt": "Verde Studio product detail experience" }
+      { "src": "/images/gallery-04.jpg", "alt": "Verde Studio — fachada" },
+      { "src": "/images/gallery-05.jpg", "alt": "Verde Studio — interior" },
+      { "src": "/images/gallery-06.jpg", "alt": "Verde Studio — detalhe" }
     ],
     "testimonial": {
-      "quote": "The new digital and retail language elevated both perception and sales performance in a very short cycle.",
+      "quote": "O espaço transformou completamente a percepção da marca. Nossos clientes comentam sobre a experiência antes mesmo dos produtos.",
       "author": "Lucas Ferreira",
-      "role": "Founder, Verde Studio"
+      "role": "Fundador, Verde Studio"
     }
   },
   {
     "slug": "nero-atelier",
     "title": "Nero Atelier",
-    "category": "Visual System",
-    "typology": "Hospitality",
-    "status": "In progress",
-    "location": "Brisbane",
-    "country": "AU",
+    "category": "Hospitalidade",
+    "typology": "Hospitalidade",
+    "status": "Em andamento",
+    "location": "Rio de Janeiro",
+    "country": "BR",
     "year": "2025",
-    "imageSrc": "/projects/project-03.svg",
-    "summary": "Sistema visual modular para campanhas e desdobramentos em canais digitais.",
-    "scope": ["Visual Identity", "Campaign Design", "Motion Guidance"],
+    "imageSrc": "/images/gallery-03.jpg",
+    "summary": "Hotel boutique que reinterpreta a herança carioca através de uma linguagem arquitetônica contemporânea e materialidade autêntica.",
+    "scope": ["Projeto Arquitetônico", "Design de Interiores", "Consultoria de Marca Espacial"],
     "client": "Nero Atelier",
     "chapters": [
       {
-        "title": "Brief",
-        "content": "Nero Atelier requested a flexible visual system to support seasonal campaigns, social-first storytelling and launch moments with limited production overhead."
+        "title": "Briefing",
+        "content": "O cliente buscava transformar um casarão dos anos 1940 em Santa Teresa em um hotel boutique de 12 suítes que honrasse a história do edifício enquanto oferecia uma experiência hoteleira de alto padrão."
       },
       {
-        "title": "Approach",
-        "content": "We created a component-based identity toolkit with scalable templates, motion principles and hierarchy rules to ensure consistency under rapid publishing cycles."
+        "title": "Abordagem",
+        "content": "Preservamos os elementos estruturais e decorativos originais — azulejos, esquadrias de ferro e pisos hidráulicos — integrando-os a intervenções contemporâneas em aço corten, vidro e concreto pigmentado."
       },
       {
-        "title": "Progress",
-        "content": "The system is currently being implemented across campaign channels, with phased rollout designed to minimize disruption while increasing creative control."
+        "title": "Progresso",
+        "content": "O projeto está em fase de documentação executiva, com previsão de início de obra no segundo semestre de 2025."
       }
     ],
     "metrics": [
       {
-        "label": "Asset production speed",
-        "value": "-34%",
-        "description": "Reduction in average creation time per campaign asset."
+        "label": "Suítes",
+        "value": "12",
+        "description": "Cada uma com identidade espacial única."
       },
       {
-        "label": "Template adoption",
-        "value": "87%",
-        "description": "Share of content using the new modular framework."
+        "label": "Área total",
+        "value": "1.200m²",
+        "description": "Entre áreas privativas e espaços comuns."
       },
       {
-        "label": "Rollout stage",
-        "value": "Phase 2",
-        "description": "Active deployment across digital and social touchpoints."
+        "label": "Fase atual",
+        "value": "Executivo",
+        "description": "Documentação construtiva em desenvolvimento."
       }
     ],
     "gallery": [
-      { "src": "/projects/project-03.svg", "alt": "Nero Atelier campaign key visual" },
-      { "src": "/projects/project-05.svg", "alt": "Nero Atelier modular layout system" },
-      { "src": "/projects/project-08.svg", "alt": "Nero Atelier social storytelling frame" }
+      { "src": "/images/vision-01.jpg", "alt": "Nero Atelier — fachada preservada" },
+      { "src": "/images/vision-02.jpg", "alt": "Nero Atelier — lobby conceitual" },
+      { "src": "/images/vision-03.jpg", "alt": "Nero Atelier — suíte tipo" }
     ],
     "testimonial": {
-      "quote": "We gained a scalable creative system without losing character, even under fast campaign timelines.",
+      "quote": "A sensibilidade do W.VIANA em equilibrar preservação e inovação nos deu total confiança no projeto.",
       "author": "Sofia Rinaldi",
-      "role": "Creative Lead, Nero Atelier"
+      "role": "Diretora Criativa, Nero Atelier"
     }
   },
   {
     "slug": "lumen-spaces",
     "title": "Lumen Spaces",
-    "category": "Campaign + Product",
-    "typology": "Workplace",
-    "status": "Completed",
-    "location": "Adelaide",
-    "country": "AU",
+    "category": "Corporativo",
+    "typology": "Corporativo",
+    "status": "Concluído",
+    "location": "Curitiba",
+    "country": "BR",
     "year": "2024",
-    "imageSrc": "/projects/project-04.svg",
-    "summary": "Direção de lançamento com foco em produto premium e microinterações minimalistas.",
-    "scope": ["Launch Campaign", "Product Story", "Experience Design"],
+    "imageSrc": "/images/gallery-04.jpg",
+    "summary": "Sede corporativa que redefine o conceito de ambiente de trabalho, priorizando bem-estar, colaboração e identidade organizacional.",
+    "scope": ["Projeto Arquitetônico", "Design de Interiores", "Paisagismo"],
     "client": "Lumen Spaces",
     "chapters": [
       {
-        "title": "Opportunity",
-        "content": "Lumen Spaces needed a launch framework that could communicate product quality while simplifying technical benefits for a broader commercial audience."
+        "title": "Oportunidade",
+        "content": "A empresa de tecnologia buscava uma sede que refletisse sua cultura de inovação e colaboração, substituindo o modelo tradicional de escritório por um ecossistema de trabalho flexível e humanizado."
       },
       {
-        "title": "Direction",
-        "content": "We developed a campaign and product narrative centred on tactile material cues, concise messaging and measured microinteraction patterns."
+        "title": "Direção",
+        "content": "Projetamos um espaço fluido com zonas de concentração, colaboração e descompressão, utilizando biofilia como elemento integrador. Jardins internos, iluminação circadiana e acústica controlada criam um ambiente de alto desempenho."
       },
       {
-        "title": "Result",
-        "content": "The launch established a clear premium positioning and improved engagement across sales channels, especially in early product comparisons."
+        "title": "Resultado",
+        "content": "A nova sede reduziu em 35% o absenteísmo e foi reconhecida pelo selo WELL Building Standard, tornando-se case de referência em workplace design no Brasil."
       }
     ],
     "metrics": [
       {
-        "label": "Product page engagement",
-        "value": "+46%",
-        "description": "Increase in time spent on detailed product sections."
+        "label": "Redução absenteísmo",
+        "value": "-35%",
+        "description": "Nos primeiros 6 meses após a mudança."
       },
       {
-        "label": "Qualified leads",
-        "value": "+31%",
-        "description": "Growth in enquiries matching target project profiles."
+        "label": "Área projetada",
+        "value": "2.800m²",
+        "description": "Distribuídos em 4 pavimentos."
       },
       {
-        "label": "Launch timeline",
-        "value": "9 wks",
-        "description": "Complete campaign direction delivered inside launch window."
+        "label": "Certificação",
+        "value": "WELL",
+        "description": "Building Standard — nível Gold."
       }
     ],
     "gallery": [
-      { "src": "/projects/project-04.svg", "alt": "Lumen Spaces product campaign cover" },
-      { "src": "/projects/project-06.svg", "alt": "Lumen Spaces tactile material study" },
-      { "src": "/projects/project-07.svg", "alt": "Lumen Spaces digital product narrative" }
+      { "src": "/images/gallery-05.jpg", "alt": "Lumen Spaces — recepção" },
+      { "src": "/images/gallery-06.jpg", "alt": "Lumen Spaces — área colaborativa" },
+      { "src": "/images/studio-portrait.jpg", "alt": "Lumen Spaces — jardim interno" }
     ],
     "testimonial": {
-      "quote": "The launch framework gave us clarity, confidence and stronger traction with our target audience.",
+      "quote": "O novo espaço transformou não só como trabalhamos, mas como nos sentimos trabalhando. A diferença é perceptível desde o primeiro dia.",
       "author": "Mia Turner",
-      "role": "Product Director, Lumen Spaces"
+      "role": "Diretora de Pessoas, Lumen Spaces"
     }
   }
 ]

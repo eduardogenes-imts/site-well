@@ -3,7 +3,6 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useRef } from "react";
-import { Card } from "@/components/ui/card";
 import { useScrollDrivenReveal } from "@/hooks/use-scroll-driven-reveal";
 import { getNextProject, getRelatedProjects } from "@/services/projects.service";
 import type { Project } from "@/types/project";
@@ -20,218 +19,207 @@ export function ProjectDetailContent({ project }: Readonly<ProjectDetailContentP
   useScrollDrivenReveal(rootRef, project.slug);
 
   return (
-    <main
-      ref={rootRef}
-      className="mx-auto w-full max-w-5xl space-y-10 px-6 py-12 md:space-y-14 md:py-16"
-    >
-      <Link
-        href="/works"
-        className="js-reveal inline-flex text-[11px] uppercase tracking-[0.16em] text-muted-foreground transition-colors hover:text-foreground"
-      >
-        Back to all works
-      </Link>
+    <main ref={rootRef}>
+      {/* Header */}
+      <section className="mx-auto max-w-[1800px] px-6 pt-28 pb-10 md:px-10 md:pt-36 md:pb-16 lg:px-14">
+        <Link
+          href="/works"
+          className="js-reveal inline-flex text-[11px] uppercase tracking-[0.16em] text-muted-foreground transition-colors hover:text-foreground"
+        >
+          ← Voltar aos projetos
+        </Link>
 
-      <header className="max-w-3xl space-y-4">
-        <div className="js-reveal flex flex-wrap items-center gap-x-4 gap-y-2 text-[11px] uppercase tracking-[0.16em] text-muted-foreground">
-          <span>{project.typology}</span>
-          <span>{project.status}</span>
-          <span>{project.location}</span>
-          <span>{project.year}</span>
-        </div>
-        <h1 className="js-reveal text-balance text-4xl font-semibold leading-tight md:text-5xl">
-          {project.title}
-        </h1>
-        <p className="js-reveal text-lg text-muted-foreground">{project.summary}</p>
-      </header>
-
-      <Card className="js-card js-image-reveal relative left-1/2 w-screen -translate-x-1/2 overflow-hidden border-0 p-0">
-        <div className="js-parallax-media relative h-[78vh] w-full md:h-[92vh]">
-          <Image
-            src={project.imageSrc}
-            alt={`Capa do projeto ${project.title}`}
-            fill
-            sizes="100vw"
-            className="js-parallax-image object-cover"
-            priority
-          />
-        </div>
-      </Card>
-
-      <Card className="js-card space-y-6 p-6 md:p-8" aria-label="Escopo do projeto">
-        <div className="grid gap-6 border-b border-border/70 pb-6 md:grid-cols-3">
-          <div className="space-y-1">
-            <p className="text-[10px] uppercase tracking-[0.16em] text-muted-foreground">Client</p>
-            <p className="text-sm">{project.client}</p>
+        <div className="mt-8 grid gap-6 md:grid-cols-12 md:gap-10">
+          <div className="md:col-span-8">
+            <div className="js-reveal flex flex-wrap items-center gap-x-4 gap-y-2 text-[11px] uppercase tracking-[0.16em] text-muted-foreground">
+              <span>{project.typology}</span>
+              <span>{project.status}</span>
+              <span>{project.location}</span>
+              <span>{project.year}</span>
+            </div>
+            <h1 className="js-reveal mt-4 text-[clamp(2.5rem,6vw,5rem)] font-semibold leading-[1.02] tracking-[-0.02em]">
+              {project.title}
+            </h1>
+            <p className="js-reveal mt-4 max-w-2xl text-base leading-relaxed text-muted-foreground md:text-lg">
+              {project.summary}
+            </p>
           </div>
-          <div className="space-y-1">
-            <p className="text-[10px] uppercase tracking-[0.16em] text-muted-foreground">Type</p>
-            <p className="text-sm">{project.category}</p>
-          </div>
-          <div className="space-y-1">
-            <p className="text-[10px] uppercase tracking-[0.16em] text-muted-foreground">Country</p>
-            <p className="text-sm">{project.country}</p>
+
+          {/* Scope */}
+          <div className="js-reveal space-y-4 md:col-span-4">
+            <div className="space-y-1">
+              <p className="text-[10px] uppercase tracking-[0.16em] text-muted-foreground">Cliente</p>
+              <p className="text-sm">{project.client}</p>
+            </div>
+            <div className="space-y-1">
+              <p className="text-[10px] uppercase tracking-[0.16em] text-muted-foreground">Tipo</p>
+              <p className="text-sm">{project.category}</p>
+            </div>
+            <div className="space-y-2">
+              <p className="text-[10px] uppercase tracking-[0.16em] text-muted-foreground">Escopo</p>
+              <ul className="space-y-1 text-sm text-muted-foreground">
+                {project.scope.map((item) => (
+                  <li key={item}>{item}</li>
+                ))}
+              </ul>
+            </div>
           </div>
         </div>
+      </section>
 
-        <h2 className="text-xl font-semibold md:text-2xl">Project scope</h2>
-        <ul className="grid gap-3 text-sm text-muted-foreground md:grid-cols-2">
-          {project.scope.map((item) => (
-            <li key={item} className="list-inside list-disc">
-              {item}
-            </li>
-          ))}
-        </ul>
-        <p className="text-[11px] uppercase tracking-[0.12em] text-muted-foreground">
-          Completion year: {project.year}
-        </p>
-      </Card>
+      {/* Hero image full-width */}
+      <section className="js-reveal relative h-[60vh] w-full overflow-hidden md:h-[80vh]">
+        <Image
+          src={project.imageSrc}
+          alt={`Capa do projeto ${project.title}`}
+          fill
+          sizes="100vw"
+          className="object-cover"
+          priority
+        />
+      </section>
 
-      <section className="js-reveal grid gap-6 border-y border-border/70 py-8 md:grid-cols-12 md:gap-8">
-        <p className="text-[11px] uppercase tracking-[0.2em] text-muted-foreground md:col-span-2">
-          01 / Narrative
-        </p>
-
-        <div className="space-y-6 md:col-span-10">
-          {project.chapters.map((chapter, index) => (
-            <article key={chapter.title} className="grid gap-3 border-t border-border/70 pt-4 md:grid-cols-12 md:gap-6">
-              <p className="text-[11px] uppercase tracking-[0.16em] text-muted-foreground md:col-span-2">
-                {String(index + 1).padStart(2, "0")}
-              </p>
-
-              <div className="space-y-2 md:col-span-10">
-                <h2 className="js-scrub-title text-2xl font-semibold tracking-[-0.01em]">
+      {/* Narrative */}
+      <section className="mx-auto max-w-[1800px] px-6 py-16 md:px-10 md:py-24 lg:px-14">
+        <div className="grid gap-8 md:grid-cols-12 md:gap-10">
+          <p className="js-reveal text-[11px] uppercase tracking-[0.2em] text-muted-foreground md:col-span-2">
+            Narrativa
+          </p>
+          <div className="space-y-8 md:col-span-10">
+            {project.chapters.map((chapter, index) => (
+              <article key={chapter.title} className="js-reveal border-t border-border/40 pt-6">
+                <p className="text-[10px] uppercase tracking-[0.16em] text-muted-foreground">
+                  {String(index + 1).padStart(2, "0")}
+                </p>
+                <h2 className="mt-2 text-[clamp(1.3rem,2.5vw,2rem)] font-semibold tracking-[-0.01em]">
                   {chapter.title}
                 </h2>
-                <p className="max-w-3xl text-sm leading-relaxed text-muted-foreground md:text-base">
+                <p className="mt-3 max-w-3xl text-sm leading-relaxed text-muted-foreground md:text-base">
                   {chapter.content}
                 </p>
-              </div>
-            </article>
-          ))}
+              </article>
+            ))}
+          </div>
         </div>
       </section>
 
-      <section className="js-reveal grid gap-6 md:grid-cols-12 md:gap-8">
-        <p className="text-[11px] uppercase tracking-[0.2em] text-muted-foreground md:col-span-2">
-          02 / Results
-        </p>
-
-        <div className="grid gap-4 md:col-span-10 md:grid-cols-3">
-          {project.metrics.map((metric) => (
-            <Card key={metric.label} className="space-y-2 border-border/70 bg-transparent p-5">
-              <p className="text-[10px] uppercase tracking-[0.16em] text-muted-foreground">
-                {metric.label}
-              </p>
-              <p className="text-3xl font-semibold tracking-[-0.02em]">{metric.value}</p>
-              <p className="text-sm leading-relaxed text-muted-foreground">
-                {metric.description}
-              </p>
-            </Card>
-          ))}
-        </div>
-      </section>
-
-      <section className="js-reveal grid gap-6 border-y border-border/70 py-8 md:grid-cols-12 md:gap-8">
-        <p className="text-[11px] uppercase tracking-[0.2em] text-muted-foreground md:col-span-2">
-          Client note
-        </p>
-
-        <blockquote className="space-y-4 md:col-span-10 lg:col-span-8">
-          <p className="text-balance text-2xl font-semibold leading-tight tracking-[-0.01em] md:text-3xl">
-            “{project.testimonial.quote}”
+      {/* Metrics */}
+      <section className="mx-auto max-w-[1800px] px-6 pb-16 md:px-10 md:pb-24 lg:px-14">
+        <div className="grid gap-8 md:grid-cols-12 md:gap-10">
+          <p className="js-reveal text-[11px] uppercase tracking-[0.2em] text-muted-foreground md:col-span-2">
+            Resultados
           </p>
-          <footer className="text-sm text-muted-foreground">
-            {project.testimonial.author} — {project.testimonial.role}
-          </footer>
-        </blockquote>
+          <div className="grid gap-6 md:col-span-10 md:grid-cols-3">
+            {project.metrics.map((metric) => (
+              <div key={metric.label} className="js-reveal space-y-2 border-t border-border/40 pt-4">
+                <p className="text-[10px] uppercase tracking-[0.16em] text-muted-foreground">
+                  {metric.label}
+                </p>
+                <p className="text-3xl font-semibold tracking-[-0.02em]">{metric.value}</p>
+                <p className="text-sm leading-relaxed text-muted-foreground">
+                  {metric.description}
+                </p>
+              </div>
+            ))}
+          </div>
+        </div>
       </section>
 
-      <section className="space-y-5">
-        <div className="js-reveal grid gap-4 md:grid-cols-12 md:gap-8">
+      {/* Testimonial */}
+      <section className="mx-auto max-w-[1800px] px-6 pb-16 md:px-10 md:pb-24 lg:px-14">
+        <div className="js-reveal border-y border-border/40 py-12 md:py-16">
+          <blockquote className="mx-auto max-w-4xl space-y-4 text-center">
+            <p className="text-[clamp(1.3rem,3vw,2.2rem)] font-semibold leading-tight tracking-[-0.01em]">
+              &ldquo;{project.testimonial.quote}&rdquo;
+            </p>
+            <footer className="text-sm text-muted-foreground">
+              {project.testimonial.author} — {project.testimonial.role}
+            </footer>
+          </blockquote>
+        </div>
+      </section>
+
+      {/* Gallery */}
+      <section className="mx-auto max-w-[1800px] px-6 pb-16 md:px-10 md:pb-24 lg:px-14">
+        <div className="js-reveal mb-8 grid gap-4 md:grid-cols-12 md:gap-10">
           <p className="text-[11px] uppercase tracking-[0.2em] text-muted-foreground md:col-span-2">
-            03 / Gallery
+            Galeria
           </p>
           <p className="max-w-2xl text-sm leading-relaxed text-muted-foreground md:col-span-10 md:text-base">
-            A curated sequence of project visuals highlighting atmosphere,
-            materiality and narrative rhythm.
+            Sequência curada de visuais do projeto destacando atmosfera,
+            materialidade e ritmo narrativo.
           </p>
         </div>
 
-        <div className="grid gap-4 md:grid-cols-12">
+        <div className="grid gap-4 md:grid-cols-2">
           {project.gallery.map((item, index) => (
             <div
-              key={`${project.slug}-${item.src}-${index}`}
-              className={`js-card js-image-reveal js-parallax-media relative overflow-hidden ${
-                index % 3 === 0
-                  ? "left-1/2 h-[74vh] w-screen -translate-x-1/2 md:col-span-12 md:h-[92vh]"
-                  : "aspect-[4/3] md:col-span-6"
+              key={`${project.slug}-gallery-${index}`}
+              className={`js-reveal relative overflow-hidden ${
+                index === 0 ? "aspect-[16/9] md:col-span-2" : "aspect-[4/3]"
               }`}
             >
               <Image
                 src={item.src}
                 alt={item.alt}
                 fill
-                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 80vw"
-                className="js-parallax-image object-cover"
+                sizes={index === 0 ? "100vw" : "(max-width: 768px) 100vw, 50vw"}
+                className="object-cover"
               />
             </div>
           ))}
         </div>
       </section>
 
-      <section className="js-reveal grid gap-6 border-t border-border/70 pt-8 md:grid-cols-12 md:gap-8">
-        <p className="text-[11px] uppercase tracking-[0.2em] text-muted-foreground md:col-span-2">
-          04 / Related
-        </p>
-
-        <div className="grid gap-5 md:col-span-10 md:grid-cols-2">
-          {relatedProjects.map((related) => (
-            <article key={related.slug} className="space-y-2 border-t border-border/70 pt-4">
-              <p className="text-[10px] uppercase tracking-[0.16em] text-muted-foreground">
-                {related.typology} / {related.location}
-              </p>
-              <h3 className="text-xl font-semibold tracking-[-0.01em]">
-                {related.title}
-              </h3>
-              <p className="text-sm leading-relaxed text-muted-foreground">
-                {related.summary}
-              </p>
-              <Link
-                href={`/projects/${related.slug}`}
-                className="inline-flex items-center gap-2 text-[11px] uppercase tracking-[0.16em] text-foreground transition-opacity hover:opacity-70"
-              >
-                Open project
-              </Link>
-            </article>
-          ))}
-        </div>
-      </section>
-
-      {nextProject ? (
-        <section className="js-reveal grid gap-6 border-t border-border/70 pt-8 md:grid-cols-12 md:gap-8">
-          <p className="text-[11px] uppercase tracking-[0.2em] text-muted-foreground md:col-span-2">
-            Next project
+      {/* Related + Next */}
+      <section className="mx-auto max-w-[1800px] px-6 pb-20 md:px-10 md:pb-28 lg:px-14">
+        <div className="grid gap-8 border-t border-border/40 pt-12 md:grid-cols-12 md:gap-10">
+          <p className="js-reveal text-[11px] uppercase tracking-[0.2em] text-muted-foreground md:col-span-2">
+            Relacionados
           </p>
+          <div className="grid gap-8 md:col-span-10 md:grid-cols-2">
+            {relatedProjects.map((related) => (
+              <Link
+                key={related.slug}
+                href={`/projects/${related.slug}`}
+                className="js-reveal group block space-y-2 border-t border-border/40 pt-4"
+              >
+                <p className="text-[10px] uppercase tracking-[0.16em] text-muted-foreground">
+                  {related.typology} / {related.location}
+                </p>
+                <h3 className="text-xl font-semibold tracking-[-0.01em] transition-opacity group-hover:opacity-70">
+                  {related.title}
+                </h3>
+                <p className="text-sm leading-relaxed text-muted-foreground">
+                  {related.summary}
+                </p>
+                <span className="inline-flex text-[11px] uppercase tracking-[0.16em] text-foreground">
+                  Ver projeto →
+                </span>
+              </Link>
+            ))}
+          </div>
+        </div>
 
-          <Link
-            href={`/projects/${nextProject.slug}`}
-            className="group block space-y-2 md:col-span-10 lg:col-span-8"
-          >
-            <p className="text-[10px] uppercase tracking-[0.16em] text-muted-foreground">
-              {nextProject.typology} / {nextProject.location}
-            </p>
-            <h2 className="text-balance text-3xl font-semibold leading-tight tracking-[-0.02em] transition-opacity group-hover:opacity-70 md:text-4xl">
-              {nextProject.title}
-            </h2>
-            <p className="max-w-2xl text-sm leading-relaxed text-muted-foreground md:text-base">
-              {nextProject.summary}
-            </p>
-            <p className="text-[11px] uppercase tracking-[0.16em] text-foreground">
-              Open next project
-            </p>
-          </Link>
-        </section>
-      ) : null}
+        {nextProject && (
+          <div className="mt-16 border-t border-border/40 pt-10">
+            <Link
+              href={`/projects/${nextProject.slug}`}
+              className="js-reveal group block"
+            >
+              <p className="text-[11px] uppercase tracking-[0.2em] text-muted-foreground">
+                Próximo projeto
+              </p>
+              <h2 className="mt-3 text-[clamp(2rem,4vw,3.5rem)] font-semibold leading-tight tracking-[-0.02em] transition-opacity group-hover:opacity-70">
+                {nextProject.title}
+              </h2>
+              <p className="mt-2 max-w-2xl text-sm leading-relaxed text-muted-foreground md:text-base">
+                {nextProject.summary}
+              </p>
+            </Link>
+          </div>
+        )}
+      </section>
     </main>
   );
 }
