@@ -91,7 +91,7 @@ export function SiteHeader() {
               alt="W.VIANA Arquitetura de Interiores"
               width={1920}
               height={1080}
-              className="relative z-[2147483647] h-auto w-[10rem] max-h-[2.75rem] object-contain md:w-[12rem] md:max-h-[3.25rem] lg:w-[14rem]"
+              className="relative z-[2147483647] h-auto w-[10rem] max-h-[2.75rem] object-contain object-left md:w-[12rem] md:max-h-[3.25rem] lg:w-[14rem]"
               priority
             />
           </Link>
