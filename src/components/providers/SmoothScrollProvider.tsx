@@ -3,6 +3,7 @@
 import { useEffect } from "react";
 import Lenis from "lenis";
 import gsap, { ScrollTrigger } from "@/lib/gsap";
+import { registerLenis } from "@/lib/scroll";
 
 type SmoothScrollProviderProps = {
   children: React.ReactNode;
@@ -26,6 +27,7 @@ export function SmoothScrollProvider({
       syncTouch: true,
     });
 
+    registerLenis(lenis);
     lenis.on("scroll", ScrollTrigger.update);
 
     const update = (time: number) => {
