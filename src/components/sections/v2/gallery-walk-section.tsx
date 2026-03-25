@@ -15,13 +15,13 @@ export function GalleryWalkSection() {
   return (
     <section
       ref={sectionRef}
-      className="bg-background px-8 py-32 md:px-16 md:py-48 lg:px-24 lg:py-64"
+      className="bg-background px-8 py-24 md:px-16 md:py-32 lg:px-24 lg:py-48"
     >
       <div className="mx-auto max-w-[1800px]">
         {projects.map((project, i) => (
           <div key={project.slug}>
             <GalleryProjectCard project={project} index={i} />
-            {i < projects.length - 1 && <Void height="15vh" />}
+            {i < projects.length - 1 && <Void height="12vh" />}
           </div>
         ))}
       </div>

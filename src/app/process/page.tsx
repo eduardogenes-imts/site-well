@@ -11,37 +11,37 @@ const phases = [
     index: "01",
     title: "Descoberta & Alinhamento",
     description:
-      "Workshops com o cliente, mapeamento de contexto e definicao de criterios de sucesso com todos os stakeholders.",
+      "Workshops com o cliente, mapeamento de contexto e definição de critérios de sucesso com todos os stakeholders.",
     duration: "1-2 semanas",
   },
   {
     index: "02",
-    title: "Conceito & Direcao Narrativa",
+    title: "Conceito & Direção Narrativa",
     description:
-      "Conceito espacial, referencias visuais e linguagem de design de alto nivel para aprovacao.",
+      "Conceito espacial, referências visuais e linguagem de design de alto nível para aprovação.",
     duration: "2-4 semanas",
   },
   {
     index: "03",
     title: "Desenvolvimento de Projeto",
     description:
-      "Refinamento de layout, estrategia de materiais, coordenacao tecnica e enquadramento de custos.",
+      "Refinamento de layout, estratégia de materiais, coordenação técnica e enquadramento de custos.",
     duration: "4-8 semanas",
   },
   {
     index: "04",
-    title: "Documentacao & Entrega",
+    title: "Documentação & Entrega",
     description:
-      "Pacote executivo, suporte de aquisicoes e controle de qualidade durante a implementacao.",
+      "Pacote executivo, suporte de aquisições e controle de qualidade durante a implementação.",
     duration: "4-10 semanas",
   },
 ];
 
 const deliverables = [
-  "Dossie Estrategico",
+  "Dossiê Estratégico",
   "Pranchas Conceituais",
-  "Pacote Tecnico",
-  "Supervisao de Obra",
+  "Pacote Técnico",
+  "Supervisão de Obra",
 ];
 
 export default function ProcessPage() {
@@ -98,11 +98,11 @@ export default function ProcessPage() {
               Processo
             </span>
             <h1 className="reveal-rise mt-6 max-w-[1000px] text-architectural font-light leading-[1.05] text-foreground">
-              Contexto. Estrategia. Materialidade. Execucao.
+              Contexto. Estratégia. Materialidade. Execução.
             </h1>
             <p className="reveal-illuminate mt-8 max-w-[600px] text-body-lg text-muted-foreground">
-              Nosso processo e intencionalmente estruturado para manter a direcao
-              criativa forte enquanto garante certeza de entrega em cada fase.
+              Nosso processo é intencionalmente estruturado para manter a direção
+              criativa forte enquanto garante precisão de entrega em cada fase.
             </p>
           </div>
         </section>
@@ -148,7 +148,7 @@ export default function ProcessPage() {
                 </span>
 
                 <div className="relative max-w-[500px]">
-                  <h2 className="text-architectural font-extrabold text-foreground">
+                  <h2 className="text-architectural font-light text-foreground">
                     {phase.title}
                   </h2>
                   <p className="mt-6 text-body-lg text-muted-foreground">

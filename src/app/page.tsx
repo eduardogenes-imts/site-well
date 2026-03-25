@@ -12,11 +12,11 @@ export default function Home() {
       <SiteHeader />
       <main>
         <ThresholdHero />
-        <Void height="30vh" />
-        <StatementSection />
         <Void height="20vh" />
+        <StatementSection />
+        <Void height="15vh" />
         <GalleryWalkSection />
-        <Void height="25vh" />
+        <Void height="15vh" />
         <HorizonSection />
       </main>
       <SiteFooter />

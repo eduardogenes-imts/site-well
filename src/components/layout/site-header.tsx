@@ -35,7 +35,11 @@ export function SiteHeader() {
           borderBottom: scrolled && !isNavigationOpen
             ? "1px solid hsl(var(--accent) / 0.2)"
             : "1px solid transparent",
-          transition: "border-color 0.6s ease",
+          background: scrolled && !isNavigationOpen
+            ? "hsl(var(--background) / 0.82)"
+            : "transparent",
+          backdropFilter: scrolled && !isNavigationOpen ? "blur(8px)" : "none",
+          transition: "border-color 0.6s ease, background-color 0.6s ease, backdrop-filter 0.6s ease",
         }}
       >
         <div className="mx-auto flex h-14 max-w-[1800px] items-center justify-between px-8 md:h-16 md:px-16 lg:px-24">
@@ -43,20 +47,24 @@ export function SiteHeader() {
           <Link
             href="/"
             className="-m-2 p-2 transition-opacity duration-500 hover:opacity-60"
-            aria-label="W.VIANA — Inicio"
+            aria-label="W.VIANA — Início"
           >
             <WMonogram
               size={28}
-              color={isNavigationOpen ? "hsl(0 0% 100%)" : "hsl(var(--accent-text))"}
+              color={isNavigationOpen ? "hsl(0 0% 100%)" : "hsl(var(--accent))"}
             />
           </Link>
 
           {/* Menu trigger */}
           <button
             onClick={toggleNavigation}
+            type="button"
+            id="site-navigation-trigger"
             className="-m-2 p-2 text-micro uppercase tracking-[0.22em] transition-colors duration-500"
-            style={{ color: isNavigationOpen ? "hsl(0 0% 100%)" : "hsl(var(--accent-text))" }}
-            aria-label={isNavigationOpen ? "Fechar navegacao" : "Abrir navegacao"}
+            style={{ color: isNavigationOpen ? "hsl(0 0% 100%)" : "hsl(var(--accent))" }}
+            aria-label={isNavigationOpen ? "Fechar navegação" : "Abrir navegação"}
+            aria-expanded={isNavigationOpen}
+            aria-controls="site-navigation-drawer"
           >
             {isNavigationOpen ? "[Fechar]" : "[Index]"}
           </button>

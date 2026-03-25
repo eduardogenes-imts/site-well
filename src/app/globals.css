@@ -4,28 +4,30 @@
 
 @layer base {
   :root {
-    /* W.VIANA v2 — "O Edificio Digital" */
-    --background: 0 0% 97%;
-    --background-warm: 30 8% 93%;
+    /* W.VIANA definitivo */
+    /* #F2F2F2 */
+    --background: 0 0% 95%;
+    --background-warm: 0 0% 95%;
+    /* #000000 */
     --foreground: 0 0% 0%;
-    --card: 0 0% 100%;
+    --card: 0 0% 95%;
     --card-foreground: 0 0% 0%;
     --primary: 0 0% 0%;
     --primary-foreground: 0 0% 100%;
-    --secondary: 27 12% 69%;
+    /* #BAAEA4 */
+    --secondary: 27 14% 69%;
     --secondary-foreground: 0 0% 0%;
-    --muted: 0 0% 92%;
+    --muted: 0 0% 75%;
     --muted-foreground: 0 0% 35%;
-    --accent: 27 12% 69%;
-    --accent-text: 27 10% 42%;
+    --accent: 27 14% 69%;
     --accent-foreground: 0 0% 100%;
-    --border: 0 0% 88%;
-    --input: 0 0% 88%;
+    --border: 0 0% 75%;
+    --input: 0 0% 75%;
     --ring: 0 0% 0%;
     --radius: 0rem;
 
     /* Architectural grid tokens */
-    --grid-line: 186 161 144 / 0.08;
+    --grid-line: 186 174 164 / 0.08;
     --grid-line-dark: 255 255 255 / 0.04;
     --grid-columns: 12;
   }
@@ -42,6 +44,7 @@
 
   body {
     font-family: var(--font-body), "Aeonik", Arial, Helvetica, sans-serif;
+    font-weight: 400;
     letter-spacing: -0.005em;
   }
 

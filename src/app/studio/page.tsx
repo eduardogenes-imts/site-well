@@ -8,10 +8,10 @@ import { Void } from "@/components/ui/void";
 import { useArchitecturalReveal } from "@/hooks/v2/use-architectural-reveal";
 
 const capabilities = [
-  "Projeto Arquitetonico",
+  "Projeto Arquitetônico",
   "Interiores & Materialidade",
-  "Integracao Marca-Espaco",
-  "Supervisao de Obra",
+  "Integração Marca-Espaço",
+  "Supervisão de Obra",
 ];
 
 export default function StudioPage() {
@@ -28,7 +28,7 @@ export default function StudioPage() {
             W.VIANA
           </h1>
           <p className="reveal-illuminate mt-4 text-micro uppercase tracking-[0.22em]" style={{ color: "hsl(var(--accent))" }}>
-            Arquitetura | Interiores / Sao Paulo
+            Arquitetura | Interiores / Fortaleza
           </p>
         </section>
 
@@ -36,7 +36,7 @@ export default function StudioPage() {
         <section className="reveal-curtain relative h-[80vh] w-full overflow-hidden">
           <Image
             src="/images/studio-portrait.jpg"
-            alt="W.VIANA Estudio"
+            alt="W.VIANA Estúdio"
             fill
             sizes="100vw"
             className="object-cover"
@@ -52,18 +52,18 @@ export default function StudioPage() {
               Sobre
             </span>
             <p className="reveal-illuminate mt-8 max-w-[900px] text-architectural font-light leading-[1.1] text-foreground">
-              Projetamos espacos atemporais com estrategia, precisao e clareza emocional.
+              Projetamos espaços atemporais com estratégia, precisão e clareza emocional.
             </p>
             <div className="mt-12 max-w-[680px] space-y-4">
               <p className="reveal-illuminate text-body-lg text-muted-foreground">
-                Fundada pelo arquiteto e urbanista Wellington Viana, a W.VIANA e um
-                estudio independente que atua em arquitetura, interiores e ambientes
+                Fundada pelo arquiteto e urbanista Wellington Viana, a W.VIANA é um
+                estúdio independente que atua em arquitetura, interiores e ambientes
                 de marca. Traduzimos contexto em sistemas espaciais claros que se
-                sentem contemporaneos e humanos.
+                sentem contemporâneos e humanos.
               </p>
               <p className="reveal-illuminate text-body-lg text-muted-foreground">
-                Priorizamos contencao, detalhe e clareza acima do ruido visual. Cada
-                decisao e avaliada pela funcao, longevidade e relevancia emocional.
+                Priorizamos contenção, detalhe e clareza acima do ruído visual. Cada
+                decisão é avaliada pela função, longevidade e relevância emocional.
               </p>
             </div>
           </div>
@@ -75,9 +75,9 @@ export default function StudioPage() {
         <section className="px-8 py-16 md:px-16 md:py-24 lg:px-24">
           <div className="mx-auto grid max-w-[1800px] gap-8 md:grid-cols-3">
             {[
-              { value: "2018", label: "Fundacao" },
+              { value: "2018", label: "Fundação" },
               { value: "48+", label: "Projetos" },
-              { value: "Brasil", label: "Atuacao" },
+              { value: "Brasil", label: "Atuação" },
             ].map((stat, i) => (
               <div
                 key={stat.label}
@@ -88,7 +88,7 @@ export default function StudioPage() {
                 }}
               >
                 <span
-                  className="font-extrabold leading-none"
+                  className="font-bold leading-none"
                   style={{
                     fontSize: "clamp(3rem, 8vw, 8rem)",
                     color: "hsl(var(--accent) / 0.2)",
@@ -110,7 +110,7 @@ export default function StudioPage() {
         <section className="px-8 pb-32 md:px-16 lg:px-24">
           <div className="mx-auto max-w-[1800px]">
             <span className="reveal-illuminate text-micro uppercase tracking-[0.22em]" style={{ color: "hsl(var(--accent))" }}>
-              Competencias
+              Competências
             </span>
             <div className="mt-8">
               {capabilities.map((cap) => (

@@ -4,7 +4,7 @@ import { useRef, useLayoutEffect, useMemo } from "react";
 import gsap, { ScrollTrigger } from "@/lib/gsap";
 
 const MANIFESTO =
-  "Projetamos a pausa. O silencio entre as paredes. O vazio que da sentido ao espaco.";
+  "Projetamos a pausa. O silêncio entre as paredes. O vazio que dá sentido ao espaço.";
 
 export function StatementSection() {
   const sectionRef = useRef<HTMLElement>(null);
@@ -58,7 +58,7 @@ export function StatementSection() {
         <div className="ml-0 max-w-[1200px] md:ml-[15%]">
           <span
             className="text-micro uppercase tracking-[0.22em]"
-            style={{ color: "hsl(var(--accent-text))" }}
+            style={{ color: "hsl(var(--accent))" }}
           >
             Manifesto
           </span>
@@ -84,7 +84,7 @@ export function StatementSection() {
 
           <p
             className="mt-16 text-caption uppercase tracking-[0.18em]"
-            style={{ color: "hsl(var(--accent-text))" }}
+            style={{ color: "hsl(var(--accent))" }}
           >
             Wellington Viana, Fundador
           </p>

@@ -4,6 +4,7 @@ import { useLayoutEffect, useRef } from "react";
 import Link from "next/link";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { BRAND } from "@/lib/brand";
 
 export function SiteFooter() {
   const footerRef = useRef<HTMLElement>(null);
@@ -61,85 +62,82 @@ export function SiteFooter() {
   return (
     <footer
       ref={footerRef}
-      className="relative z-10 mt-24 w-full overflow-hidden bg-transparent text-foreground"
+      className="relative z-10 mt-24 w-full bg-transparent text-foreground"
     >
-      <section className="relative flex min-h-screen flex-col items-center justify-center px-8 md:px-16 lg:px-24">
-        <p
-          className="text-micro uppercase tracking-[0.22em]"
-          style={{ color: "hsl(var(--accent))" }}
-        >
-          Proximo passo
-        </p>
-        <h2 className="footer-primary-text mt-6 text-center text-monumental font-light" style={{ color: "hsl(var(--foreground))" }}>
-          Vamos conversar.
-        </h2>
-        <Link
-          href="mailto:contato@wviana.arq.br"
-          className="footer-primary-text group mt-8 text-center text-architectural font-light opacity-80 transition-opacity hover:opacity-100"
-          style={{ color: "hsl(var(--foreground))" }}
-        >
-          <span className="border-b border-[hsl(var(--accent)/0.4)] pb-2 transition-all group-hover:border-[hsl(var(--accent))]">
-            contato@wviana.arq.br
-          </span>
-        </Link>
-      </section>
-
-      <section className="bg-transparent">
-        <div
-          className="mx-auto flex max-w-[1800px] flex-col gap-4 border-t px-8 py-6 md:flex-row md:items-center md:justify-between md:px-16 lg:px-24"
-          style={{ borderColor: "hsl(var(--accent) / 0.15)" }}
-        >
-          <span
-            className="text-micro uppercase tracking-[0.22em]"
-            style={{ color: "hsl(var(--accent))" }}
-          >
-            W.VIANA
-          </span>
-          <span
-            className="text-micro uppercase tracking-[0.22em]"
-            style={{ color: "hsl(var(--accent))" }}
-          >
-            Brasil / SP
-          </span>
-          <div className="flex gap-6">
-            <Link
-              href="#"
-              className="text-micro uppercase tracking-[0.22em] transition-opacity hover:opacity-60"
+      <section className="relative flex min-h-screen items-center px-8 md:px-16 lg:px-24">
+        <div className="mx-auto flex w-full max-w-[1800px] flex-col justify-between gap-16 md:flex-row md:items-end">
+          <div className="flex flex-col">
+            <p
+              className="text-micro uppercase tracking-[0.22em]"
               style={{ color: "hsl(var(--accent))" }}
             >
-              Instagram
+              Próximo passo
+            </p>
+            <h2 className="footer-primary-text mt-6 text-monumental font-light" style={{ color: "hsl(var(--foreground))" }}>
+              Vamos conversar.
+            </h2>
+            <Link
+              href={`mailto:${BRAND.email}`}
+              className="footer-primary-text group mt-8 text-architectural font-light opacity-80 transition-opacity hover:opacity-100"
+              style={{ color: "hsl(var(--foreground))" }}
+            >
+              <span className="border-b border-[hsl(var(--accent)/0.4)] pb-2 transition-all group-hover:border-[hsl(var(--accent))]">
+                {BRAND.email}
+              </span>
             </Link>
             <Link
-              href="#"
-              className="text-micro uppercase tracking-[0.22em] transition-opacity hover:opacity-60"
-              style={{ color: "hsl(var(--accent))" }}
+              href={BRAND.whatsappUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="footer-primary-text group mt-4 text-architectural font-light opacity-80 transition-opacity hover:opacity-100"
+              style={{ color: "hsl(var(--foreground))" }}
             >
-              Behance
+              <span className="border-b border-[hsl(var(--accent)/0.4)] pb-2 transition-all group-hover:border-[hsl(var(--accent))]">
+                WhatsApp
+              </span>
             </Link>
           </div>
+
+          <span
+            className="footer-primary-text select-none font-bold leading-none opacity-5"
+            style={{ color: "hsl(var(--foreground))", fontSize: "clamp(8rem, 22vw, 26rem)", letterSpacing: "0.1em" }}
+          >
+            W.
+          </span>
         </div>
       </section>
 
-      <section className="relative flex flex-col items-center justify-center overflow-hidden bg-transparent pb-6 pt-8">
-        <span
-          className="footer-primary-text select-none font-bold leading-none opacity-5"
-          style={{ color: "hsl(var(--foreground))", fontSize: "30vw", letterSpacing: "0.15em" }}
+      <section className="relative flex flex-col overflow-hidden bg-transparent">
+        <div
+          className="mx-auto flex w-full max-w-[1800px] flex-col gap-4 border-t px-8 py-6 md:flex-row md:items-center md:justify-between md:px-16 lg:px-24"
+          style={{ borderColor: "hsl(var(--accent) / 0.15)" }}
         >
-          W.
-        </span>
-        <div className="mt-4 flex flex-col items-center gap-1">
           <p
             className="text-micro uppercase tracking-[0.22em]"
             style={{ color: "hsl(var(--accent) / 0.6)" }}
           >
             &copy; 2026 W.VIANA Arquitetura | Interiores
           </p>
-          <p
-            className="text-micro uppercase tracking-[0.22em]"
-            style={{ color: "hsl(var(--accent) / 0.6)" }}
-          >
-            Site por IMTS
-          </p>
+          <div className="flex gap-6">
+            <Link
+              href={BRAND.instagramUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-micro uppercase tracking-[0.22em] transition-opacity hover:opacity-60"
+              style={{ color: "hsl(var(--accent) / 0.6)" }}
+            >
+              Instagram
+            </Link>
+            <Link
+              href={BRAND.pinterestUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-micro uppercase tracking-[0.22em] transition-opacity hover:opacity-60"
+              style={{ color: "hsl(var(--accent) / 0.6)" }}
+            >
+              Pinterest
+            </Link>
+          </div>
         </div>
       </section>
     </footer>

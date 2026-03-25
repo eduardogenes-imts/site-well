@@ -5,11 +5,12 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import gsap from "@/lib/gsap";
 import { useUiStore } from "@/store/use-ui-store";
+import { BRAND } from "@/lib/brand";
 
 const navItems = [
   { href: "/works", label: "Projetos", index: "01" },
   { href: "/process", label: "Processo", index: "02" },
-  { href: "/studio", label: "Estudio", index: "03" },
+  { href: "/studio", label: "Estúdio", index: "03" },
   { href: "/contact", label: "Contato", index: "04" },
 ];
 
@@ -20,6 +21,7 @@ export function NavigationDrawer() {
   const backdropRef = useRef<HTMLDivElement>(null);
   const contentRef = useRef<HTMLDivElement>(null);
   const linksRef = useRef<HTMLDivElement>(null);
+  const previousFocusedRef = useRef<HTMLElement | null>(null);
 
   // Close on navigation
   useEffect(() => {
@@ -33,6 +35,59 @@ export function NavigationDrawer() {
       document.body.style.overflow = "";
     };
   }, [isOpen]);
+
+  // Focus management + keyboard support
+  useEffect(() => {
+    if (!isOpen) {
+      previousFocusedRef.current?.focus?.();
+      return;
+    }
+
+    previousFocusedRef.current = document.activeElement as HTMLElement | null;
+
+    const backdrop = backdropRef.current;
+    if (!backdrop) return;
+
+    const getFocusable = () =>
+      Array.from(
+        backdrop.querySelectorAll<HTMLElement>(
+          'a[href], button:not([disabled]), textarea, input, select, [tabindex]:not([tabindex="-1"])',
+        ),
+      );
+
+    requestAnimationFrame(() => {
+      const focusable = getFocusable();
+      focusable[0]?.focus();
+    });
+
+    const onKeyDown = (event: KeyboardEvent) => {
+      if (event.key === "Escape") {
+        event.preventDefault();
+        setNavigationOpen(false);
+        return;
+      }
+
+      if (event.key !== "Tab") return;
+
+      const focusable = getFocusable();
+      if (focusable.length === 0) return;
+
+      const first = focusable[0];
+      const last = focusable[focusable.length - 1];
+      const active = document.activeElement as HTMLElement | null;
+
+      if (event.shiftKey && active === first) {
+        event.preventDefault();
+        last.focus();
+      } else if (!event.shiftKey && active === last) {
+        event.preventDefault();
+        first.focus();
+      }
+    };
+
+    document.addEventListener("keydown", onKeyDown);
+    return () => document.removeEventListener("keydown", onKeyDown);
+  }, [isOpen, setNavigationOpen]);
 
   // Animate open/close
   useEffect(() => {
@@ -82,10 +137,19 @@ export function NavigationDrawer() {
 
   return (
     <div
+      id="site-navigation-drawer"
       ref={backdropRef}
       className="fixed inset-0 z-[9998] bg-foreground"
       style={{ display: "none" }}
       aria-hidden={!isOpen}
+      role="dialog"
+      aria-modal="true"
+      aria-label="Navegação principal"
+      onMouseDown={(event) => {
+        if (event.target === event.currentTarget) {
+          setNavigationOpen(false);
+        }
+      }}
     >
       <div
         ref={contentRef}
@@ -114,24 +178,40 @@ export function NavigationDrawer() {
 
         {/* Footer info */}
         <div className="mt-12 flex flex-col gap-4 md:mt-16 md:flex-row md:items-center md:gap-12">
-          <span
+          <Link
+            href={`mailto:${BRAND.email}`}
             className="text-micro uppercase tracking-[0.22em]"
             style={{ color: "hsl(var(--accent))" }}
           >
-            contato@wviana.arq.br
-          </span>
-          <span
+            {BRAND.email}
+          </Link>
+          <Link
+            href={BRAND.whatsappUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-micro uppercase tracking-[0.22em]"
+            style={{ color: "hsl(var(--accent) / 0.5)" }}
+          >
+            WhatsApp
+          </Link>
+          <Link
+            href={BRAND.instagramUrl}
+            target="_blank"
+            rel="noopener noreferrer"
             className="text-micro uppercase tracking-[0.22em]"
             style={{ color: "hsl(var(--accent) / 0.5)" }}
           >
             Instagram
-          </span>
-          <span
+          </Link>
+          <Link
+            href={BRAND.pinterestUrl}
+            target="_blank"
+            rel="noopener noreferrer"
             className="text-micro uppercase tracking-[0.22em]"
             style={{ color: "hsl(var(--accent) / 0.5)" }}
           >
-            Behance
-          </span>
+            Pinterest
+          </Link>
         </div>
       </div>
     </div>

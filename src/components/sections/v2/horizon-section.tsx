@@ -48,7 +48,7 @@ export function HorizonSection() {
     >
       <p
         className="text-center text-caption uppercase tracking-[0.18em]"
-        style={{ color: "hsl(var(--accent-text))" }}
+        style={{ color: "hsl(var(--accent))" }}
       >
         48+ projetos entregues. 7 anos de pratica.
       </p>

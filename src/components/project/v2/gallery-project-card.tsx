@@ -28,31 +28,31 @@ export function GalleryProjectCard({ project, index }: GalleryProjectCardProps) 
           <div className="reveal-stagger flex flex-col gap-3">
             <span
               className="text-micro uppercase tracking-[0.22em]"
-              style={{ color: "hsl(var(--accent-text))" }}
+              style={{ color: "hsl(var(--accent))" }}
             >
               {num}
             </span>
             <span
               className="text-micro uppercase tracking-[0.22em]"
-              style={{ color: "hsl(var(--accent-text))" }}
+              style={{ color: "hsl(var(--accent))" }}
             >
               {project.title}
             </span>
             <span
               className="text-micro uppercase tracking-[0.22em]"
-              style={{ color: "hsl(var(--accent-text) / 0.85)" }}
+              style={{ color: "hsl(var(--accent) / 0.85)" }}
             >
               {project.typology}
             </span>
             <span
               className="text-micro uppercase tracking-[0.22em]"
-              style={{ color: "hsl(var(--accent-text) / 0.85)" }}
+              style={{ color: "hsl(var(--accent) / 0.85)" }}
             >
               {project.location}, {project.country}
             </span>
             <span
               className="text-micro uppercase tracking-[0.22em]"
-              style={{ color: "hsl(var(--accent-text) / 0.85)" }}
+              style={{ color: "hsl(var(--accent) / 0.85)" }}
             >
               {project.year}
             </span>

@@ -5,6 +5,7 @@ import { ArchitecturalGrid } from "@/components/layout/architectural-grid";
 import "./globals.css";
 import { QueryProvider } from "@/components/providers/query-provider";
 import { SmoothScrollProvider } from "@/components/providers/SmoothScrollProvider";
+import { BRAND } from "@/lib/brand";
 
 /* Body font — Aeonik (brand manual) */
 const aeonik = localFont({
@@ -12,6 +13,11 @@ const aeonik = localFont({
     {
       path: "../fonts/AeonikTRIAL-Light.otf",
       weight: "300",
+      style: "normal",
+    },
+    {
+      path: "../fonts/AeonikTRIAL-Regular.otf",
+      weight: "500",
       style: "normal",
     },
     {
@@ -39,6 +45,11 @@ const agrandirGrand = localFont({
     },
     {
       path: "../fonts/Agrandir-GrandHeavy.otf",
+      weight: "700",
+      style: "normal",
+    },
+    {
+      path: "../fonts/Agrandir-GrandHeavy.otf",
       weight: "800",
       style: "normal",
     },
@@ -51,7 +62,45 @@ export const metadata: Metadata = {
   title: "W.VIANA — Arquitetura | Interiores",
   description:
     "Escritório de arquitetura e interiores fundado por Wellington Viana. Soluções personalizadas que elevam experiências e expectativas.",
+  metadataBase: new URL(BRAND.siteUrl),
+  alternates: {
+    canonical: "/",
+  },
+  openGraph: {
+    type: "website",
+    locale: "pt_BR",
+    url: "/",
+    siteName: BRAND.name,
+    title: "W.VIANA — Arquitetura | Interiores",
+    description:
+      "Arquitetura sensorial, minimalista e autoral. Forma, luz e silêncio em projetos residenciais e interiores.",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "W.VIANA — Arquitetura | Interiores",
+    description:
+      "Arquitetura sensorial, minimalista e autoral. Forma, luz e silêncio.",
+  },
 };
+
+const hydrationGuardScript = `
+  (() => {
+    try {
+      const clean = () => {
+        document.querySelectorAll('[bis_skin_checked]').forEach((el) => {
+          el.removeAttribute('bis_skin_checked');
+        });
+      };
+      clean();
+      const observer = new MutationObserver(() => clean());
+      observer.observe(document.documentElement, {
+        attributes: true,
+        subtree: true,
+      });
+      window.addEventListener('load', () => observer.disconnect(), { once: true });
+    } catch {}
+  })();
+`;
 
 export default function RootLayout({
   children,
@@ -59,7 +108,10 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="pt-BR">
+    <html lang="pt-BR" suppressHydrationWarning>
+      <head>
+        <script dangerouslySetInnerHTML={{ __html: hydrationGuardScript }} />
+      </head>
       <body
         suppressHydrationWarning
         className={`${aeonik.variable} ${agrandirGrand.variable} bg-background text-foreground antialiased`}
