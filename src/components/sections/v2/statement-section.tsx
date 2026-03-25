@@ -64,11 +64,10 @@ export function StatementSection() {
           </span>
 
           <p
-            className="mt-8 text-architectural font-light leading-[1.12] text-foreground/95"
+            className="mt-8 font-sans text-architectural font-light leading-[1.12] text-foreground/95"
             style={{
               fontWeight: 300,
               letterSpacing: "-0.01em",
-              fontFamily: 'var(--font-body), "Aeonik", Arial, Helvetica, sans-serif',
             }}
             aria-label={MANIFESTO}
           >
@@ -86,7 +85,6 @@ export function StatementSection() {
                   style={{
                     opacity: 0.08,
                     fontWeight: 300,
-                    fontFamily: 'var(--font-body), "Aeonik", Arial, Helvetica, sans-serif',
                     color: isUnderlined ? "hsl(var(--secondary) / 0.9)" : undefined,
                     fontStyle: isUnderlined ? "italic" : "normal",
                   }}

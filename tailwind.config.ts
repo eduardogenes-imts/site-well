@@ -11,6 +11,11 @@ const config: Config = {
       },
     },
     extend: {
+      /* Manual de marca: Aeonik (corpo) + Agrandir Grand (títulos) via next/font em layout.tsx */
+      fontFamily: {
+        sans: ["var(--font-body)", "system-ui", "sans-serif"],
+        display: ["var(--font-display)", "system-ui", "sans-serif"],
+      },
       colors: {
         background: {
           DEFAULT: "hsl(var(--background))",

@@ -10,7 +10,7 @@ import { BRAND } from "@/lib/brand";
 const navItems = [
   { href: "/works", label: "Projetos", index: "01" },
   { href: "/process", label: "Processo", index: "02" },
-  { href: "/studio", label: "Estúdio", index: "03" },
+  { href: "/studio", label: "Quem somos", index: "03" },
   { href: "/contact", label: "Contato", index: "04" },
 ];
 
@@ -167,7 +167,7 @@ export function NavigationDrawer() {
               <Link
                 href={item.href}
                 className="font-extralight text-white transition-opacity hover:opacity-60"
-                style={{ fontSize: "clamp(2.5rem, 7vw, 6rem)", lineHeight: "1.1" }}
+                style={{ fontSize: "clamp(2.25rem, 7vw, 5.4rem)", lineHeight: "1.1" }}
                 onClick={() => setNavigationOpen(false)}
               >
                 {item.label}

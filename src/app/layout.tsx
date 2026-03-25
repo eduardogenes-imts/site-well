@@ -7,52 +7,24 @@ import { QueryProvider } from "@/components/providers/query-provider";
 import { SmoothScrollProvider } from "@/components/providers/SmoothScrollProvider";
 import { BRAND } from "@/lib/brand";
 
-/* Body font — Aeonik (brand manual) */
+/* Aeonik — manual: Light / Medium / Bold (TRIAL: Regular cobre 400 e 500) */
 const aeonik = localFont({
   src: [
-    {
-      path: "../fonts/AeonikTRIAL-Light.otf",
-      weight: "300",
-      style: "normal",
-    },
-    {
-      path: "../fonts/AeonikTRIAL-Regular.otf",
-      weight: "500",
-      style: "normal",
-    },
-    {
-      path: "../fonts/AeonikTRIAL-Regular.otf",
-      weight: "400",
-      style: "normal",
-    },
-    {
-      path: "../fonts/AeonikTRIAL-Bold.otf",
-      weight: "700",
-      style: "normal",
-    },
+    { path: "../fonts/AeonikTRIAL-Light.otf", weight: "300", style: "normal" },
+    { path: "../fonts/AeonikTRIAL-Regular.otf", weight: "400", style: "normal" },
+    { path: "../fonts/AeonikTRIAL-Regular.otf", weight: "500", style: "normal" },
+    { path: "../fonts/AeonikTRIAL-Bold.otf", weight: "700", style: "normal" },
   ],
   variable: "--font-body",
   display: "swap",
 });
 
-/* Display/title font — Agrandir Grand (brand manual) */
+/* Agrandir Grand — manual: títulos e destaques (Light + Heavy) */
 const agrandirGrand = localFont({
   src: [
-    {
-      path: "../fonts/Agrandir-GrandLight.otf",
-      weight: "300",
-      style: "normal",
-    },
-    {
-      path: "../fonts/Agrandir-GrandHeavy.otf",
-      weight: "700",
-      style: "normal",
-    },
-    {
-      path: "../fonts/Agrandir-GrandHeavy.otf",
-      weight: "800",
-      style: "normal",
-    },
+    { path: "../fonts/Agrandir-GrandLight.otf", weight: "300", style: "normal" },
+    { path: "../fonts/Agrandir-GrandHeavy.otf", weight: "700", style: "normal" },
+    { path: "../fonts/Agrandir-GrandHeavy.otf", weight: "800", style: "normal" },
   ],
   variable: "--font-display",
   display: "swap",
@@ -129,7 +101,7 @@ export default function RootLayout({
       </head>
       <body
         suppressHydrationWarning
-        className={`${aeonik.variable} ${agrandirGrand.variable} bg-background text-foreground antialiased`}
+        className={`${aeonik.variable} ${agrandirGrand.variable} bg-background font-sans text-foreground antialiased`}
       >
         <GlobalIntroLoader />
         <ArchitecturalGrid />

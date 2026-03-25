@@ -14,14 +14,21 @@ export function ProjectEvidence({ metrics }: ProjectEvidenceProps) {
         >
           Números
         </span>
-        <div className="mt-8 grid gap-8 md:grid-cols-3">
+        <div className="mt-8 grid grid-cols-1 gap-10 md:grid-cols-3 md:gap-x-12 md:gap-y-10 lg:gap-x-16">
           {metrics.map((metric, i) => (
             <div
               key={metric.label}
-              className={`reveal-rise flex flex-col gap-3 ${i > 0 ? "md:border-l md:pl-8" : ""}`}
+              className={`reveal-rise flex min-w-0 flex-col gap-3 ${i > 0 ? "md:border-l md:pl-8 lg:pl-10" : ""}`}
               style={i > 0 ? { borderColor: "hsl(var(--accent) / 0.2)" } : undefined}
             >
-              <span className="text-monumental font-extrabold text-foreground">
+              {/* monumental = vw da viewport inteira — em 3 colunas estoura; escala própria ao bloco */}
+              <span
+                className="block break-words font-extrabold leading-[0.95] tracking-tight text-foreground"
+                style={{
+                  fontSize: "clamp(2rem, 3.25vw, 4.5rem)",
+                  overflowWrap: "anywhere",
+                }}
+              >
                 {metric.value}
               </span>
               <span

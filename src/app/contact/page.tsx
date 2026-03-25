@@ -7,6 +7,14 @@ import { SiteFooter } from "@/components/layout/site-footer";
 import { useArchitecturalReveal } from "@/hooks/v2/use-architectural-reveal";
 import { BRAND } from "@/lib/brand";
 
+const PROJECT_TYPES = [
+  "Residencial",
+  "Comercial",
+  "Hospitalidade",
+  "Corporativo",
+  "Outro",
+] as const;
+
 export default function ContactPage() {
   const rootRef = useRef<HTMLElement>(null);
   const [submitState, setSubmitState] = useState<"idle" | "sent">("idle");
@@ -45,99 +53,167 @@ export default function ContactPage() {
     <div className="min-h-screen bg-background text-foreground">
       <SiteHeader />
       <main ref={rootRef}>
-        {/* Hero */}
-        <section className="flex min-h-[70vh] flex-col items-center justify-center px-8 pt-24 md:px-16 lg:px-24">
-          <span
-            className="reveal-illuminate text-micro uppercase tracking-[0.22em]"
-            style={{ color: "hsl(var(--accent))" }}
-          >
-            Contato
-          </span>
-          <Link
-            href={`mailto:${BRAND.email}`}
-            className="reveal-rise group mt-6 text-center text-architectural font-light text-foreground transition-opacity hover:opacity-60"
-          >
-            <span
-              className="border-b pb-2 transition-colors"
-              style={{ borderColor: "hsl(var(--accent) / 0.4)" }}
-            >
-              {BRAND.email}
-            </span>
-          </Link>
-
-          <Link
-            href={BRAND.whatsappUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="reveal-rise mt-4 text-micro uppercase tracking-[0.22em] transition-opacity hover:opacity-60"
-            style={{ color: "hsl(var(--accent))" }}
-          >
-            Falar no WhatsApp
-          </Link>
-
-          <div className="reveal-illuminate mt-12 flex flex-wrap justify-center gap-8">
-            <span className="text-micro uppercase tracking-[0.22em]" style={{ color: "hsl(var(--accent) / 0.6)" }}>
-              {BRAND.location}
-            </span>
-            <Link href={BRAND.instagramUrl} target="_blank" rel="noopener noreferrer" className="text-micro uppercase tracking-[0.22em] transition-opacity hover:opacity-60" style={{ color: "hsl(var(--accent) / 0.6)" }}>
-              Instagram
-            </Link>
-            <Link href={BRAND.pinterestUrl} target="_blank" rel="noopener noreferrer" className="text-micro uppercase tracking-[0.22em] transition-opacity hover:opacity-60" style={{ color: "hsl(var(--accent) / 0.6)" }}>
-              Pinterest
-            </Link>
-          </div>
-        </section>
-
-        {/* Form */}
-        <section className="px-8 pb-32 md:px-16 lg:px-24">
-          <form
-            className="mx-auto max-w-[500px] space-y-8"
-            aria-label="Formulário de contato"
-            onSubmit={handleSubmit}
-          >
-            <FormField label="Nome" name="name" />
-            <FormField label="E-mail" name="email" type="email" />
-            <FormField label="Tipo de projeto" name="project-type" />
-            <div>
-              <label
-                htmlFor="message"
-                className="mb-2 block text-micro uppercase tracking-[0.22em]"
+        <section className="px-8 pt-36 pb-24 md:px-16 md:pt-44 md:pb-32 lg:px-24">
+          <div className="mx-auto grid w-full max-w-[1800px] gap-12 md:grid-cols-2 md:gap-16 lg:gap-24">
+            {/* Left — Context */}
+            <div className="flex flex-col justify-center">
+              <span
+                className="reveal-illuminate text-micro uppercase tracking-[0.22em]"
                 style={{ color: "hsl(var(--accent))" }}
               >
-                Mensagem
-              </label>
-              <textarea
-                id="message"
-                name="message"
-                rows={4}
-                required
-                className="w-full resize-none border-0 border-b bg-transparent pb-3 text-sm text-foreground outline-none transition-colors focus:border-foreground"
-                style={{ borderColor: "hsl(var(--accent) / 0.3)" }}
+                Contato
+              </span>
+              <h1 className="reveal-rise mt-4 text-architectural font-light leading-[1.05] text-foreground">
+                Vamos conversar sobre o seu projeto.
+              </h1>
+              <p className="reveal-illuminate mt-4 max-w-[440px] text-body-lg text-muted-foreground">
+                Preencha o formulário ou entre em contato diretamente.
+              </p>
+
+              <div
+                className="reveal-draw mt-8 h-px w-full"
+                style={{ background: "hsl(var(--accent) / 0.3)" }}
               />
+
+              <div className="mt-8 flex flex-col gap-4">
+                <Link
+                  href={`mailto:${BRAND.email}`}
+                  className="reveal-illuminate group flex items-baseline gap-3 transition-opacity hover:opacity-60"
+                >
+                  <span
+                    className="shrink-0 text-micro uppercase tracking-[0.22em]"
+                    style={{ color: "hsl(var(--accent) / 0.5)" }}
+                  >
+                    E-mail
+                  </span>
+                  <span className="text-body-lg text-foreground">
+                    {BRAND.email}
+                  </span>
+                </Link>
+
+                <Link
+                  href={BRAND.whatsappUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="reveal-illuminate group flex items-baseline gap-3 transition-opacity hover:opacity-60"
+                >
+                  <span
+                    className="shrink-0 text-micro uppercase tracking-[0.22em]"
+                    style={{ color: "hsl(var(--accent) / 0.5)" }}
+                  >
+                    WhatsApp
+                  </span>
+                  <span className="text-body-lg text-foreground">
+                    +55 85 9620-2796
+                  </span>
+                </Link>
+
+                <div className="reveal-illuminate flex items-baseline gap-3">
+                  <span
+                    className="shrink-0 text-micro uppercase tracking-[0.22em]"
+                    style={{ color: "hsl(var(--accent) / 0.5)" }}
+                  >
+                    Localização
+                  </span>
+                  <span className="text-body-lg text-foreground">
+                    {BRAND.location}
+                  </span>
+                </div>
+              </div>
             </div>
 
-            <button
-              type="submit"
-              className="flex items-center gap-2 text-caption uppercase tracking-[0.18em] text-foreground transition-opacity hover:opacity-60"
-            >
-              Enviar no WhatsApp
-              <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
-                <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" strokeWidth="1" strokeLinecap="round" strokeLinejoin="round" />
-              </svg>
-            </button>
-
-            {submitState === "sent" ? (
-              <p
-                className="text-micro uppercase tracking-[0.22em]"
-                style={{ color: "hsl(var(--accent))" }}
+            {/* Right — Form */}
+            <div className="flex flex-col justify-center">
+              <form
+                className="space-y-6"
+                aria-label="Formulário de contato"
+                onSubmit={handleSubmit}
               >
-                Mensagem preparada. Confira a aba do WhatsApp.
-              </p>
-            ) : null}
-          </form>
+                <FormField label="Nome" name="name" />
+                <FormField label="E-mail" name="email" type="email" />
+
+                <div>
+                  <label
+                    htmlFor="project-type"
+                    className="mb-2 block text-micro uppercase tracking-[0.22em]"
+                    style={{ color: "hsl(var(--accent))" }}
+                  >
+                    Tipo de projeto
+                  </label>
+                  <select
+                    id="project-type"
+                    name="project-type"
+                    required
+                    defaultValue=""
+                    className="w-full cursor-pointer appearance-none border-0 border-b bg-transparent pb-3 text-caption text-foreground outline-none transition-colors focus:border-foreground"
+                    style={{ borderColor: "hsl(var(--accent) / 0.3)" }}
+                  >
+                    <option value="" disabled className="text-muted-foreground">
+                      Selecione
+                    </option>
+                    {PROJECT_TYPES.map((type) => (
+                      <option key={type} value={type}>
+                        {type}
+                      </option>
+                    ))}
+                  </select>
+                </div>
+
+                <div>
+                  <label
+                    htmlFor="message"
+                    className="mb-2 block text-micro uppercase tracking-[0.22em]"
+                    style={{ color: "hsl(var(--accent))" }}
+                  >
+                    Mensagem
+                  </label>
+                  <textarea
+                    id="message"
+                    name="message"
+                    rows={3}
+                    defaultValue="Gostaria de conversar sobre um projeto."
+                    className="w-full resize-none border-0 border-b bg-transparent pb-3 text-caption text-foreground outline-none transition-colors focus:border-foreground"
+                    style={{ borderColor: "hsl(var(--accent) / 0.3)" }}
+                  />
+                </div>
+
+                <button
+                  type="submit"
+                  className="group flex w-full items-center justify-center gap-3 border py-4 text-caption uppercase tracking-[0.18em] text-foreground transition-all hover:bg-foreground hover:text-background"
+                  style={{ borderColor: "hsl(var(--accent) / 0.4)" }}
+                >
+                  Enviar no WhatsApp
+                  <svg
+                    width="16"
+                    height="16"
+                    viewBox="0 0 16 16"
+                    fill="none"
+                    className="transition-transform group-hover:translate-x-1"
+                  >
+                    <path
+                      d="M3 8h10M9 4l4 4-4 4"
+                      stroke="currentColor"
+                      strokeWidth="1"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                    />
+                  </svg>
+                </button>
+
+                {submitState === "sent" ? (
+                  <p
+                    className="text-center text-micro uppercase tracking-[0.22em]"
+                    style={{ color: "hsl(var(--accent))" }}
+                  >
+                    Mensagem preparada. Confira a aba do WhatsApp.
+                  </p>
+                ) : null}
+              </form>
+            </div>
+          </div>
         </section>
       </main>
-      <SiteFooter />
+      <SiteFooter hideCta />
     </div>
   );
 }
@@ -165,7 +241,7 @@ function FormField({
         name={name}
         type={type}
         required
-        className="w-full border-0 border-b bg-transparent pb-3 text-sm text-foreground outline-none transition-colors focus:border-foreground"
+        className="w-full border-0 border-b bg-transparent pb-3 text-caption text-foreground outline-none transition-colors focus:border-foreground"
         style={{ borderColor: "hsl(var(--accent) / 0.3)" }}
       />
     </div>

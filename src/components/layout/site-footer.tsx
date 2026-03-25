@@ -7,7 +7,11 @@ import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { BRAND } from "@/lib/brand";
 
-export function SiteFooter() {
+type SiteFooterProps = {
+  hideCta?: boolean;
+};
+
+export function SiteFooter({ hideCta = false }: SiteFooterProps) {
   const footerRef = useRef<HTMLElement>(null);
 
   useLayoutEffect(() => {
@@ -76,59 +80,69 @@ export function SiteFooter() {
       ref={footerRef}
       className="relative z-10 mt-24 w-full bg-transparent text-foreground"
     >
-      <section className="relative flex min-h-[calc(100dvh-var(--header-height))] items-center px-8 md:px-16 lg:px-24">
-        <div className="mx-auto flex w-full max-w-[1800px] flex-col justify-between gap-16 md:flex-row md:items-end">
-          <div className="flex flex-col items-start">
-            <p
-              className="text-micro uppercase tracking-[0.22em]"
-              style={{ color: "hsl(var(--accent))" }}
-            >
-              Próximo passo
-            </p>
-            <h2 className="footer-primary-text mt-6 text-monumental font-light" style={{ color: "hsl(var(--foreground))" }}>
-              Vamos projetar.
-            </h2>
-            <Link
-              href={`mailto:${BRAND.email}`}
-              className="footer-primary-text group mt-8 inline-flex self-start text-architectural text-[0.97em] font-light opacity-80 transition-opacity hover:opacity-100"
-              style={{ color: "hsl(var(--foreground))" }}
-            >
-              <span className="border-b border-[hsl(var(--accent)/0.4)] pb-2 transition-all group-hover:border-[hsl(var(--accent))]">
-                {BRAND.email}
-              </span>
-            </Link>
-            <Link
-              href={BRAND.whatsappUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="footer-primary-text group mt-4 inline-flex self-start text-architectural text-[0.97em] font-light opacity-80 transition-opacity hover:opacity-100"
-              style={{ color: "hsl(var(--foreground))" }}
-            >
-              <span className="border-b border-[hsl(var(--accent)/0.4)] pb-2 transition-all group-hover:border-[hsl(var(--accent))]">
-                WhatsApp
-              </span>
-            </Link>
+      {!hideCta && (
+        <section className="relative flex min-h-[calc(100dvh-var(--header-height))] items-center px-8 md:px-16 lg:px-24">
+          <div className="mx-auto flex w-full max-w-[1800px] flex-col justify-between gap-16 md:flex-row md:items-end">
+            <div className="flex flex-col items-start">
+              <p
+                className="text-micro uppercase tracking-[0.22em]"
+                style={{ color: "hsl(var(--accent))" }}
+              >
+                Próximo passo
+              </p>
+              <h2 className="footer-primary-text mt-6 text-monumental font-light" style={{ color: "hsl(var(--foreground))" }}>
+                Vamos projetar.
+              </h2>
+              <Link
+                href={`mailto:${BRAND.email}`}
+                className="footer-primary-text group mt-8 inline-flex max-w-full self-start break-all font-light tracking-tight opacity-80 transition-opacity hover:opacity-100 sm:break-normal"
+                style={{
+                  color: "hsl(var(--foreground))",
+                  fontSize: "clamp(1.05rem, 2.1vw, 1.4rem)",
+                  lineHeight: 1.35,
+                }}
+              >
+                <span className="border-b border-[hsl(var(--accent)/0.4)] pb-2 transition-all group-hover:border-[hsl(var(--accent))]">
+                  {BRAND.email}
+                </span>
+              </Link>
+              <Link
+                href={BRAND.whatsappUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="footer-primary-text group mt-4 inline-flex self-start font-light tracking-tight opacity-80 transition-opacity hover:opacity-100"
+                style={{
+                  color: "hsl(var(--foreground))",
+                  fontSize: "clamp(1.05rem, 2.1vw, 1.4rem)",
+                  lineHeight: 1.35,
+                }}
+              >
+                <span className="border-b border-[hsl(var(--accent)/0.4)] pb-2 transition-all group-hover:border-[hsl(var(--accent))]">
+                  WhatsApp
+                </span>
+              </Link>
+            </div>
           </div>
-        </div>
 
-        <div
-          className="pointer-events-none absolute bottom-6 right-0 select-none md:bottom-8 md:right-0 lg:right-0"
-          style={{
-            opacity: 0.16,
-            transform: "translateX(14%)",
-          }}
-        >
-          <Image
-            src="/images/logos/brand/brand-7.svg"
-            alt="W.VIANA"
-            width={1920}
-            height={1080}
-            className="h-auto w-[clamp(24rem,50vw,68rem)]"
-            style={{ filter: "invert(1)" }}
-            priority
-          />
-        </div>
-      </section>
+          <div
+            className="pointer-events-none absolute bottom-6 right-0 select-none md:bottom-8 md:right-0 lg:right-0"
+            style={{
+              opacity: 0.16,
+              transform: "translateX(14%)",
+            }}
+          >
+            <Image
+              src="/images/logos/brand/brand-7.svg"
+              alt="W.VIANA"
+              width={1920}
+              height={1080}
+              className="h-auto w-[clamp(24rem,50vw,68rem)]"
+              style={{ filter: "invert(1)" }}
+              priority
+            />
+          </div>
+        </section>
+      )}
 
       <section className="relative flex flex-col overflow-hidden bg-transparent">
         <div
