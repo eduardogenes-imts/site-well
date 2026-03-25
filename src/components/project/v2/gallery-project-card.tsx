@@ -63,7 +63,7 @@ export function GalleryProjectCard({ project, index }: GalleryProjectCardProps) 
         <div className="md:w-[70%]">
           <Link href={`/projects/${project.slug}`} className="group block">
             {/* Image */}
-            <div className="reveal-curtain relative aspect-[16/10] w-full overflow-hidden">
+            <div className="reveal-curtain relative h-[55vh] w-full overflow-hidden">
               <Image
                 src={project.imageSrc}
                 alt={project.title}

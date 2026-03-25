@@ -64,7 +64,7 @@ export function SiteFooter() {
       ref={footerRef}
       className="relative z-10 mt-24 w-full bg-transparent text-foreground"
     >
-      <section className="relative flex min-h-[calc(100dvh-3.5rem)] items-center px-8 md:min-h-[calc(100dvh-4rem)] md:px-16 lg:px-24">
+      <section className="relative flex min-h-[calc(100dvh-var(--header-height))] items-center px-8 md:px-16 lg:px-24">
         <div className="mx-auto flex w-full max-w-[1800px] flex-col justify-between gap-16 md:flex-row md:items-end">
           <div className="flex flex-col">
             <p

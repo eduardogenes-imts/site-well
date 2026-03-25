@@ -4,6 +4,8 @@
 
 @layer base {
   :root {
+    --header-height: 3.5rem; /* h-14 — mobile */
+
     /* W.VIANA definitivo */
     /* #F2F2F2 */
     --background: 0 0% 95%;
@@ -30,6 +32,12 @@
     --grid-line: 186 174 164 / 0.08;
     --grid-line-dark: 255 255 255 / 0.04;
     --grid-columns: 12;
+  }
+
+  @media (min-width: 768px) {
+    :root {
+      --header-height: 4rem; /* md:h-16 — desktop */
+    }
   }
 
   * {

@@ -22,9 +22,12 @@ export function GalleryWalkSection() {
     let prevScrollY = window.scrollY;
     let dir: "down" | "up" = "down";
 
+    const getHeaderH = () =>
+      parseFloat(getComputedStyle(document.documentElement).getPropertyValue("--header-height")) *
+      parseFloat(getComputedStyle(document.documentElement).fontSize);
+
     const snap = (top: number) => {
-      const headerH =
-        (document.querySelector("header") as HTMLElement | null)?.offsetHeight ?? 64;
+      const headerH = getHeaderH();
       const target = window.scrollY + top - headerH;
       if (Math.abs(top - headerH) <= 24) return;
       getLenis()?.scrollTo(target, {
@@ -35,8 +38,7 @@ export function GalleryWalkSection() {
 
     const handleScrollEnd = () => {
       const viewH = window.innerHeight;
-      const headerH =
-        (document.querySelector("header") as HTMLElement | null)?.offsetHeight ?? 64;
+      const headerH = getHeaderH();
       const els = Array.from(section.querySelectorAll<HTMLElement>("[data-snap]"));
 
       if (dir === "down") {
@@ -101,8 +103,13 @@ export function GalleryWalkSection() {
     >
       <div className="mx-auto max-w-[1800px]">
         {projects.map((project, i) => (
-          <div key={project.slug} data-snap>
-            <GalleryProjectCard project={project} index={i} />
+          <div key={project.slug}>
+            <div
+              data-snap
+              className="min-h-[calc(100dvh-var(--header-height))]"
+            >
+              <GalleryProjectCard project={project} index={i} />
+            </div>
             {i < projects.length - 1 && <Void height="12vh" />}
           </div>
         ))}
