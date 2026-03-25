@@ -2,138 +2,127 @@
 
 import { useRef } from "react";
 import Image from "next/image";
-import { SiteFooter } from "@/components/layout/site-footer";
 import { SiteHeader } from "@/components/layout/site-header";
-import { useScrollDrivenReveal } from "@/hooks/use-scroll-driven-reveal";
+import { SiteFooter } from "@/components/layout/site-footer";
+import { Void } from "@/components/ui/void";
+import { useArchitecturalReveal } from "@/hooks/v2/use-architectural-reveal";
+
+const capabilities = [
+  "Projeto Arquitetonico",
+  "Interiores & Materialidade",
+  "Integracao Marca-Espaco",
+  "Supervisao de Obra",
+];
 
 export default function StudioPage() {
   const rootRef = useRef<HTMLElement>(null);
-  useScrollDrivenReveal(rootRef);
+  useArchitecturalReveal(rootRef);
 
   return (
     <div className="min-h-screen bg-background text-foreground">
       <SiteHeader />
       <main ref={rootRef}>
-        {/* Hero */}
-        <section className="mx-auto max-w-[1800px] px-6 pt-28 pb-16 md:px-10 md:pt-36 md:pb-24 lg:px-14">
-          <div className="grid gap-8 md:grid-cols-12 md:gap-12">
-            <p className="js-reveal text-[11px] uppercase tracking-[0.2em] text-muted-foreground md:col-span-2">
-              Estúdio
+        {/* 1. The Name */}
+        <section className="flex h-screen flex-col items-center justify-center">
+          <h1 className="reveal-rise text-monumental font-extralight uppercase text-foreground" style={{ letterSpacing: "0.15em" }}>
+            W.VIANA
+          </h1>
+          <p className="reveal-illuminate mt-4 text-micro uppercase tracking-[0.22em]" style={{ color: "hsl(var(--accent))" }}>
+            Arquitetura e Interiores / Sao Paulo
+          </p>
+        </section>
+
+        {/* 2. The Portrait */}
+        <section className="reveal-curtain relative h-[80vh] w-full overflow-hidden">
+          <Image
+            src="/images/studio-portrait.jpg"
+            alt="W.VIANA Estudio"
+            fill
+            sizes="100vw"
+            className="object-cover"
+          />
+        </section>
+
+        <Void height="15vh" />
+
+        {/* 3. The Position */}
+        <section className="px-8 py-24 md:px-16 md:py-32 lg:px-24">
+          <div className="mx-auto max-w-[1800px]">
+            <span className="reveal-illuminate text-micro uppercase tracking-[0.22em]" style={{ color: "hsl(var(--accent))" }}>
+              Sobre
+            </span>
+            <p className="reveal-illuminate mt-8 max-w-[900px] text-architectural font-light leading-[1.1] text-foreground">
+              Projetamos espacos atemporais com estrategia, precisao e clareza emocional.
             </p>
-            <div className="space-y-6 md:col-span-10 lg:col-span-8">
-              <h1 className="js-reveal text-[clamp(2rem,5vw,4.8rem)] font-semibold leading-[1.02] tracking-[-0.02em]">
-                Projetamos espaços atemporais com estratégia, precisão e clareza emocional.
-              </h1>
-              <p className="js-reveal max-w-2xl text-sm leading-relaxed text-muted-foreground md:text-base">
-                Fundada pelo arquiteto e urbanista Wellington Viana, a W.VIANA é um
-                estúdio independente que atua em arquitetura, interiores e ambientes
+            <div className="mt-12 max-w-[680px] space-y-4">
+              <p className="reveal-illuminate text-body-lg text-muted-foreground">
+                Fundada pelo arquiteto e urbanista Wellington Viana, a W.VIANA e um
+                estudio independente que atua em arquitetura, interiores e ambientes
                 de marca. Traduzimos contexto em sistemas espaciais claros que se
-                sentem contemporâneos e humanos.
+                sentem contemporaneos e humanos.
+              </p>
+              <p className="reveal-illuminate text-body-lg text-muted-foreground">
+                Priorizamos contencao, detalhe e clareza acima do ruido visual. Cada
+                decisao e avaliada pela funcao, longevidade e relevancia emocional.
               </p>
             </div>
           </div>
         </section>
 
-        {/* Portrait image */}
-        <section className="mx-auto max-w-[1800px] px-6 md:px-10 lg:px-14">
-          <div className="js-reveal relative aspect-[21/9] w-full overflow-hidden">
-            <Image
-              src="/images/studio-portrait.jpg"
-              alt="W.VIANA Estúdio"
-              fill
-              sizes="100vw"
-              className="object-cover"
-            />
+        <Void height="8vh" />
+
+        {/* 4. The Numbers */}
+        <section className="px-8 py-16 md:px-16 md:py-24 lg:px-24">
+          <div className="mx-auto grid max-w-[1800px] gap-8 md:grid-cols-3">
+            {[
+              { value: "2018", label: "Fundacao" },
+              { value: "48+", label: "Projetos" },
+              { value: "Brasil", label: "Atuacao" },
+            ].map((stat, i) => (
+              <div
+                key={stat.label}
+                className="reveal-rise flex flex-col items-start gap-2"
+                style={{
+                  borderLeft: i > 0 ? "1px solid hsl(var(--accent) / 0.2)" : "none",
+                  paddingLeft: i > 0 ? "2rem" : "0",
+                }}
+              >
+                <span
+                  className="font-semibold leading-none"
+                  style={{
+                    fontSize: "clamp(3rem, 8vw, 8rem)",
+                    color: "hsl(var(--accent) / 0.2)",
+                  }}
+                >
+                  {stat.value}
+                </span>
+                <span className="text-micro uppercase tracking-[0.22em] text-foreground">
+                  {stat.label}
+                </span>
+              </div>
+            ))}
           </div>
         </section>
 
-        {/* Stats */}
-        <section className="mx-auto max-w-[1800px] px-6 py-16 md:px-10 md:py-24 lg:px-14">
-          <div className="grid gap-8 border-y border-border/40 py-10 md:grid-cols-3 md:py-14">
-            <article className="js-card space-y-2">
-              <p className="text-[10px] uppercase tracking-[0.16em] text-muted-foreground">
-                Fundação
-              </p>
-              <p className="text-3xl font-semibold tracking-[-0.02em]">2018</p>
-              <p className="text-sm text-muted-foreground">
-                Sete anos de atuação em projetos transformadores.
-              </p>
-            </article>
-            <article className="js-card space-y-2">
-              <p className="text-[10px] uppercase tracking-[0.16em] text-muted-foreground">
-                Projetos entregues
-              </p>
-              <p className="text-3xl font-semibold tracking-[-0.02em]">48+</p>
-              <p className="text-sm text-muted-foreground">
-                Residencial, comercial, hospitalidade e corporativo.
-              </p>
-            </article>
-            <article className="js-card space-y-2">
-              <p className="text-[10px] uppercase tracking-[0.16em] text-muted-foreground">
-                Atuação
-              </p>
-              <p className="text-3xl font-semibold tracking-[-0.02em]">Brasil</p>
-              <p className="text-sm text-muted-foreground">
-                São Paulo, Rio de Janeiro, Brasília e Curitiba.
-              </p>
-            </article>
-          </div>
-        </section>
+        <Void height="8vh" />
 
-        {/* Capabilities */}
-        <section className="mx-auto max-w-[1800px] px-6 pb-16 md:px-10 md:pb-24 lg:px-14">
-          <div className="grid gap-8 md:grid-cols-12 md:gap-10">
-            <p className="js-reveal text-[11px] uppercase tracking-[0.2em] text-muted-foreground md:col-span-2">
-              Competências
-            </p>
-            <div className="grid gap-6 md:col-span-10 md:grid-cols-2">
-              <article className="js-reveal space-y-3 border-t border-border/40 pt-4">
-                <h2 className="text-xl font-semibold">Projeto Arquitetônico</h2>
-                <p className="text-sm leading-relaxed text-muted-foreground">
-                  Estratégia conceitual, orientação de viabilidade e alinhamento
-                  detalhado do projeto nas fases de planejamento e execução.
-                </p>
-              </article>
-              <article className="js-reveal space-y-3 border-t border-border/40 pt-4">
-                <h2 className="text-xl font-semibold">Interiores & Materialidade</h2>
-                <p className="text-sm leading-relaxed text-muted-foreground">
-                  Sistemas de interiores, coordenação de mobiliário e curadoria
-                  de materiais para resultados sensoriais coesos.
-                </p>
-              </article>
-              <article className="js-reveal space-y-3 border-t border-border/40 pt-4">
-                <h2 className="text-xl font-semibold">Integração Marca-Espaço</h2>
-                <p className="text-sm leading-relaxed text-muted-foreground">
-                  Tradução da narrativa da marca em pontos de contato espaciais,
-                  sinalização e momentos experienciais.
-                </p>
-              </article>
-              <article className="js-reveal space-y-3 border-t border-border/40 pt-4">
-                <h2 className="text-xl font-semibold">Supervisão de Obra</h2>
-                <p className="text-sm leading-relaxed text-muted-foreground">
-                  Governança de design, alinhamento com fornecedores e revisões de
-                  qualidade durante documentação e construção.
-                </p>
-              </article>
-            </div>
-          </div>
-        </section>
-
-        {/* Values */}
-        <section className="mx-auto max-w-[1800px] px-6 pb-20 md:px-10 md:pb-28 lg:px-14">
-          <div className="grid gap-6 border-t border-border/40 pt-10 md:grid-cols-12 md:gap-10">
-            <p className="js-reveal text-[11px] uppercase tracking-[0.2em] text-muted-foreground md:col-span-2">
-              Valores
-            </p>
-            <div className="space-y-4 md:col-span-10 lg:col-span-8">
-              <p className="js-reveal text-base leading-relaxed text-foreground/90 md:text-lg">
-                Priorizamos contenção, detalhe e clareza acima do ruído visual. Cada
-                decisão é avaliada pela função, longevidade e relevância emocional.
-              </p>
-              <p className="js-reveal text-sm leading-relaxed text-muted-foreground md:text-base">
-                Nosso processo é colaborativo e transparente, equilibrando ambição
-                projetual com as realidades do projeto, cronograma e orçamento.
-              </p>
+        {/* 5. The Capabilities */}
+        <section className="px-8 pb-32 md:px-16 lg:px-24">
+          <div className="mx-auto max-w-[1800px]">
+            <span className="reveal-illuminate text-micro uppercase tracking-[0.22em]" style={{ color: "hsl(var(--accent))" }}>
+              Competencias
+            </span>
+            <div className="mt-8">
+              {capabilities.map((cap) => (
+                <div
+                  key={cap}
+                  className="reveal-rise border-t py-5"
+                  style={{ borderColor: "hsl(var(--accent) / 0.15)" }}
+                >
+                  <span className="text-body-lg text-foreground">{cap}</span>
+                </div>
+              ))}
+              <div className="border-t" style={{ borderColor: "hsl(var(--accent) / 0.15)" }} />
             </div>
           </div>
         </section>

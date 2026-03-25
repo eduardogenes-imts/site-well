@@ -1,17 +1,34 @@
 import Link from "next/link";
-import { buttonVariants } from "@/components/ui/button";
-import { cn } from "@/lib/utils";
 
 export default function NotFound() {
   return (
-    <main className="mx-auto flex min-h-[70vh] w-full max-w-3xl flex-col items-center justify-center gap-5 px-6 text-center">
-      <p className="text-xs font-semibold uppercase tracking-[0.22em] text-muted-foreground">404</p>
-      <h1 className="text-balance text-4xl font-semibold leading-tight md:text-5xl">Página não encontrada</h1>
-      <p className="max-w-xl text-base text-muted-foreground md:text-lg">
-        O conteúdo que você tentou acessar não está disponível no momento.
+    <main className="flex min-h-screen flex-col items-center justify-center">
+      {/* Watermark */}
+      <span
+        className="pointer-events-none select-none font-bold leading-none text-foreground/[0.04]"
+        style={{ fontSize: "clamp(8rem, 15vw, 20rem)" }}
+      >
+        404
+      </span>
+
+      <p className="mt-4 text-caption uppercase tracking-[0.18em] text-foreground">
+        Pagina nao encontrada
       </p>
-      <Link href="/" className={cn(buttonVariants(), "w-fit")}>
-        Voltar para a home
+
+      <Link
+        href="/"
+        className="mt-6 flex items-center gap-2 text-caption uppercase tracking-[0.18em] text-foreground transition-opacity hover:opacity-60"
+      >
+        Voltar
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+          <path
+            d="M3 8h10M9 4l4 4-4 4"
+            stroke="currentColor"
+            strokeWidth="1"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+          />
+        </svg>
       </Link>
     </main>
   );
