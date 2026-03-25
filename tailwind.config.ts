@@ -7,12 +7,15 @@ const config: Config = {
       center: true,
       padding: "1.5rem",
       screens: {
-        "2xl": "1280px",
+        "2xl": "1400px",
       },
     },
     extend: {
       colors: {
-        background: "hsl(var(--background))",
+        background: {
+          DEFAULT: "hsl(var(--background))",
+          warm: "hsl(var(--background-warm))",
+        },
         foreground: "hsl(var(--foreground))",
         card: {
           DEFAULT: "hsl(var(--card))",
@@ -30,9 +33,35 @@ const config: Config = {
           DEFAULT: "hsl(var(--muted))",
           foreground: "hsl(var(--muted-foreground))",
         },
+        accent: {
+          DEFAULT: "hsl(var(--accent))",
+          foreground: "hsl(var(--accent-foreground))",
+        },
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
         ring: "hsl(var(--ring))",
+      },
+      fontSize: {
+        monumental: [
+          "clamp(4rem, 12vw, 14rem)",
+          { lineHeight: "0.88", letterSpacing: "-0.04em" },
+        ],
+        architectural: [
+          "clamp(2.5rem, 6vw, 7rem)",
+          { lineHeight: "0.95", letterSpacing: "-0.03em" },
+        ],
+        "body-lg": [
+          "clamp(1.1rem, 1.5vw, 1.4rem)",
+          { lineHeight: "1.65" },
+        ],
+        caption: [
+          "0.6875rem",
+          { lineHeight: "1.3", letterSpacing: "0.18em" },
+        ],
+        micro: [
+          "0.5625rem",
+          { lineHeight: "1.2", letterSpacing: "0.22em" },
+        ],
       },
       borderRadius: {
         lg: "var(--radius)",

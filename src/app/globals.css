@@ -4,23 +4,29 @@
 
 @layer base {
   :root {
-    /* W.VIANA brand palette: #F2F2F2 / #000000 / #BAAEA4 */
-    --background: 0 0% 95%;
+    /* W.VIANA v2 — "O Edificio Digital" */
+    --background: 0 0% 100%;
+    --background-warm: 0 0% 95%;
     --foreground: 0 0% 0%;
-    --card: 0 0% 95%;
+    --card: 0 0% 100%;
     --card-foreground: 0 0% 0%;
     --primary: 0 0% 0%;
-    --primary-foreground: 0 0% 95%;
+    --primary-foreground: 0 0% 100%;
     --secondary: 27 12% 69%;
     --secondary-foreground: 0 0% 0%;
     --muted: 0 0% 92%;
     --muted-foreground: 0 0% 35%;
     --accent: 27 12% 69%;
     --accent-foreground: 0 0% 100%;
-    --border: 0 0% 82%;
-    --input: 0 0% 82%;
+    --border: 0 0% 88%;
+    --input: 0 0% 88%;
     --ring: 0 0% 0%;
     --radius: 0rem;
+
+    /* Architectural grid tokens */
+    --grid-line: 186 161 144 / 0.08;
+    --grid-line-dark: 255 255 255 / 0.04;
+    --grid-columns: 12;
   }
 
   * {
@@ -46,60 +52,78 @@
     @apply text-inherit no-underline;
   }
 
-  /* Smooth scroll-linked (scrub) — ensures reverse on scroll up */
   html {
     scroll-behavior: auto;
   }
 }
 
 @layer components {
-  /* ── Intro loader ── */
+  /* ── v2 Intro loader — "Entrar no Edificio" ── */
   .intro-loader-overlay {
     position: fixed;
     inset: 0;
     z-index: 80;
-    display: grid;
-    place-content: center;
-    gap: 0.5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0;
     background: hsl(var(--foreground));
-    color: hsl(var(--background));
+    color: hsl(0 0% 100%);
     pointer-events: none;
+  }
+
+  .intro-loader-line {
+    width: 0;
+    height: 1px;
+    background: hsl(var(--accent));
   }
 
   .intro-loader-logo {
     text-align: center;
-    font-size: clamp(1.4rem, 4vw, 2.4rem);
-    font-weight: 600;
-    letter-spacing: 0.12em;
+    font-size: clamp(3rem, 10vw, 10rem);
+    font-weight: 200;
+    letter-spacing: 0.08em;
     text-transform: uppercase;
-    line-height: 1;
+    line-height: 0.88;
+    margin-bottom: 0.5rem;
   }
 
   .intro-loader-label {
     margin: 0;
     text-align: center;
     text-transform: uppercase;
-    letter-spacing: 0.2em;
-    font-size: 0.62rem;
-    opacity: 0.8;
+    letter-spacing: 0.22em;
+    font-size: 0.5625rem;
+    color: hsl(var(--accent));
   }
 
-  .intro-loader-progress {
-    text-align: center;
-    font-size: clamp(1.8rem, 5vw, 3rem);
-    letter-spacing: -0.02em;
-    font-weight: 600;
-    line-height: 1;
+  .intro-loader-top,
+  .intro-loader-bottom {
+    position: fixed;
+    left: 0;
+    right: 0;
+    height: 50vh;
+    background: hsl(var(--foreground));
+    z-index: 79;
   }
 
-  /* ── Page transitions ── */
+  .intro-loader-top {
+    top: 0;
+  }
+
+  .intro-loader-bottom {
+    bottom: 0;
+  }
+
+  /* ── v2 Page transitions — "A Cortina" ── */
   .page-transition-overlay {
     position: fixed;
     inset: 0;
     z-index: 50;
     pointer-events: none;
-    transform-origin: bottom;
-    background-color: hsl(var(--foreground));
+    transform-origin: left;
+    background-color: hsl(var(--accent));
   }
 
   .page-transition-content {
@@ -107,25 +131,28 @@
     z-index: 10;
   }
 
-  /* ── GPU-accelerated animation targets ── */
-  .js-reveal,
-  .js-card,
-  .js-parallax-image {
+  /* ── v2 Architectural reveal animations ── */
+  .reveal-illuminate {
+    will-change: opacity;
+  }
+
+  .reveal-rise {
     will-change: transform, opacity;
     transform: translateZ(0);
   }
 
-  .js-blur-reveal,
-  .js-scale-reveal,
-  .js-slide-left,
-  .js-slide-right,
-  .js-scroll-scale {
-    will-change: transform, opacity, filter;
-    transform: translateZ(0);
+  .reveal-curtain {
+    will-change: clip-path;
   }
 
-  .js-section-fade {
-    will-change: opacity, transform;
+  .reveal-draw {
+    will-change: transform;
+    transform-origin: left;
+  }
+
+  .reveal-stagger {
+    will-change: transform, opacity;
+    transform: translateZ(0);
   }
 
   /* ── Split text line-by-line reveal ── */
@@ -138,42 +165,4 @@
     display: block;
   }
 
-  .js-line-reveal .js-split-line {
-    will-change: transform;
-    transform: translateZ(0);
-  }
-
-  /* ── New: Studio intro animations ── */
-  .si-reveal,
-  .si-image {
-    will-change: transform, opacity;
-    transform: translateZ(0);
-  }
-
-  .si-headline-line {
-    will-change: transform, opacity;
-    transform: translateZ(0);
-  }
-
-  /* ── New: Vision panel reveals ── */
-  .vp-reveal {
-    will-change: transform, opacity;
-    transform: translateZ(0);
-  }
-
-  /* ── New: Organic gallery items ── */
-  .og-item {
-    will-change: transform, opacity;
-    transform: translateZ(0);
-  }
-
-  /* ── New: Projects showcase ── */
-  .pw-bracket-l,
-  .pw-bracket-r,
-  .pw-title,
-  .pw-image,
-  .pw-meta {
-    will-change: transform, opacity;
-    transform: translateZ(0);
-  }
 }
