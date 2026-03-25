@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
+import Image from "next/image";
 import gsap from "@/lib/gsap";
 
 const INTRO_KEY = "wviana:intro-played";
@@ -9,7 +10,7 @@ export function GlobalIntroLoader() {
   const [isVisible, setIsVisible] = useState(false);
   const overlayRef = useRef<HTMLDivElement>(null);
   const lineRef = useRef<HTMLDivElement>(null);
-  const logoRef = useRef<HTMLSpanElement>(null);
+  const logoRef = useRef<HTMLDivElement>(null);
   const labelRef = useRef<HTMLSpanElement>(null);
   const topRef = useRef<HTMLDivElement>(null);
   const bottomRef = useRef<HTMLDivElement>(null);
@@ -101,9 +102,16 @@ export function GlobalIntroLoader() {
         className="intro-loader-overlay"
         aria-hidden="true"
       >
-        <span ref={logoRef} className="intro-loader-logo">
-          W.
-        </span>
+        <div ref={logoRef} className="intro-loader-logo">
+          <Image
+            src="/images/logos/brand/brand-7.svg"
+            alt="W.VIANA"
+            width={1920}
+            height={1080}
+            className="h-14 w-auto invert md:h-16"
+            priority
+          />
+        </div>
         <div ref={lineRef} className="intro-loader-line" />
         <span ref={labelRef} className="intro-loader-label mt-3">
           Arquitetura | Interiores

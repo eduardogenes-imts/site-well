@@ -2,6 +2,7 @@
 
 import { useLayoutEffect, useRef } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { BRAND } from "@/lib/brand";
@@ -77,7 +78,7 @@ export function SiteFooter() {
     >
       <section className="relative flex min-h-[calc(100dvh-var(--header-height))] items-center px-8 md:px-16 lg:px-24">
         <div className="mx-auto flex w-full max-w-[1800px] flex-col justify-between gap-16 md:flex-row md:items-end">
-          <div className="flex flex-col">
+          <div className="flex flex-col items-start">
             <p
               className="text-micro uppercase tracking-[0.22em]"
               style={{ color: "hsl(var(--accent))" }}
@@ -85,11 +86,11 @@ export function SiteFooter() {
               Próximo passo
             </p>
             <h2 className="footer-primary-text mt-6 text-monumental font-light" style={{ color: "hsl(var(--foreground))" }}>
-              Vamos conversar.
+              Vamos projetar.
             </h2>
             <Link
               href={`mailto:${BRAND.email}`}
-              className="footer-primary-text group mt-8 text-architectural font-light opacity-80 transition-opacity hover:opacity-100"
+              className="footer-primary-text group mt-8 inline-flex self-start text-architectural text-[0.97em] font-light opacity-80 transition-opacity hover:opacity-100"
               style={{ color: "hsl(var(--foreground))" }}
             >
               <span className="border-b border-[hsl(var(--accent)/0.4)] pb-2 transition-all group-hover:border-[hsl(var(--accent))]">
@@ -100,7 +101,7 @@ export function SiteFooter() {
               href={BRAND.whatsappUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="footer-primary-text group mt-4 text-architectural font-light opacity-80 transition-opacity hover:opacity-100"
+              className="footer-primary-text group mt-4 inline-flex self-start text-architectural text-[0.97em] font-light opacity-80 transition-opacity hover:opacity-100"
               style={{ color: "hsl(var(--foreground))" }}
             >
               <span className="border-b border-[hsl(var(--accent)/0.4)] pb-2 transition-all group-hover:border-[hsl(var(--accent))]">
@@ -108,13 +109,24 @@ export function SiteFooter() {
               </span>
             </Link>
           </div>
+        </div>
 
-          <span
-            className="footer-primary-text select-none font-bold leading-none opacity-5"
-            style={{ color: "hsl(var(--foreground))", fontSize: "clamp(8rem, 22vw, 26rem)", letterSpacing: "0.1em" }}
-          >
-            W.
-          </span>
+        <div
+          className="pointer-events-none absolute bottom-6 right-0 select-none md:bottom-8 md:right-0 lg:right-0"
+          style={{
+            opacity: 0.16,
+            transform: "translateX(14%)",
+          }}
+        >
+          <Image
+            src="/images/logos/brand/brand-7.svg"
+            alt="W.VIANA"
+            width={1920}
+            height={1080}
+            className="h-auto w-[clamp(24rem,50vw,68rem)]"
+            style={{ filter: "invert(1)" }}
+            priority
+          />
         </div>
       </section>
 

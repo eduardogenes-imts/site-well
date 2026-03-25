@@ -3,8 +3,8 @@
 import { useEffect, useState } from "react";
 import { createPortal } from "react-dom";
 import Link from "next/link";
+import Image from "next/image";
 import { useUiStore } from "@/store/use-ui-store";
-import { WMonogram } from "@/components/ui/w-monogram";
 import { NavigationDrawer } from "./navigation-drawer";
 
 export function SiteHeader() {
@@ -63,7 +63,7 @@ export function SiteHeader() {
   const headerContent = (
     <>
       <header
-        className="fixed inset-x-0 top-0 z-[9999]"
+        className="fixed inset-x-0 top-0 z-[2147483640]"
         style={{
           borderBottom: scrolled && !isNavigationOpen
             ? useLightForeground
@@ -79,16 +79,20 @@ export function SiteHeader() {
           transition: "border-color 0.6s ease, background-color 0.6s ease, backdrop-filter 0.6s ease",
         }}
       >
-        <div className="mx-auto flex h-14 max-w-[1800px] items-center justify-between px-8 md:h-16 md:px-16 lg:px-24">
+        <div className="mx-auto flex h-12 max-w-[1800px] items-center justify-between px-8 md:h-14 md:px-16 lg:px-24">
           {/* Logo mark */}
           <Link
             href="/"
-            className="-m-2 p-2 transition-opacity duration-500 hover:opacity-60"
+            className="-m-2 relative z-[2147483646] flex items-center overflow-visible p-0 transition-opacity duration-500 hover:opacity-60"
             aria-label="W.VIANA — Início"
           >
-            <WMonogram
-              size={28}
-              color={interactiveColor}
+            <Image
+              src="/images/logos/brand/Prancheta 7_1.svg"
+              alt="W.VIANA Arquitetura de Interiores"
+              width={1920}
+              height={1080}
+              className="relative z-[2147483647] h-auto w-[10rem] max-h-[2.75rem] object-contain md:w-[12rem] md:max-h-[3.25rem] lg:w-[14rem]"
+              priority
             />
           </Link>
 

@@ -91,13 +91,28 @@ const hydrationGuardScript = `
           el.removeAttribute('bis_skin_checked');
         });
       };
+
+      // Limpeza imediata (antes da hidratação)
       clean();
+
+      // Rodadas curtas para pegar injeções tardias de extensões
+      let runs = 0;
+      const maxRuns = 120; // ~6s
+      const timer = setInterval(() => {
+        clean();
+        runs += 1;
+        if (runs >= maxRuns) clearInterval(timer);
+      }, 50);
+
       const observer = new MutationObserver(() => clean());
       observer.observe(document.documentElement, {
         attributes: true,
+        childList: true,
         subtree: true,
       });
-      window.addEventListener('load', () => observer.disconnect(), { once: true });
+
+      // Desliga o observer depois da janela crítica de hidratação
+      setTimeout(() => observer.disconnect(), 10000);
     } catch {}
   })();
 `;

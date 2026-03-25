@@ -1,10 +1,11 @@
 "use client";
 
 import { useRef, useLayoutEffect, useMemo } from "react";
-import gsap, { ScrollTrigger } from "@/lib/gsap";
+import gsap from "@/lib/gsap";
 
 const MANIFESTO =
-  "Projetamos a pausa. O silêncio entre as paredes. O vazio que dá sentido ao espaço.";
+  "Projetamos o sentir. O conforto entre as paredes. O espaço reflete quem você é.";
+const UNDERLINED_WORDS = new Set(["sentir", "conforto", "você"]);
 
 export function StatementSection() {
   const sectionRef = useRef<HTMLElement>(null);
@@ -28,7 +29,6 @@ export function StatementSection() {
     }
 
     const ctx = gsap.context(() => {
-      // Pin section while words illuminate one by one
       const tl = gsap.timeline({
         scrollTrigger: {
           trigger: section,
@@ -41,7 +41,7 @@ export function StatementSection() {
 
       wordsRef.current.forEach((wordEl) => {
         if (!wordEl) return;
-        tl.to(wordEl, { opacity: 1, duration: 1 }, "+=0.2");
+        tl.to(wordEl, { opacity: 1, duration: 1 }, "+=0.06");
       });
     }, section);
 
@@ -64,22 +64,38 @@ export function StatementSection() {
           </span>
 
           <p
-            className="mt-8 text-architectural font-light leading-[1.1] text-foreground"
+            className="mt-8 text-architectural font-light leading-[1.12] text-foreground/95"
+            style={{
+              fontWeight: 300,
+              letterSpacing: "-0.01em",
+              fontFamily: 'var(--font-body), "Aeonik", Arial, Helvetica, sans-serif',
+            }}
             aria-label={MANIFESTO}
           >
-            {words.map((word, i) => (
-              <span
-                key={i}
-                ref={(el) => {
-                  if (el) wordsRef.current[i] = el;
-                }}
-                className="inline-block mr-[0.3em]"
-                style={{ opacity: 0.08 }}
-                aria-hidden="true"
-              >
-                {word}
-              </span>
-            ))}
+            {words.map((word, i) => {
+              const normalized = word.replace(/[.,!?;:]/g, "").toLowerCase();
+              const isUnderlined = UNDERLINED_WORDS.has(normalized);
+
+              return (
+                <span
+                  key={i}
+                  ref={(el) => {
+                    if (el) wordsRef.current[i] = el;
+                  }}
+                  className="inline-block mr-[0.3em]"
+                  style={{
+                    opacity: 0.08,
+                    fontWeight: 300,
+                    fontFamily: 'var(--font-body), "Aeonik", Arial, Helvetica, sans-serif',
+                    color: isUnderlined ? "hsl(var(--secondary) / 0.9)" : undefined,
+                    fontStyle: isUnderlined ? "italic" : "normal",
+                  }}
+                  aria-hidden="true"
+                >
+                  {word}
+                </span>
+              );
+            })}
           </p>
 
           <p
