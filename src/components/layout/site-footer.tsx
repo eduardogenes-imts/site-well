@@ -41,6 +41,11 @@ export function SiteFooter() {
         primaryText.forEach((el) => {
           el.style.color = textColor;
         });
+
+        document.documentElement.style.setProperty("--footer-dark-progress", String(clamped));
+        window.dispatchEvent(
+          new CustomEvent("footer-theme-progress", { detail: { progress: clamped } }),
+        );
       };
 
       setProgress(0);
@@ -56,7 +61,13 @@ export function SiteFooter() {
       });
     }, footer);
 
-    return () => ctx.revert();
+    return () => {
+      ctx.revert();
+      document.documentElement.style.setProperty("--footer-dark-progress", "0");
+      window.dispatchEvent(
+        new CustomEvent("footer-theme-progress", { detail: { progress: 0 } }),
+      );
+    };
   }, []);
 
   return (
