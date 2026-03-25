@@ -16,56 +16,50 @@ export function PageTransition({ children }: Readonly<PageTransitionProps>) {
   useLayoutEffect(() => {
     const root = rootRef.current;
     const overlay = overlayRef.current;
-
-    if (!root || !overlay) {
-      return;
-    }
+    if (!root || !overlay) return;
 
     const prefersReducedMotion = window.matchMedia(
       "(prefers-reduced-motion: reduce)",
     ).matches;
 
     if (prefersReducedMotion) {
-      gsap.set(root, { autoAlpha: 1, y: 0, filter: "blur(0px)" });
-      gsap.set(overlay, { autoAlpha: 0, scaleY: 0 });
+      gsap.set(root, { autoAlpha: 1 });
+      gsap.set(overlay, { scaleX: 0 });
       return;
     }
 
-    const timeline = gsap.timeline({ defaults: { ease: "power3.out" } });
+    const tl = gsap.timeline();
 
-    timeline
-      .set(overlay, { transformOrigin: "bottom" })
-      .fromTo(
-        overlay,
-        { scaleY: 1, autoAlpha: 1 },
-        { scaleY: 0, autoAlpha: 0, duration: 0.85, ease: "power4.inOut" },
-      )
+    // "A Cortina" — taupe wipe left-to-right, then exit
+    tl.set(overlay, { transformOrigin: "left", scaleX: 1, autoAlpha: 1 })
+      .to(overlay, {
+        transformOrigin: "right",
+        scaleX: 0,
+        duration: 0.7,
+        ease: "power4.inOut",
+        delay: 0.15,
+      })
       .fromTo(
         root,
-        { autoAlpha: 0, y: 18, filter: "blur(6px)" },
-        { autoAlpha: 1, y: 0, filter: "blur(0px)", duration: 0.75, ease: "power3.out" },
-        "<0.15",
+        { autoAlpha: 0 },
+        { autoAlpha: 1, duration: 0.5, ease: "power2.out" },
+        "<0.1",
       );
 
     return () => {
-      timeline.kill();
-
-      gsap.set(overlay, {
-        scaleY: 0,
-        autoAlpha: 0,
-      });
-
-      gsap.set(root, {
-        autoAlpha: 1,
-        y: 0,
-        filter: "blur(0px)",
-      });
+      tl.kill();
+      gsap.set(overlay, { scaleX: 0, autoAlpha: 0 });
+      gsap.set(root, { autoAlpha: 1 });
     };
   }, [pathname]);
 
   return (
     <>
-      <div className="page-transition-overlay" ref={overlayRef} aria-hidden="true" />
+      <div
+        className="page-transition-overlay"
+        ref={overlayRef}
+        aria-hidden="true"
+      />
       <div className="page-transition-content" ref={rootRef}>
         {children}
       </div>

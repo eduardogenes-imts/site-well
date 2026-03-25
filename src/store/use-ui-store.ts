@@ -1,16 +1,14 @@
 import { create } from "zustand";
 
 type UiState = {
-  isMobileMenuOpen: boolean;
-  setMobileMenuOpen: (open: boolean) => void;
-  toggleMobileMenu: () => void;
+  isNavigationOpen: boolean;
+  setNavigationOpen: (open: boolean) => void;
+  toggleNavigation: () => void;
 };
 
 export const useUiStore = create<UiState>((set) => ({
-  isMobileMenuOpen: false,
-  setMobileMenuOpen: (open) => set({ isMobileMenuOpen: open }),
-  toggleMobileMenu: () =>
-    set((state) => ({
-      isMobileMenuOpen: !state.isMobileMenuOpen,
-    })),
+  isNavigationOpen: false,
+  setNavigationOpen: (open) => set({ isNavigationOpen: open }),
+  toggleNavigation: () =>
+    set((state) => ({ isNavigationOpen: !state.isNavigationOpen })),
 }));

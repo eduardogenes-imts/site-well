@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Inter, DM_Sans } from "next/font/google";
 import { GlobalIntroLoader } from "@/components/providers/GlobalIntroLoader";
+import { ArchitecturalGrid } from "@/components/layout/architectural-grid";
 import "./globals.css";
 import { QueryProvider } from "@/components/providers/query-provider";
 import { SmoothScrollProvider } from "@/components/providers/SmoothScrollProvider";
@@ -37,6 +38,7 @@ export default function RootLayout({
         className={`${inter.variable} ${dmSans.variable} bg-background text-foreground antialiased`}
       >
         <GlobalIntroLoader />
+        <ArchitecturalGrid />
         <QueryProvider>
           <SmoothScrollProvider>{children}</SmoothScrollProvider>
         </QueryProvider>
