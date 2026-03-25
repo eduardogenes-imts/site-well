@@ -10,7 +10,7 @@ export function ProjectContinuation({ nextProject }: ProjectContinuationProps) {
   if (!nextProject) return null;
 
   return (
-    <section className="bg-foreground px-8 py-24 md:px-16 md:py-32 lg:px-24" data-theme="dark">
+    <section className="bg-foreground px-8 py-24 md:px-16 md:py-32 lg:px-24">
       <Link
         href={`/projects/${nextProject.slug}`}
         className="group mx-auto block max-w-[1800px]"
@@ -19,7 +19,7 @@ export function ProjectContinuation({ nextProject }: ProjectContinuationProps) {
           className="text-micro uppercase tracking-[0.22em]"
           style={{ color: "hsl(var(--accent))" }}
         >
-          Proximo
+          Próximo
         </span>
 
         <h2 className="mt-4 text-monumental font-extralight text-white transition-opacity group-hover:opacity-70">

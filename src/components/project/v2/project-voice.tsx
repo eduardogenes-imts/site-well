@@ -7,11 +7,11 @@ type ProjectVoiceProps = {
 export function ProjectVoice({ testimonial }: ProjectVoiceProps) {
   return (
     <section
-      className="relative flex min-h-[80vh] items-center justify-center px-8 py-24 md:px-16 md:py-32 lg:px-24"
-      style={{ background: "hsl(var(--background-warm))" }}
+      className="relative flex min-h-[80vh] items-center justify-center bg-background-warm px-8 py-24 md:px-16 md:py-32 lg:px-24"
     >
       {/* Decorative quote mark */}
       <span
+        aria-hidden="true"
         className="pointer-events-none absolute left-8 top-16 select-none font-extrabold leading-none md:left-16 lg:left-24"
         style={{
           fontSize: "clamp(6rem, 15vw, 20rem)",

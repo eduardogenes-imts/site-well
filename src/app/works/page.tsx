@@ -12,6 +12,7 @@ import {
   getProjectTypologies,
 } from "@/services/projects.service";
 import type { Project } from "@/types/project";
+import { BRAND } from "@/lib/brand";
 
 export default function WorksPage() {
   const rootRef = useRef<HTMLElement>(null);
@@ -95,7 +96,7 @@ export default function WorksPage() {
           <div className="mx-auto max-w-[1800px]">
             {filtered.map((project, i) =>
               i % 2 === 0 ? (
-                <CinematicCard key={project.slug} project={project} index={i} />
+                <CinematicCard key={project.slug} project={project} />
               ) : (
                 <SplitCard key={project.slug} project={project} index={i} />
               ),
@@ -106,14 +107,16 @@ export default function WorksPage() {
         {/* Bottom CTA */}
         <section className="px-8 pb-24 md:px-16 lg:px-24">
           <div className="mx-auto max-w-[1800px] text-center">
-            <p className="text-architectural font-light text-foreground/40">
+            <p className="reveal-rise text-architectural font-light text-foreground/40">
               Tem um projeto?
             </p>
             <Link
-              href="mailto:contato@wviana.arq.br"
-              className="mt-2 inline-block text-architectural font-light text-foreground underline decoration-1 underline-offset-8 transition-opacity hover:opacity-60"
+              href={`mailto:${BRAND.email}`}
+              className="reveal-illuminate group mt-2 inline-block text-architectural font-light text-foreground opacity-80 transition-opacity hover:opacity-100"
             >
-              contato@wviana.arq.br
+              <span className="border-b pb-2 transition-colors" style={{ borderColor: "hsl(var(--accent) / 0.4)" }}>
+                {BRAND.email}
+              </span>
             </Link>
           </div>
         </section>
@@ -123,7 +126,7 @@ export default function WorksPage() {
   );
 }
 
-function CinematicCard({ project, index }: { project: Project; index: number }) {
+function CinematicCard({ project }: { project: Project }) {
   return (
     <div className="mb-16 md:mb-24">
       <Link href={`/projects/${project.slug}`} className="group block">
@@ -136,11 +139,11 @@ function CinematicCard({ project, index }: { project: Project; index: number }) 
             className="object-cover"
           />
         </div>
-        <div className="mt-6 flex flex-col justify-between gap-2 md:flex-row md:items-baseline">
+        <div className="mt-6 flex flex-col justify-between gap-3 md:flex-row md:items-baseline">
           <h2 className="reveal-rise text-architectural font-extrabold text-foreground transition-opacity group-hover:opacity-60">
             {project.title}
           </h2>
-          <div className="flex gap-4">
+          <div className="reveal-stagger flex items-center gap-4">
             <span className="text-micro uppercase tracking-[0.22em]" style={{ color: "hsl(var(--accent))" }}>
               {project.typology}
             </span>
@@ -152,6 +155,24 @@ function CinematicCard({ project, index }: { project: Project; index: number }) 
             </span>
           </div>
         </div>
+        <span className="reveal-illuminate mt-4 inline-flex items-center gap-2 text-caption uppercase tracking-[0.18em] text-foreground transition-opacity group-hover:opacity-60">
+          Ver projeto
+          <svg
+            width="16"
+            height="16"
+            viewBox="0 0 16 16"
+            fill="none"
+            className="transition-transform group-hover:translate-x-1"
+          >
+            <path
+              d="M3 8h10M9 4l4 4-4 4"
+              stroke="currentColor"
+              strokeWidth="1"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            />
+          </svg>
+        </span>
       </Link>
       <Void height="4vh" />
     </div>
@@ -174,8 +195,23 @@ function SplitCard({ project, index }: { project: Project; index: number }) {
           <p className="reveal-illuminate max-w-[400px] text-body-lg text-muted-foreground">
             {project.summary}
           </p>
-          <span className="reveal-illuminate mt-2 text-caption uppercase tracking-[0.18em] text-foreground">
-            Ver projeto →
+          <span className="reveal-illuminate mt-2 inline-flex items-center gap-2 text-caption uppercase tracking-[0.18em] text-foreground transition-opacity group-hover:opacity-60">
+            Ver projeto
+            <svg
+              width="16"
+              height="16"
+              viewBox="0 0 16 16"
+              fill="none"
+              className="transition-transform group-hover:translate-x-1"
+            >
+              <path
+                d="M3 8h10M9 4l4 4-4 4"
+                stroke="currentColor"
+                strokeWidth="1"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              />
+            </svg>
           </span>
         </div>
         {/* Right: Image */}

@@ -12,6 +12,16 @@ const ASPECT_RATIOS = ["21/9", "16/9", "4/3"] as const;
 export function ProjectDocumentation({ gallery, slug }: ProjectDocumentationProps) {
   return (
     <section className="bg-background">
+      <div className="px-8 pb-8 md:px-16 md:pb-12 lg:px-24">
+        <div className="mx-auto max-w-[1800px]">
+          <span
+            className="reveal-illuminate text-micro uppercase tracking-[0.22em]"
+            style={{ color: "hsl(var(--accent))" }}
+          >
+            Galeria
+          </span>
+        </div>
+      </div>
       {gallery.map((item, i) => {
         const aspect = ASPECT_RATIOS[i % ASPECT_RATIOS.length];
         return (

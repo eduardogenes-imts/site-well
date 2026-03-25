@@ -173,7 +173,7 @@ export default function ProcessPage() {
               className="reveal-illuminate text-micro uppercase tracking-[0.22em]"
               style={{ color: "hsl(var(--accent))" }}
             >
-              Entregaveis
+              Entregáveis
             </span>
             <div className="mt-8">
               {deliverables.map((item) => (

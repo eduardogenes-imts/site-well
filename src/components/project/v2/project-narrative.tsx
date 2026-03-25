@@ -14,6 +14,7 @@ export function ProjectNarrative({ chapters }: ProjectNarrativeProps) {
             <article className="relative py-16 md:py-24">
               {/* Watermark number */}
               <span
+                aria-hidden="true"
                 className="pointer-events-none absolute left-0 top-8 select-none font-extrabold leading-none md:top-12"
                 style={{
                   fontSize: "clamp(4rem, 8vw, 10rem)",
