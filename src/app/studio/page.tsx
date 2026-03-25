@@ -28,7 +28,7 @@ export default function StudioPage() {
             W.VIANA
           </h1>
           <p className="reveal-illuminate mt-4 text-micro uppercase tracking-[0.22em]" style={{ color: "hsl(var(--accent))" }}>
-            Arquitetura e Interiores / Sao Paulo
+            Arquitetura | Interiores / Sao Paulo
           </p>
         </section>
 
@@ -88,7 +88,7 @@ export default function StudioPage() {
                 }}
               >
                 <span
-                  className="font-semibold leading-none"
+                  className="font-extrabold leading-none"
                   style={{
                     fontSize: "clamp(3rem, 8vw, 8rem)",
                     color: "hsl(var(--accent) / 0.2)",

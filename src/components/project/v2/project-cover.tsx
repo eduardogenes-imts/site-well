@@ -22,7 +22,7 @@ export function ProjectCover({ project }: ProjectCoverProps) {
       {/* Title overlay — bottom left */}
       <div className="absolute inset-x-0 bottom-0 px-8 pb-12 md:px-16 md:pb-16 lg:px-24">
         <h1
-          className="text-monumental font-semibold text-white"
+          className="text-monumental font-extrabold text-white"
           style={{ textShadow: "0 2px 40px rgba(0,0,0,0.3)" }}
         >
           {project.title}

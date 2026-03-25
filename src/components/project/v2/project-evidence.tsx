@@ -18,7 +18,7 @@ export function ProjectEvidence({ metrics }: ProjectEvidenceProps) {
                 paddingLeft: i > 0 ? "2rem" : "0",
               }}
             >
-              <span className="text-monumental font-semibold text-foreground">
+              <span className="text-monumental font-extrabold text-foreground">
                 {metric.value}
               </span>
               <span

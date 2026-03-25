@@ -137,7 +137,7 @@ function CinematicCard({ project, index }: { project: Project; index: number }) 
           />
         </div>
         <div className="mt-6 flex flex-col justify-between gap-2 md:flex-row md:items-baseline">
-          <h2 className="reveal-rise text-architectural font-semibold text-foreground transition-opacity group-hover:opacity-60">
+          <h2 className="reveal-rise text-architectural font-extrabold text-foreground transition-opacity group-hover:opacity-60">
             {project.title}
           </h2>
           <div className="flex gap-4">
@@ -168,7 +168,7 @@ function SplitCard({ project, index }: { project: Project; index: number }) {
           <span className="reveal-illuminate text-micro uppercase tracking-[0.22em]" style={{ color: "hsl(var(--accent) / 0.5)" }}>
             {num}
           </span>
-          <h2 className="reveal-rise text-architectural font-semibold text-foreground transition-opacity group-hover:opacity-60">
+          <h2 className="reveal-rise text-architectural font-extrabold text-foreground transition-opacity group-hover:opacity-60">
             {project.title}
           </h2>
           <p className="reveal-illuminate max-w-[400px] text-body-lg text-muted-foreground">

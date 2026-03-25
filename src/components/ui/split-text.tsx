@@ -27,9 +27,12 @@ export function SplitText({
     const lines = segments.length > 1 ? segments : [text];
 
     return (
-      <Tag className={`js-line-reveal ${className}`}>
+      <Tag
+        className={`js-line-reveal ${className}`}
+        aria-label={text}
+      >
         {lines.map((line, i) => (
-          <span key={i} className="split-line-wrapper">
+          <span key={i} className="split-line-wrapper" aria-hidden="true">
             <span className="js-split-line split-line-inner">{line}</span>
           </span>
         ))}
@@ -43,7 +46,7 @@ export function SplitText({
   return (
     <Tag className={`js-line-reveal ${className}`}>
       {childArray.map((child, i) => (
-        <span key={i} className="split-line-wrapper">
+        <span key={i} className="split-line-wrapper" aria-hidden="true">
           <span className="js-split-line split-line-inner">{child}</span>
         </span>
       ))}

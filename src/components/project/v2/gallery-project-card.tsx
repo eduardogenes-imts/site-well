@@ -28,31 +28,31 @@ export function GalleryProjectCard({ project, index }: GalleryProjectCardProps) 
           <div className="reveal-stagger flex flex-col gap-3">
             <span
               className="text-micro uppercase tracking-[0.22em]"
-              style={{ color: "hsl(var(--accent))" }}
+              style={{ color: "hsl(var(--accent-text))" }}
             >
               {num}
             </span>
             <span
               className="text-micro uppercase tracking-[0.22em]"
-              style={{ color: "hsl(var(--accent))" }}
+              style={{ color: "hsl(var(--accent-text))" }}
             >
               {project.title}
             </span>
             <span
               className="text-micro uppercase tracking-[0.22em]"
-              style={{ color: "hsl(var(--accent) / 0.6)" }}
+              style={{ color: "hsl(var(--accent-text) / 0.85)" }}
             >
               {project.typology}
             </span>
             <span
               className="text-micro uppercase tracking-[0.22em]"
-              style={{ color: "hsl(var(--accent) / 0.6)" }}
+              style={{ color: "hsl(var(--accent-text) / 0.85)" }}
             >
               {project.location}, {project.country}
             </span>
             <span
               className="text-micro uppercase tracking-[0.22em]"
-              style={{ color: "hsl(var(--accent) / 0.6)" }}
+              style={{ color: "hsl(var(--accent-text) / 0.85)" }}
             >
               {project.year}
             </span>
@@ -74,7 +74,7 @@ export function GalleryProjectCard({ project, index }: GalleryProjectCardProps) 
             </div>
 
             {/* Title */}
-            <h3 className="reveal-rise mt-6 text-architectural font-semibold text-foreground md:mt-8">
+            <h3 className="reveal-rise mt-6 text-architectural font-extrabold text-foreground md:mt-8">
               {project.title}
             </h3>
 

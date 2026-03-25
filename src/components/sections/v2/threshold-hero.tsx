@@ -70,7 +70,7 @@ export function ThresholdHero() {
       {/* Title */}
       <h1
         ref={titleRef}
-        className="text-monumental font-semibold uppercase text-foreground"
+        className="text-monumental font-extrabold uppercase text-foreground"
         style={{ letterSpacing: "0.15em" }}
       >
         {title.split("").map((char, i) => (
@@ -88,20 +88,20 @@ export function ThresholdHero() {
       <p
         ref={subtitleRef}
         className="mt-5 text-micro uppercase tracking-[0.3em]"
-        style={{ color: "hsl(var(--accent))", opacity: 0 }}
+        style={{ color: "hsl(var(--accent-text))", opacity: 0 }}
       >
-        Arquitetura e Interiores
+        Arquitetura | Interiores
       </p>
 
       {/* Bottom-left: scroll indicator */}
       <div className="absolute bottom-10 left-8 flex flex-col items-center gap-2 md:left-16 lg:left-24">
         <div
           className="h-10 w-px animate-pulse"
-          style={{ background: "hsl(var(--accent) / 0.4)" }}
+          style={{ background: "hsl(var(--accent-text) / 0.5)" }}
         />
         <span
           className="text-micro uppercase tracking-[0.22em]"
-          style={{ color: "hsl(var(--accent) / 0.5)" }}
+          style={{ color: "hsl(var(--accent-text))" }}
         >
           Scroll
         </span>
@@ -110,7 +110,7 @@ export function ThresholdHero() {
       {/* Bottom-right: location */}
       <span
         className="absolute bottom-10 right-8 text-micro uppercase tracking-[0.22em] md:right-16 lg:right-24"
-        style={{ color: "hsl(var(--accent) / 0.5)" }}
+        style={{ color: "hsl(var(--accent-text))" }}
       >
         Sao Paulo, BR
       </span>

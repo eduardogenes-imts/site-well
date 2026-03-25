@@ -138,7 +138,7 @@ export default function ProcessPage() {
               >
                 {/* Watermark */}
                 <span
-                  className="pointer-events-none absolute left-8 top-1/2 -translate-y-1/2 select-none font-bold leading-none md:left-16 lg:left-24"
+                  className="pointer-events-none absolute left-8 top-1/2 -translate-y-1/2 select-none font-extrabold leading-none md:left-16 lg:left-24"
                   style={{
                     fontSize: "clamp(6rem, 15vw, 20rem)",
                     color: "hsl(var(--accent) / 0.06)",
@@ -148,7 +148,7 @@ export default function ProcessPage() {
                 </span>
 
                 <div className="relative max-w-[500px]">
-                  <h2 className="text-architectural font-semibold text-foreground">
+                  <h2 className="text-architectural font-extrabold text-foreground">
                     {phase.title}
                   </h2>
                   <p className="mt-6 text-body-lg text-muted-foreground">

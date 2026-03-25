@@ -12,7 +12,7 @@ export function ProjectVoice({ testimonial }: ProjectVoiceProps) {
     >
       {/* Decorative quote mark */}
       <span
-        className="pointer-events-none absolute left-8 top-16 select-none font-bold leading-none md:left-16 lg:left-24"
+        className="pointer-events-none absolute left-8 top-16 select-none font-extrabold leading-none md:left-16 lg:left-24"
         style={{
           fontSize: "clamp(6rem, 15vw, 20rem)",
           color: "hsl(var(--accent) / 0.08)",

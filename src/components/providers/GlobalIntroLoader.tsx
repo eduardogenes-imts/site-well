@@ -106,7 +106,7 @@ export function GlobalIntroLoader() {
         </span>
         <div ref={lineRef} className="intro-loader-line" />
         <span ref={labelRef} className="intro-loader-label mt-3">
-          Arquitetura
+          Arquitetura | Interiores
         </span>
       </div>
 

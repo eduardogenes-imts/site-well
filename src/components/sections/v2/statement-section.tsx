@@ -58,7 +58,7 @@ export function StatementSection() {
         <div className="ml-0 max-w-[1200px] md:ml-[15%]">
           <span
             className="text-micro uppercase tracking-[0.22em]"
-            style={{ color: "hsl(var(--accent))" }}
+            style={{ color: "hsl(var(--accent-text))" }}
           >
             Manifesto
           </span>
@@ -84,7 +84,7 @@ export function StatementSection() {
 
           <p
             className="mt-16 text-caption uppercase tracking-[0.18em]"
-            style={{ color: "hsl(var(--accent))" }}
+            style={{ color: "hsl(var(--accent-text))" }}
           >
             Wellington Viana, Fundador
           </p>

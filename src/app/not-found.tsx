@@ -5,7 +5,7 @@ export default function NotFound() {
     <main className="flex min-h-screen flex-col items-center justify-center">
       {/* Watermark */}
       <span
-        className="pointer-events-none select-none font-bold leading-none text-foreground/[0.04]"
+        className="pointer-events-none select-none font-extrabold leading-none text-foreground/[0.04]"
         style={{ fontSize: "clamp(8rem, 15vw, 20rem)" }}
       >
         404
