@@ -5,8 +5,8 @@
 @layer base {
   :root {
     /* W.VIANA v2 — "O Edificio Digital" */
-    --background: 0 0% 100%;
-    --background-warm: 0 0% 95%;
+    --background: 0 0% 97%;
+    --background-warm: 30 8% 93%;
     --foreground: 0 0% 0%;
     --card: 0 0% 100%;
     --card-foreground: 0 0% 0%;
@@ -17,6 +17,7 @@
     --muted: 0 0% 92%;
     --muted-foreground: 0 0% 35%;
     --accent: 27 12% 69%;
+    --accent-text: 27 10% 42%;
     --accent-foreground: 0 0% 100%;
     --border: 0 0% 88%;
     --input: 0 0% 88%;
@@ -40,12 +41,12 @@
   }
 
   body {
-    font-family: var(--font-body), "Inter", Arial, Helvetica, sans-serif;
+    font-family: var(--font-body), "Aeonik", Arial, Helvetica, sans-serif;
     letter-spacing: -0.005em;
   }
 
   h1, h2, h3, h4, h5, h6 {
-    font-family: var(--font-display), "DM Sans", Arial, sans-serif;
+    font-family: var(--font-display), "Agrandir Grand", Arial, sans-serif;
   }
 
   a {
@@ -82,7 +83,7 @@
   .intro-loader-logo {
     text-align: center;
     font-size: clamp(3rem, 10vw, 10rem);
-    font-weight: 200;
+    font-weight: 300;
     letter-spacing: 0.08em;
     text-transform: uppercase;
     line-height: 0.88;

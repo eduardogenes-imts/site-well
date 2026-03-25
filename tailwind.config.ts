@@ -59,7 +59,7 @@ const config: Config = {
           { lineHeight: "1.3", letterSpacing: "0.18em" },
         ],
         micro: [
-          "0.5625rem",
+          "0.625rem",
           { lineHeight: "1.2", letterSpacing: "0.22em" },
         ],
       },
