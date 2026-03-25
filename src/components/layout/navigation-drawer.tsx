@@ -91,9 +91,9 @@ export function NavigationDrawer() {
         ref={contentRef}
         className="flex h-full flex-col justify-center px-8 md:px-16 lg:px-24"
       >
-        <nav ref={linksRef} className="space-y-6 md:space-y-8">
+        <nav ref={linksRef} className="space-y-3 md:space-y-4">
           {navItems.map((item) => (
-            <div key={item.href} className="nav-link-item flex items-baseline gap-6">
+            <div key={item.href} className="nav-link-item flex items-baseline gap-5">
               <span
                 className="text-micro uppercase tracking-[0.22em]"
                 style={{ color: "hsl(var(--accent))" }}
@@ -102,7 +102,8 @@ export function NavigationDrawer() {
               </span>
               <Link
                 href={item.href}
-                className="text-monumental font-extralight text-white transition-opacity hover:opacity-60"
+                className="font-extralight text-white transition-opacity hover:opacity-60"
+                style={{ fontSize: "clamp(2.5rem, 7vw, 6rem)", lineHeight: "1.1" }}
                 onClick={() => setNavigationOpen(false)}
               >
                 {item.label}
@@ -112,7 +113,7 @@ export function NavigationDrawer() {
         </nav>
 
         {/* Footer info */}
-        <div className="mt-16 flex flex-col gap-4 md:mt-24 md:flex-row md:items-center md:gap-12">
+        <div className="mt-12 flex flex-col gap-4 md:mt-16 md:flex-row md:items-center md:gap-12">
           <span
             className="text-micro uppercase tracking-[0.22em]"
             style={{ color: "hsl(var(--accent))" }}

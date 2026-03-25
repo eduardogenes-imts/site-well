@@ -4,6 +4,7 @@ import { useEffect, useState, useCallback } from "react";
 import { createPortal } from "react-dom";
 import Link from "next/link";
 import { useUiStore } from "@/store/use-ui-store";
+import { WMonogram } from "@/components/ui/w-monogram";
 import { NavigationDrawer } from "./navigation-drawer";
 
 export function SiteHeader() {
@@ -41,17 +42,20 @@ export function SiteHeader() {
           {/* Logo mark */}
           <Link
             href="/"
-            className="text-micro uppercase tracking-[0.22em] transition-colors duration-500"
-            style={{ color: "hsl(var(--accent))" }}
+            className="-m-2 p-2 transition-opacity duration-500 hover:opacity-60"
+            aria-label="W.VIANA — Inicio"
           >
-            W.
+            <WMonogram
+              size={28}
+              color={isNavigationOpen ? "hsl(0 0% 100%)" : "hsl(var(--accent-text))"}
+            />
           </Link>
 
           {/* Menu trigger */}
           <button
             onClick={toggleNavigation}
-            className="text-micro uppercase tracking-[0.22em] transition-colors duration-500"
-            style={{ color: "hsl(var(--accent))" }}
+            className="-m-2 p-2 text-micro uppercase tracking-[0.22em] transition-colors duration-500"
+            style={{ color: isNavigationOpen ? "hsl(0 0% 100%)" : "hsl(var(--accent-text))" }}
             aria-label={isNavigationOpen ? "Fechar navegacao" : "Abrir navegacao"}
           >
             {isNavigationOpen ? "[Fechar]" : "[Index]"}
