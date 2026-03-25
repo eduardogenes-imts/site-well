@@ -80,10 +80,10 @@ export function SiteHeader() {
         }}
       >
         <div className="mx-auto flex h-12 max-w-[1800px] items-center justify-between px-8 md:h-14 md:px-16 lg:px-24">
-          {/* Logo mark */}
+          {/* Logo — mesmo alinhamento à esquerda em todos os breakpoints (sem -m que deslocava o SVG) */}
           <Link
             href="/"
-            className="-m-2 relative z-[2147483646] flex items-center overflow-visible p-0 transition-opacity duration-500 hover:opacity-60"
+            className="relative z-[2147483646] flex shrink-0 items-center overflow-visible py-1 transition-opacity duration-500 hover:opacity-60"
             aria-label="W.VIANA — Início"
           >
             <Image
@@ -91,7 +91,7 @@ export function SiteHeader() {
               alt="W.VIANA Arquitetura de Interiores"
               width={1920}
               height={1080}
-              className="relative z-[2147483647] h-auto w-[10rem] max-h-[2.75rem] object-contain object-left md:w-[12rem] md:max-h-[3.25rem] lg:w-[14rem]"
+              className="relative z-[2147483647] h-[2.75rem] w-auto max-w-[10rem] object-contain object-left md:h-[3.25rem] md:max-w-[12rem] lg:max-w-[14rem]"
               priority
             />
           </Link>
@@ -101,7 +101,7 @@ export function SiteHeader() {
             onClick={toggleNavigation}
             type="button"
             id="site-navigation-trigger"
-            className="-m-2 p-2 text-micro uppercase tracking-[0.22em] transition-colors duration-500"
+            className="shrink-0 p-2 text-micro uppercase tracking-[0.22em] transition-colors duration-500"
             style={{ color: interactiveColor }}
             aria-label={isNavigationOpen ? "Fechar navegação" : "Abrir navegação"}
             aria-expanded={isNavigationOpen}
