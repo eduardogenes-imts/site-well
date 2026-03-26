@@ -11,7 +11,7 @@ export function SiteHeader() {
   const [mounted, setMounted] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [footerDarkProgress, setFooterDarkProgress] = useState(0);
-  const showDevReviewShortcut = process.env.NODE_ENV !== "production";
+  const showDevReviewShortcut = process.env.NEXT_PUBLIC_SHOW_REVIEW_SHORTCUT !== "false";
   const isNavigationOpen = useUiStore((s) => s.isNavigationOpen);
   const toggleNavigation = useUiStore((s) => s.toggleNavigation);
 
