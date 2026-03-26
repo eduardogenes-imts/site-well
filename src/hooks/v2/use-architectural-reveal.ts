@@ -27,15 +27,20 @@ export function useArchitecturalReveal(
 
     const ctx = gsap.context(() => {
       if (prefersReducedMotion) {
-        gsap.set(".reveal-illuminate", { opacity: 1 });
-        gsap.set(".reveal-rise, .reveal-stagger", {
-          autoAlpha: 1,
-          y: 0,
-        });
-        gsap.set(".reveal-curtain", {
-          clipPath: "inset(0 0% 0 0)",
-        });
-        gsap.set(".reveal-draw", { scaleX: 1 });
+        const illuminate =
+          gsap.utils.toArray<HTMLElement>(".reveal-illuminate");
+        const riseStagger = gsap.utils.toArray<HTMLElement>(
+          ".reveal-rise, .reveal-stagger",
+        );
+        const curtain = gsap.utils.toArray<HTMLElement>(".reveal-curtain");
+        const draw = gsap.utils.toArray<HTMLElement>(".reveal-draw");
+
+        if (illuminate.length) gsap.set(illuminate, { opacity: 1 });
+        if (riseStagger.length)
+          gsap.set(riseStagger, { autoAlpha: 1, y: 0 });
+        if (curtain.length)
+          gsap.set(curtain, { clipPath: "inset(0 0% 0 0)" });
+        if (draw.length) gsap.set(draw, { scaleX: 1 });
         return;
       }
 

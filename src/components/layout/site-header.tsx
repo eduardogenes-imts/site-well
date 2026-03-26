@@ -128,12 +128,19 @@ export function SiteHeader() {
               </Link>
             ) : null}
 
-            {/* Menu trigger */}
+            {/* Menu trigger — borda e fundo discretos (sem animação de movimento) */}
             <button
               onClick={toggleNavigation}
               type="button"
               id="site-navigation-trigger"
-              className="shrink-0 p-2 text-micro uppercase tracking-[0.22em] transition-colors duration-500"
+              className={[
+                "shrink-0 rounded-sm border px-3 py-1.5 text-micro font-semibold uppercase tracking-[0.32em]",
+                "transition-[color,background-color,border-color] duration-300",
+                "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-offset-transparent",
+                useLightForeground
+                  ? "border-white/18 bg-white/[0.04] hover:border-white/26 hover:bg-white/[0.09] focus-visible:ring-white/40"
+                  : "border-[hsl(var(--accent)/0.18)] bg-[hsl(var(--accent)/0.04)] hover:border-[hsl(var(--accent)/0.26)] hover:bg-[hsl(var(--accent)/0.09)] focus-visible:ring-[hsl(var(--accent)/0.38)]",
+              ].join(" ")}
               style={{ color: interactiveColor }}
               aria-label={isNavigationOpen ? "Fechar navegação" : "Abrir navegação"}
               aria-expanded={isNavigationOpen}

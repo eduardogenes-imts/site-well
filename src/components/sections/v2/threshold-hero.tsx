@@ -18,7 +18,13 @@ export function ThresholdHero() {
       "(prefers-reduced-motion: reduce)",
     ).matches;
 
-    if (prefersReducedMotion) return;
+    if (prefersReducedMotion) {
+      // Show elements immediately — they start hidden via inline styles
+      const chars = title.querySelectorAll<HTMLElement>(".hero-char");
+      chars.forEach((c) => (c.style.clipPath = "inset(0% 0 0 0)"));
+      subtitle.style.opacity = "1";
+      return;
+    }
 
     const ctx = gsap.context(() => {
       // Letter-by-letter reveal on load
@@ -59,7 +65,8 @@ export function ThresholdHero() {
     return () => ctx.revert();
   }, []);
 
-  const title = "W.VIANA";
+  // Dois blocos: quebra só entre "W." e "VIANA" quando falta largura (evita W.VIA / NA)
+  const titleLines = ["W.", "VIANA"] as const;
 
   return (
     <section
@@ -73,13 +80,17 @@ export function ThresholdHero() {
         className="text-monumental font-light uppercase text-foreground"
         style={{ letterSpacing: "0.15em" }}
       >
-        {title.split("").map((char, i) => (
-          <span
-            key={i}
-            className="hero-char inline-block"
-            style={{ clipPath: "inset(100% 0 0 0)" }}
-          >
-            {char}
+        {titleLines.map((segment) => (
+          <span key={segment} className="inline-block max-w-full whitespace-nowrap">
+            {segment.split("").map((char, i) => (
+              <span
+                key={`${segment}-${i}`}
+                className="hero-char inline-block"
+                style={{ clipPath: "inset(100% 0 0 0)" }}
+              >
+                {char}
+              </span>
+            ))}
           </span>
         ))}
       </h1>
