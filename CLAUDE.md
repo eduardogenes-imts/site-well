@@ -42,7 +42,7 @@ Zustand (`src/store/use-ui-store.ts`) manages UI state (mobile menu open/close).
 
 ### Styling
 - Tailwind CSS + SCSS (`sass`)
-- CSS variables: `--font-body` (Inter, proxying Aeonik) and `--font-display` (DM Sans, proxying Agrandir Grand)
+- Tipografia (manual de marca): `next/font/local` em `src/app/layout.tsx` — **Aeonik** (`src/fonts/AeonikTRIAL-*.otf`) → `--font-body` / `font-sans`; **Agrandir Grand** (`src/fonts/Agrandir-Grand*.otf`) → `--font-display` / headings em `globals.css`
 - Brand colors: `#000000`, `#BAAEA4` (warm taupe), `#F2F2F2` (off-white)
 - shadcn/ui-style components in `src/components/ui/`
 
