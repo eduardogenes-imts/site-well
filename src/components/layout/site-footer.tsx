@@ -3,8 +3,6 @@
 import { useLayoutEffect, useRef } from "react";
 import Link from "next/link";
 import Image from "next/image";
-import gsap from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { BRAND } from "@/lib/brand";
 
 type SiteFooterProps = {
@@ -15,65 +13,107 @@ export function SiteFooter({ hideCta = false }: SiteFooterProps) {
   const footerRef = useRef<HTMLElement>(null);
 
   useLayoutEffect(() => {
-    gsap.registerPlugin(ScrollTrigger);
+    if (hideCta) {
+      document.documentElement.style.setProperty("--footer-dark-progress", "0");
+      window.dispatchEvent(
+        new CustomEvent("footer-theme-progress", { detail: { progress: 0 } }),
+      );
+      return;
+    }
 
     const footer = footerRef.current;
     if (!footer) return;
 
-    const ctx = gsap.context(() => {
-      const main = document.querySelector("main");
-      const backgrounds = Array.from(
-        document.querySelectorAll<HTMLElement>(".bg-background"),
-      );
-      const bgTargets = [document.body, ...(main ? [main] : []), ...backgrounds];
+    const main = document.querySelector("main");
+    const backgrounds = Array.from(
+      document.querySelectorAll<HTMLElement>(".bg-background"),
+    );
+    const bgTargets = [document.body, ...(main ? [main] : []), ...backgrounds];
 
-      const primaryText = Array.from(
-        footer.querySelectorAll<HTMLElement>(".footer-primary-text"),
-      );
+    const primaryText = Array.from(
+      footer.querySelectorAll<HTMLElement>(".footer-primary-text"),
+    );
 
-      const setProgress = (progress: number) => {
-        const clamped = Math.max(0, Math.min(1, progress));
-        const bgLightness = 97 * (1 - clamped);
-        const textLightness = 100 * clamped;
+    const setProgress = (progress: number) => {
+      const clamped = Math.max(0, Math.min(1, progress));
 
-        const bgColor = `hsl(0 0% ${bgLightness}%)`;
-        const textColor = `hsl(0 0% ${textLightness}%)`;
+      const bgLightness = 97 * (1 - clamped);
+      const textLightness = 100 * clamped;
 
-        bgTargets.forEach((el) => {
-          el.style.backgroundColor = bgColor;
-        });
+      const bgColor = `hsl(0 0% ${bgLightness}%)`;
+      const textColor = `hsl(0 0% ${textLightness}%)`;
 
-        primaryText.forEach((el) => {
-          el.style.color = textColor;
-        });
-
-        document.documentElement.style.setProperty("--footer-dark-progress", String(clamped));
-        window.dispatchEvent(
-          new CustomEvent("footer-theme-progress", { detail: { progress: clamped } }),
-        );
-      };
-
-      setProgress(0);
-
-      ScrollTrigger.create({
-        trigger: footer,
-        start: "top bottom",
-        end: "top 30%",
-        scrub: true,
-        onUpdate: (self) => setProgress(self.progress),
-        onLeaveBack: () => setProgress(0),
-        onLeave: () => setProgress(1),
+      bgTargets.forEach((el) => {
+        el.style.backgroundColor = bgColor;
       });
-    }, footer);
+
+      primaryText.forEach((el) => {
+        el.style.color = textColor;
+      });
+
+      document.documentElement.style.setProperty("--footer-dark-progress", String(clamped));
+      window.dispatchEvent(
+        new CustomEvent("footer-theme-progress", { detail: { progress: clamped } }),
+      );
+    };
+
+    const calculateProgress = () => {
+      const rect = footer.getBoundingClientRect();
+      const viewportHeight = window.innerHeight || 1;
+
+      // Ajuste fino visual: começa um pouco mais próximo do footer
+      // e usa curva suave para evitar sensação de "tranco".
+      const startPoint = viewportHeight * 0.85;
+      const endPoint = viewportHeight * 0.4;
+      const denominator = startPoint - endPoint;
+
+      if (denominator <= 0) {
+        setProgress(0);
+        return;
+      }
+
+      const linear = (startPoint - rect.top) / denominator;
+      const clamped = Math.max(0, Math.min(1, linear));
+      const eased = clamped * clamped * (3 - 2 * clamped); // smoothstep
+
+      setProgress(eased);
+    };
+
+    let rafId: number | null = null;
+    const scheduleRecalc = () => {
+      if (rafId !== null) return;
+      rafId = window.requestAnimationFrame(() => {
+        rafId = null;
+        calculateProgress();
+      });
+    };
+
+    setProgress(0);
+    calculateProgress();
+
+    window.addEventListener("scroll", scheduleRecalc, { passive: true });
+    window.addEventListener("resize", scheduleRecalc);
+    window.addEventListener("orientationchange", scheduleRecalc);
 
     return () => {
-      ctx.revert();
+      window.removeEventListener("scroll", scheduleRecalc);
+      window.removeEventListener("resize", scheduleRecalc);
+      window.removeEventListener("orientationchange", scheduleRecalc);
+
+      if (rafId !== null) {
+        window.cancelAnimationFrame(rafId);
+      }
+
+      bgTargets.forEach((el) => {
+        el.style.removeProperty("background-color");
+      });
+
       document.documentElement.style.setProperty("--footer-dark-progress", "0");
       window.dispatchEvent(
         new CustomEvent("footer-theme-progress", { detail: { progress: 0 } }),
       );
     };
-  }, []);
+  }, [hideCta]);
 
   return (
     <footer

@@ -11,6 +11,7 @@ export function SiteHeader() {
   const [mounted, setMounted] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [footerDarkProgress, setFooterDarkProgress] = useState(0);
+  const showDevReviewShortcut = process.env.NODE_ENV !== "production";
   const isNavigationOpen = useUiStore((s) => s.isNavigationOpen);
   const toggleNavigation = useUiStore((s) => s.toggleNavigation);
 
@@ -96,19 +97,51 @@ export function SiteHeader() {
             />
           </Link>
 
-          {/* Menu trigger */}
-          <button
-            onClick={toggleNavigation}
-            type="button"
-            id="site-navigation-trigger"
-            className="shrink-0 p-2 text-micro uppercase tracking-[0.22em] transition-colors duration-500"
-            style={{ color: interactiveColor }}
-            aria-label={isNavigationOpen ? "Fechar navegação" : "Abrir navegação"}
-            aria-expanded={isNavigationOpen}
-            aria-controls="site-navigation-drawer"
-          >
-            {isNavigationOpen ? "[Fechar]" : "[Index]"}
-          </button>
+          <div className="flex items-center gap-2">
+            {showDevReviewShortcut ? (
+              <Link
+                href="/revisao-cliente"
+                className="group relative inline-flex items-center rounded-sm border px-1.5 py-0.5 text-[8px] uppercase tracking-[0.12em] opacity-55 transition-all duration-300 hover:opacity-90 focus:opacity-100"
+                style={{
+                  color: interactiveColor,
+                  borderColor: useLightForeground ? "hsl(0 0% 100% / 0.2)" : "hsl(var(--accent) / 0.28)",
+                }}
+                aria-label="Abrir formulário de revisão"
+              >
+                rev
+                <span
+                  role="tooltip"
+                  className="pointer-events-none absolute right-0 top-[calc(100%+7px)] z-[2147483647] w-[220px] translate-y-1 opacity-0 transition-all duration-200 group-hover:translate-y-0 group-hover:opacity-100 group-focus-visible:translate-y-0 group-focus-visible:opacity-100"
+                  style={{
+                    background: useLightForeground ? "hsl(0 0% 8% / 0.95)" : "hsl(var(--foreground) / 0.9)",
+                    color: "hsl(0 0% 100%)",
+                    border: "1px solid hsl(0 0% 100% / 0.18)",
+                    padding: "6px 8px",
+                    fontSize: "8px",
+                    letterSpacing: "0.01em",
+                    textTransform: "none",
+                  }}
+                >
+                  atalho para o formulário de revisão do cliente v1.
+                  Temporário, apenas para a fase de desenvolvimento.
+                </span>
+              </Link>
+            ) : null}
+
+            {/* Menu trigger */}
+            <button
+              onClick={toggleNavigation}
+              type="button"
+              id="site-navigation-trigger"
+              className="shrink-0 p-2 text-micro uppercase tracking-[0.22em] transition-colors duration-500"
+              style={{ color: interactiveColor }}
+              aria-label={isNavigationOpen ? "Fechar navegação" : "Abrir navegação"}
+              aria-expanded={isNavigationOpen}
+              aria-controls="site-navigation-drawer"
+            >
+              {isNavigationOpen ? "[Fechar]" : "[Index]"}
+            </button>
+          </div>
         </div>
       </header>
 

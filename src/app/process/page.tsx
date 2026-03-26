@@ -96,7 +96,9 @@ export default function ProcessPage() {
       tl.fromTo(progress, { scaleX: 0 }, { scaleX: 1, ease: "none" }, 0);
     }, container);
 
-    return () => ctx.revert();
+    return () => {
+      ctx.revert();
+    };
   }, []);
 
   return (
