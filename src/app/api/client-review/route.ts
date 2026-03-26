@@ -25,7 +25,7 @@ export async function POST(request: Request) {
     const priority2 = readText(formData, "priority2");
     const priority3 = readText(formData, "priority3");
 
-    if (!name || !alignment || !brandDirection || !materialsLink || !textStatus || !priority1) {
+    if (!name || !alignment || !brandDirection || !textStatus || !priority1) {
       return NextResponse.json(
         { ok: false, error: "Preencha os campos obrigatórios antes de enviar." },
         { status: 400 },

@@ -218,7 +218,7 @@ export default function ClientReviewPage() {
                   label="Link da pasta de materiais (Drive, Dropbox, etc.)"
                   name="materialsLink"
                   type="url"
-                  required
+                  optional
                 />
 
                 <TextAreaField
