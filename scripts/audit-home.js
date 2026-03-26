@@ -181,10 +181,10 @@
     const grade = wcagGrade(ratio, large);
 
     // Check font synthesis
-    const VALID_AGRANDIR_WEIGHTS = [300, 800];
+    const VALID_AGRANDIR_WEIGHTS = [300, 400, 500, 600, 700, 800];
     const parsedWeight = parseInt(weight);
     const isDisplayFont =
-      family.includes("__agrandirGrand") ||
+      family.includes("__agrandirNarrow") ||
       family.toLowerCase().includes("agrandir") ||
       el.matches("h1,h2,h3,h4,h5,h6");
     const hasSynthesis =
@@ -223,7 +223,7 @@
       },
       issues: {
         fontSynthesis: hasSynthesis || hasBodySynthesis,
-        synthesisFont: hasSynthesis ? "Agrandir Grand" : hasBodySynthesis ? "Aeonik" : null,
+        synthesisFont: hasSynthesis ? "Agrandir Narrow" : hasBodySynthesis ? "Aeonik" : null,
         lowContrast: !decorative && (grade === "FAIL" || grade === "AA-large-only"),
         tinyText: sizePx < 10,
       },
@@ -354,11 +354,11 @@
     );
 
     // Font synthesis check
-    const AGRANDIR_WEIGHTS = ["300", "800"];
+    const AGRANDIR_WEIGHTS = ["300", "400", "500", "600", "700", "800"];
     const AEONIK_WEIGHTS = ["300", "400", "700"];
 
     const synthesized = sorted.filter((f) => {
-      const isAgrandir = f.family.toLowerCase().includes("agrandir") || f.family.includes("__agrandirGrand");
+      const isAgrandir = f.family.toLowerCase().includes("agrandir") || f.family.includes("__agrandirNarrow");
       const isAeonik = f.family.toLowerCase().includes("aeonik") || f.family.includes("__aeonik");
       if (isAgrandir && !AGRANDIR_WEIGHTS.includes(f.weight)) return true;
       if (isAeonik && !AEONIK_WEIGHTS.includes(f.weight)) return true;
@@ -369,7 +369,7 @@
       console.log("\n%c⚠ FONT SYNTHESIS DETECTADO:", "color:red;font-weight:bold");
       synthesized.forEach((f) => {
         const validWeights = f.family.toLowerCase().includes("agrandir")
-          ? "300, 800"
+          ? "300–800"
           : "300, 400, 700";
         console.log(
           `  %c${f.family}%c weight ${f.weight} (validos: ${validWeights}). Ex: "${f.examples[0]}"`,

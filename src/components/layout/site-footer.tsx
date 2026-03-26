@@ -130,8 +130,19 @@ export function SiteFooter({ hideCta = false }: SiteFooterProps) {
               >
                 Próximo passo
               </p>
-              <h2 className="footer-primary-text mt-6 text-monumental font-light" style={{ color: "hsl(var(--foreground))" }}>
-                Vamos projetar.
+              <h2
+                className="footer-primary-text mt-6 font-light leading-[0.88] tracking-[-0.04em]"
+                style={{
+                  color: "hsl(var(--foreground))",
+                  /* Mesma curva do text-monumental (4rem / 12vw / 14rem), fator 13/14 no teto */
+                  fontSize: "clamp(calc(4rem * 13 / 14), calc(12vw * 13 / 14), 13rem)",
+                }}
+              >
+                Agende
+                <br />
+                uma
+                <br />
+                conversa
               </h2>
               <Link
                 href={`mailto:${BRAND.email}`}

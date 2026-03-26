@@ -19,12 +19,15 @@ const aeonik = localFont({
   display: "swap",
 });
 
-/* Agrandir Grand — manual: títulos e destaques (Light + Heavy) */
-const agrandirGrand = localFont({
+/* Agrandir Narrow — títulos (um arquivo; pesos mapeados para classes Tailwind) */
+const agrandirNarrow = localFont({
   src: [
-    { path: "../fonts/Agrandir-GrandLight.otf", weight: "300", style: "normal" },
-    { path: "../fonts/Agrandir-GrandHeavy.otf", weight: "700", style: "normal" },
-    { path: "../fonts/Agrandir-GrandHeavy.otf", weight: "800", style: "normal" },
+    { path: "../fonts/Agrandir-Narrow.otf", weight: "300", style: "normal" },
+    { path: "../fonts/Agrandir-Narrow.otf", weight: "400", style: "normal" },
+    { path: "../fonts/Agrandir-Narrow.otf", weight: "500", style: "normal" },
+    { path: "../fonts/Agrandir-Narrow.otf", weight: "600", style: "normal" },
+    { path: "../fonts/Agrandir-Narrow.otf", weight: "700", style: "normal" },
+    { path: "../fonts/Agrandir-Narrow.otf", weight: "800", style: "normal" },
   ],
   variable: "--font-display",
   display: "swap",
@@ -101,7 +104,7 @@ export default function RootLayout({
       </head>
       <body
         suppressHydrationWarning
-        className={`${aeonik.variable} ${agrandirGrand.variable} bg-background font-sans text-foreground antialiased`}
+        className={`${aeonik.variable} ${agrandirNarrow.variable} bg-background font-sans text-foreground antialiased`}
       >
         <GlobalIntroLoader />
         <ArchitecturalGrid />

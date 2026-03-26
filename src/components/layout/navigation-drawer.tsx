@@ -166,7 +166,7 @@ export function NavigationDrawer() {
               </span>
               <Link
                 href={item.href}
-                className="font-extralight text-white transition-opacity hover:opacity-60"
+                className="font-display font-extralight text-white transition-opacity hover:opacity-60"
                 style={{ fontSize: "clamp(2.25rem, 7vw, 5.4rem)", lineHeight: "1.1" }}
                 onClick={() => setNavigationOpen(false)}
               >
