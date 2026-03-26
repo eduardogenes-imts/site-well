@@ -4,6 +4,10 @@
 
 @layer base {
   :root {
+    /* Viewport units with fallback for older browsers (Safari < 16.4, iOS < 16.4) */
+    --dvh: 100vh;
+    --svh: 100vh;
+
     --header-height: 3.5rem; /* h-14 — mobile */
 
     /* W.VIANA definitivo */
@@ -32,6 +36,18 @@
     --grid-line: 186 174 164 / 0.08;
     --grid-line-dark: 255 255 255 / 0.04;
     --grid-columns: 12;
+  }
+
+  @supports (height: 100dvh) {
+    :root {
+      --dvh: 100dvh;
+    }
+  }
+
+  @supports (height: 100svh) {
+    :root {
+      --svh: 100svh;
+    }
   }
 
   @media (min-width: 768px) {

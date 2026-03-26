@@ -134,7 +134,7 @@ export function SiteHeader() {
               type="button"
               id="site-navigation-trigger"
               className={[
-                "shrink-0 rounded-sm border px-3 py-1.5 text-micro font-semibold uppercase tracking-[0.32em]",
+                "inline-grid shrink-0 place-items-center rounded-sm border px-3 py-1.5 text-micro font-semibold uppercase tracking-[0.32em]",
                 "transition-[color,background-color,border-color] duration-300",
                 "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-offset-transparent",
                 useLightForeground
@@ -146,7 +146,11 @@ export function SiteHeader() {
               aria-expanded={isNavigationOpen}
               aria-controls="site-navigation-drawer"
             >
-              {isNavigationOpen ? "[Fechar]" : "[Index]"}
+              {/* Largura fixa pela string mais longa — evita “pulo” entre Index e Fechar */}
+              <span className="invisible col-start-1 row-start-1 pointer-events-none" aria-hidden>
+                [Fechar]
+              </span>
+              <span className="col-start-1 row-start-1">{isNavigationOpen ? "[Fechar]" : "[Index]"}</span>
             </button>
           </div>
         </div>

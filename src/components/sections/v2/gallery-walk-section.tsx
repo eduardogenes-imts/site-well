@@ -106,7 +106,7 @@ export function GalleryWalkSection() {
           <div key={project.slug}>
             <div
               data-snap
-              className="min-h-[calc(100dvh-var(--header-height))]"
+              className="min-h-[calc(var(--dvh)-var(--header-height))]"
             >
               <GalleryProjectCard project={project} index={i} />
             </div>

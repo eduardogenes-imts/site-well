@@ -121,7 +121,7 @@ export function SiteFooter({ hideCta = false }: SiteFooterProps) {
       className="relative z-10 mt-24 w-full bg-transparent text-foreground"
     >
       {!hideCta && (
-        <section className="relative flex min-h-[calc(100dvh-var(--header-height))] items-center px-8 md:px-16 lg:px-24">
+        <section className="relative flex min-h-[calc(var(--dvh)-var(--header-height))] items-center px-8 md:px-16 lg:px-24">
           <div className="mx-auto flex w-full max-w-[1800px] flex-col justify-between gap-16 md:flex-row md:items-end">
             <div className="flex flex-col items-start">
               <p

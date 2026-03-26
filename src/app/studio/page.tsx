@@ -56,7 +56,7 @@ export default function StudioPage() {
       <SiteHeader />
       <main ref={rootRef}>
         {/* 1. Hero — cabe em 100svh (menos header); foto + texto sem estourar a dobra */}
-        <section className="relative flex h-svh min-h-0 flex-col overflow-hidden pt-12 md:pt-14">
+        <section className="relative flex h-[var(--svh)] min-h-0 flex-col overflow-hidden pt-12 md:pt-14">
           <span
             aria-hidden="true"
             className="pointer-events-none absolute right-[4%] top-[48%] z-0 hidden -translate-y-1/2 select-none font-extrabold leading-none md:block"
@@ -69,7 +69,7 @@ export default function StudioPage() {
             W
           </span>
 
-          <div className="relative z-10 grid min-h-0 flex-1 grid-rows-[minmax(0,38svh)_minmax(0,1fr)] md:grid-cols-2 md:grid-rows-1">
+          <div className="relative z-10 grid min-h-0 flex-1 grid-rows-[minmax(0,38vh)_minmax(0,1fr)] md:grid-cols-2 md:grid-rows-1">
             <div className="reveal-curtain relative min-h-0 w-full overflow-hidden md:h-full">
               <Image
                 src="/images/team/wellington-viana/retrato.png"
