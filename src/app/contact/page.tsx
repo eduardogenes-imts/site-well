@@ -98,10 +98,10 @@ export default function ContactPage() {
                   className="reveal-illuminate group flex items-baseline gap-3 transition-opacity hover:opacity-60"
                 >
                   <span
-                    className="shrink-0 text-micro uppercase tracking-[0.22em]"
+                    className="shrink-0 text-micro tracking-[0.22em]"
                     style={{ color: "hsl(var(--accent) / 0.5)" }}
                   >
-                    WhatsApp
+                    whatsapp
                   </span>
                   <span className="text-body-lg text-foreground">
                     +55 85 9620-2796
@@ -182,7 +182,7 @@ export default function ContactPage() {
                   className="group flex w-full items-center justify-center gap-3 border py-4 text-caption uppercase tracking-[0.18em] text-foreground transition-all hover:bg-foreground hover:text-background"
                   style={{ borderColor: "hsl(var(--accent) / 0.4)" }}
                 >
-                  Enviar no WhatsApp
+                  Enviar no whatsapp
                   <svg
                     width="16"
                     height="16"
@@ -205,7 +205,7 @@ export default function ContactPage() {
                     className="text-center text-micro uppercase tracking-[0.22em]"
                     style={{ color: "hsl(var(--accent))" }}
                   >
-                    Mensagem preparada. Confira a aba do WhatsApp.
+                    Mensagem preparada. Confira a aba do whatsapp.
                   </p>
                 ) : null}
               </form>

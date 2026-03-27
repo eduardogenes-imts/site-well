@@ -189,10 +189,10 @@ export function NavigationDrawer() {
             href={BRAND.whatsappUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="text-micro uppercase tracking-[0.22em]"
+            className="text-micro tracking-[0.22em]"
             style={{ color: "hsl(var(--accent) / 0.5)" }}
           >
-            WhatsApp
+            whatsapp
           </Link>
           <Link
             href={BRAND.instagramUrl}

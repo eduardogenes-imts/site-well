@@ -138,7 +138,7 @@ export function SiteFooter({ hideCta = false }: SiteFooterProps) {
                   fontSize: "clamp(calc(4rem * 13 / 14), calc(12vw * 13 / 14), 13rem)",
                 }}
               >
-                Agende
+                agende
                 <br />
                 uma
                 <br />
@@ -169,7 +169,7 @@ export function SiteFooter({ hideCta = false }: SiteFooterProps) {
                 }}
               >
                 <span className="border-b border-[hsl(var(--accent)/0.4)] pb-2 transition-all group-hover:border-[hsl(var(--accent))]">
-                  WhatsApp
+                  whatsapp
                 </span>
               </Link>
             </div>
